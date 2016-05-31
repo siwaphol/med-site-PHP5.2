@@ -35,6 +35,7 @@ class News extends CI_Controller {
 
 	public function create()
 	{
+		$this->load->helper('url');
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 

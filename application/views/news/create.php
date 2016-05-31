@@ -13,4 +13,4 @@
 	<input type="submit" name="submit" value="Create news item" />
 
 </form>
-<p><a href="../news">Go back</a></p>
+<p><?php echo anchor('news','Go Back'); ?></p>
