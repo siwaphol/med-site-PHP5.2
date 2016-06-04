@@ -16,7 +16,7 @@ class Api extends REST_Controller
          
         if($news)
         {
-            $this->response($news, 200);
+            $this->response(array("data"=>$news), 200);
         }
  
         else
