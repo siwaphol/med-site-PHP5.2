@@ -6,11 +6,15 @@ class Profile_model extends CI_Model {
 		$this->load->database();
 	}
 
-	public function get_profile()
+	public function get_profile($id=FALSE)
 	{
-		$query = $this->db->get('user_profiles');
-		return $query->result_array();
-	}
+        if($id===FALSE){
+            $query = $this->db->get('user_profiles');
+            return $query->result_array();
+        }
+        $query = $this->db->get_where('user_profiles',array('id'=>$id));
+        return $query->row_array();
+    }
 
     public function record_count() {
         return $this->db->count_all("user_profiles");

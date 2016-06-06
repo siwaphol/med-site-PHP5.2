@@ -8,6 +8,7 @@ $route['api/news'] = 'api/news';
 // Browse profile
 $route['browse'] = 'profile/index';
 $route['api/profile'] = 'api/profile';
+$route['profile/(:any)'] = 'profile/show/$1';
 
 $route['news/create'] = 'news/create';
 $route['news/(:any)'] = 'news/view/$1';
