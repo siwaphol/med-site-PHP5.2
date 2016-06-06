@@ -28,11 +28,33 @@ class Api extends REST_Controller
 
     public function profile_get()
     {
-        $profile = $this->profile_model->get_profile();
+        $perPage = 10;
+        if(isset($_GET['per_page'])){
+            $perPage = (int)$_GET['per_page'];
+        }
 
-        if($profile)
+        $config = array();
+        $config["base_url"] = base_url() . "browse";
+        $config["total_rows"] = $this->profile_model->record_count();
+        $config["per_page"] = $perPage;
+        $config["uri_segment"] = 3;
+
+        $this->pagination->initialize($config);
+
+        $page = (isset($_GET['page'])) ? (int)$_GET['page']-1 : 0;
+        $data["results"] = $this->profile_model->fetch_profiles($config["per_page"], $page*$perPage);
+        $data["links"] = $this->pagination->create_links();
+
+        if($data)
         {
-            $this->response(array("data"=>$profile), 200);
+            $this->response(array(
+                'data'=>$data["results"]
+                ,'last_page'=>(int)($config['total_rows']/$perPage)+1
+                ,'current_page'=>(int)$page+1
+                ,'from'=>(int)($page*$perPage)+1
+                ,'to'=>(int)($page*$perPage)+$perPage
+                ,'total'=>(int)$config['total_rows']
+            ), 200);
         }
         else{
             $this->response(NULL, 404);

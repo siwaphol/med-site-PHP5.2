@@ -59,6 +59,7 @@
                         p_val = parseInt($(this).val());
                     });
                     this.perPage = p_val;
+                    this.currentPage = 1;
                     this.pageReCreate();
                 }.bind(this),
                 pageReCreate: function () {

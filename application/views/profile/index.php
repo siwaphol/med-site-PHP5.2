@@ -194,7 +194,7 @@
 </div>
 
 <template id="profile-template">
-    <h2 class="subhead">Showing @{{from}}-@{{to}} of @{{total}} Results</h2>
+    <h2 class="subhead">Showing {{from}}-{{to}} of {{total}} Results</h2>
     <ul class="unstyled list-items">
         <li v-for="profile in list">
             <div class="mini-profile media">
@@ -224,7 +224,7 @@
             </div>
             <div class="btn-group">
                 <a class="btn btn-small btn-previous-page"  @click="prevClick"><i class="icon-chevron-left"></i></a>
-                <a class="btn btn-small btn-page-jumper" @click="preventDef" rel="popover">@{{currentPage}}/@{{totalPage}}</a>
+                <a class="btn btn-small btn-page-jumper" @click="preventDef" rel="popover">{{currentPage}}/{{totalPage}}</a>
                 <a class="btn btn-small btn-next-page " @click="nextClick"><i class="icon-chevron-right"></i></a>
             </div>
             <div class="btn-group">
