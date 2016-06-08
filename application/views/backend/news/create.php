@@ -40,23 +40,26 @@
 
     <form action="<?php echo site_url("admin/news/create"); ?>" method="post" enctype="multipart/form-data">
     <!-- Title -->
-    <div class="control-group {!! $errors->has('title') ? 'has-error' : '' !!}">
+    <div class="control-group <?php echo (form_error('title')?'has-error':''); ?>">
         <label class="control-label" for="title">Title</label>
-
         <div class="controls">
-            <input type="text" name="title" class="form-control" id="title" placeholder="Title" value="">
-            @if ($errors->first('title')) <span class="help-block">{!! $errors->first('title') !!}title is required</span> @endif
+            <input type="text" name="title" class="form-control" id="title" placeholder="Title" value="<?php echo set_value('title'); ?>">
+            <?php if(form_error('title')){ ?>
+            <span class="help-block"><?php echo form_error('title'); ?></span>
+            <?php } ?>
         </div>
     </div>
     <br>
     <!-- Datetime -->
-    <div class="control-group {!! $errors->has('datetime') ? 'has-error' : '' !!}">
+    <div class="control-group <?php echo (form_error('datetime')?'has-error':''); ?>">
         <label class="control-label" for="title">Datetime</label>
 
         <div class="controls">
             <input type="text" name="datetime" class="form-control" id="datetime" value="">
-            @if ($errors->first('datetime'))
-            <span class="help-block">{!! $errors->first('datetime') !!}</span> @endif </div>
+            <?php if(form_error('datetime')){ ?>
+                <span class="help-block"><?php echo form_error('datetime'); ?></span>
+            <?php } ?>
+        </div>
     </div>
     <br>
     <!-- Content -->
