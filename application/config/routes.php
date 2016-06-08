@@ -5,6 +5,10 @@ $route['404_override'] = '';
 
 $route['api/news'] = 'api/news';
 
+// Admin
+$route['admin'] = 'admin';
+
+
 // Browse profile
 $route['browse'] = 'profile/index';
 $route['api/profile'] = 'api/profile';
