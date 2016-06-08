@@ -114,9 +114,3 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         @ content is here
-    </div><!-- /.content-wrapper -->
-</div>
-<!-- ./wrapper -->
-
-</body>
-</html>

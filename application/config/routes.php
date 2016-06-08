@@ -7,7 +7,10 @@ $route['api/news'] = 'api/news';
 
 // Admin
 $route['admin'] = 'admin';
-
+$route['admin/news'] = 'admin/news';
+$route['admin/news/create'] = 'admin/news_create';
+$route['admin/news/store'] = 'admin/news_store';
+$route['admin/(:any)'] = 'admin';
 
 // Browse profile
 $route['browse'] = 'profile/index';
