@@ -4,6 +4,7 @@ class Admin extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('news_model');
     }
 
     public function index()
@@ -33,7 +34,7 @@ class Admin extends CI_Controller {
     public function news()
     {
         $data['title'] = 'Admin';
-        $data['news'] = array();
+        $data['news'] = $this->news_model->get_news();
 
         $this->load->view('backend/layout', $data);
         $this->load->view('backend/news/index', $data);

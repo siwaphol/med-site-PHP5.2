@@ -65,29 +65,30 @@
                 <tbody>
                 <?php foreach ($news as $v){ ?>
                 <tr>
-                    <td> {!! link_to_route(getLang(). '.admin.news.show', $v->title, $v->id, array( 'class'
-                        => 'btn btn-link btn-xs' )) !!}
+                    <td>
+                        <a href="#<?php echo site_url("admin/news"); ?><?php echo $v["id"]; ?>"
+                           class="btn btn-link btn-xs"><?php echo $v['title']; ?></a>
                     </td>
-                    <td>{!! $v->created_at !!}</td>
-                    <td>{!! $v->updated_at !!}</td>
+                    <td><?php echo $v['created_at']; ?></td>
+                    <td><?php echo $v['updated_at']; ?></td>
                     <td>
                         <div class="btn-group">
                             <a class="btn btn-danger dropdown-toggle" data-toggle="dropdown" href="#">
                                 Action <span class="caret"></span> </a>
                             <ul class="dropdown-menu">
-                                <li><a href="{!! langRoute('admin.news.show', array($v->id)) !!}">
+                                <li><a href="#admin.news.show.<?php echo $v['id']; ?>">
                                         <span class="glyphicon glyphicon-eye-open"></span>&nbsp;Show News
                                     </a></li>
-                                <li><a href="{!! langRoute('admin.news.edit', array($v->id)) !!}">
+                                <li><a href="#admin.news.edit.<?php echo $v['id']; ?>">
                                         <span class="glyphicon glyphicon-edit"></span>&nbsp;Edit News </a>
                                 </li>
                                 <li class="divider"></li>
-                                <li><a href="{!! URL::route('admin.news.delete', array($v->id)) !!}">
+                                <li><a href="#admin.news.delete.<?php echo $v['id']; ?>">
                                         <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;Delete
                                         News </a></li>
                                 <li class="divider"></li>
                                 <li>
-                                    <a target="_blank" href="{!! URL::route('dashboard.news.show', ['slug' => $v->slug]) !!}">
+                                    <a target="_blank" href="#dashboard.news.show.from_slug">
                                         <span class="glyphicon glyphicon-eye-open"></span>&nbsp;View On Site
                                     </a></li>
                             </ul>
