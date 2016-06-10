@@ -5,6 +5,7 @@ $route['404_override'] = '';
 
 $route['api/news'] = 'api/news';
 
+$route['admin/news/(:any)'] = 'admin/news/$1';
 // Admin
 $route['admin'] = 'admin';
 $route['admin/news'] = 'admin/news';

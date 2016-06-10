@@ -14,7 +14,14 @@ class Pages extends CI_Controller {
 		$data['title'] = ucfirst($page); // Capitalize the first letter
 
 		$this->load->view('templates/header', $data);
+		if($page==='home'){
+			$this->load->view('frontend/home/carousel');
+		}
 		$this->load->view('pages/'.$page, $data);
+		$this->load->view('templates/before_content');
+		if($page==='home'){
+			$this->load->view('frontend/home/content');
+		}
 		$this->load->view('templates/footer', $data);
 
 	}
