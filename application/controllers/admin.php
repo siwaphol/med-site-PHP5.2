@@ -5,6 +5,7 @@ class Admin extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('news_model');
+        $this->load->model('course_model');
     }
 
     public function index()
@@ -79,4 +80,54 @@ class Admin extends CI_Controller {
         $this->load->view('backend/news/create', $data);
         $this->load->view('backend/footer');
     }
+
+    #course 
+        public function course()
+        {
+            $data['title'] = 'Admin';
+            $data['news'] = $this->course_model->get_course();
+
+            $this->load->view('backend/layout', $data);
+            $this->load->view('backend/course/index', $data);
+            $this->load->view('backend/footer');
+        }
+
+        public function course_create()
+        {
+            $data['title'] = 'Admin';
+            $data['course'] = array();
+
+            $this->load->helper('form');
+            $this->load->library('form_validation');
+
+            $this->form_validation->set_rules('title', 'Title', 'required');
+            $this->form_validation->set_rules('datetime', 'Date Time', 'required');
+
+            if ($this->form_validation->run() === FALSE)
+            {
+                $this->load->view('backend/layout', $data);
+                $this->load->view('backend/course/create', $data);
+                $this->load->view('backend/footer');
+            }
+            else
+            {
+                var_dump($this->input->post());
+                die();
+                $this->news_model->set_news();
+                $this->load->view('course/success');
+            }
+        }
+
+        public function course_store()
+        {
+            $data['title'] = 'Admin';
+            $data['course'] = array();
+
+            var_dump($_POST);
+            die();
+
+            $this->load->view('backend/layout', $data);
+            $this->load->view('backend/course/create', $data);
+            $this->load->view('backend/footer');
+        }
 }
