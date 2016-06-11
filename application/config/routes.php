@@ -19,6 +19,11 @@ $route['admin/course'] = 'admin/course';
 $route['admin/course/create'] = 'admin/course_create';
 $route['admin/course/store'] = 'admin/course_store';
 
+$route['admin/curriculum'] = 'admin/curriculum';
+$route['admin/curriculum/create'] = 'admin/curriculum_create';
+$route['admin/curriculum/store'] = 'admin/curriculum_store';
+
+
 $route['admin/(:any)'] = 'admin';
 
 

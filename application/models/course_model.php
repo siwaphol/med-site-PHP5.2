@@ -31,14 +31,13 @@ class Course_model extends CI_Model {
 
 	public function set_course()
 	{
-		$this->load->helper('url');
-
-		$slug = url_title($this->input->post('title'), 'dash', TRUE);
-
 		$data = array(
-			'headline' => $this->input->post('title'),
-			'slug' => $slug,
-			'message' => $this->input->post('text')
+			'code' => $this->input->post('course_code'),
+			'name_th' => $this->input->post('name_th'),
+			'name_en' => $this->input->post('name_en'),
+			'other_details' => $this->input->post('content'),
+			'created_at' => now(),
+			'updated_at' => now(),
 		);
 
 		return $this->db->insert('courses', $data);

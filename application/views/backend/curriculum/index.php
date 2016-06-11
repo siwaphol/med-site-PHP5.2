@@ -9,7 +9,7 @@
             e.preventDefault();
             $.ajax({
                 type: "POST",
-                url: "admin/course/" + id + "/toggle-publish/",
+                url: "admin/curriculum/" + id + "/toggle-publish/",
                 headers: {
                     'X-CSRF-Token': $('meta[name="_token"]').attr('content')
                 },
@@ -30,11 +30,11 @@
 
 <section class="content-header">
     <h1>
-        course
+        curriculum
     </h1>
     <ol class="breadcrumb">
         <li><a href="#dashboard">Dashboard</a></li>
-        <li class="active">course</li>
+        <li class="active">curriculum</li>
     </ol>
 </section>
 
@@ -46,19 +46,19 @@
         <br>
 
         <div class="pull-left">
-            <div class="btn-toolbar"><a href="<?php echo site_url("admin/course/create"); ?>" class="btn btn-primary">
-                    <span class="glyphicon glyphicon-plus"></span>&nbsp;Add course </a></div>
+            <div class="btn-toolbar"><a href="<?php echo site_url("admin/curriculum/create"); ?>" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-plus"></span>&nbsp;Add curriculum </a></div>
         </div>
         <br> <br> <br>
         <?php 
 
         // print "<pre>";
-        // print_r($course);
+        // print_r($curriculum);
         // print "</pre>";
 
 
 
-        if(count($course)){ ?>
+        if(count($curriculum)){ ?>
         <div class="">
             <table class="table table-striped">
                 <thead>
@@ -70,14 +70,14 @@
                 </tr>
                 </thead>
                 <tbody>
-                <?php foreach ($course as $v){ ?>
+                <?php foreach ($curriculum as $v){ ?>
                 <tr>
                     <td>
-                        <a href="#<?php echo site_url("admin/course"); ?><?php echo $v["id"]; ?>"
+                        <a href="#<?php echo site_url("admin/curriculum"); ?><?php echo $v["id"]; ?>"
                            class="btn btn-link btn-xs"><?php echo $v['code']; ?></a>
                     </td>
                     <td>
-                        <a href="#<?php echo site_url("admin/course"); ?><?php echo $v["id"]; ?>"
+                        <a href="#<?php echo site_url("admin/curriculum"); ?><?php echo $v["id"]; ?>"
                            class="btn btn-link btn-xs"><?php echo $v['name_th']."(".$v['name_en'].")"; ?></a>
                     </td>
                     <td><?php echo $v['updated_at']; ?></td>
@@ -86,19 +86,19 @@
                             <a class="btn btn-danger dropdown-toggle" data-toggle="dropdown" href="#">
                                 Action <span class="caret"></span> </a>
                             <ul class="dropdown-menu">
-                                <li><a href="#admin.course.show.<?php echo $v['id']; ?>">
-                                        <span class="glyphicon glyphicon-eye-open"></span>&nbsp;Show course
+                                <li><a href="#admin.curriculum.show.<?php echo $v['id']; ?>">
+                                        <span class="glyphicon glyphicon-eye-open"></span>&nbsp;Show curriculum
                                     </a></li>
-                                <li><a href="#admin.course.edit.<?php echo $v['id']; ?>">
-                                        <span class="glyphicon glyphicon-edit"></span>&nbsp;Edit course </a>
+                                <li><a href="#admin.curriculum.edit.<?php echo $v['id']; ?>">
+                                        <span class="glyphicon glyphicon-edit"></span>&nbsp;Edit curriculum </a>
                                 </li>
                                 <li class="divider"></li>
-                                <li><a href="#admin.course.delete.<?php echo $v['id']; ?>">
+                                <li><a href="#admin.curriculum.delete.<?php echo $v['id']; ?>">
                                         <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;Delete
-                                        course </a></li>
+                                        curriculum </a></li>
                                 <li class="divider"></li>
                                 <li>
-                                    <a target="_blank" href="#dashboard.course.show.from_slug">
+                                    <a target="_blank" href="#dashboard.curriculum.show.from_slug">
                                         <span class="glyphicon glyphicon-eye-open"></span>&nbsp;View On Site
                                     </a></li>
                             </ul>
@@ -114,7 +114,7 @@
         <?php } ?></div>
     <div class="pull-left">
         <ul class="pagination">
-            {!! $course->render() !!}
+            {!! $curriculum->render() !!}
         </ul>
     </div>
 </div>

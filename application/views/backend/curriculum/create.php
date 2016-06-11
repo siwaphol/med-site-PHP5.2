@@ -32,10 +32,10 @@
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
-    <h1> Course <small> | Add Course</small> </h1>
+    <h1> Curriculum <small> | Add Curriculum</small> </h1>
     <ol class="breadcrumb">
-        <li><a href="<?php echo site_url("admin/course"); ?>"><i class="fa fa-bookmark"></i> Course</a></li>
-        <li class="active">Add Course</li>
+        <li><a href="<?php echo site_url("admin/course"); ?>"><i class="fa fa-bookmark"></i> Curriculum</a></li>
+        <li class="active">Add Curriculum</li>
     </ol>
 </section>
 <br>
@@ -45,40 +45,17 @@
     <?php //echo validation_errors(); ?>
 
     <form action="<?php echo site_url("admin/course/create"); ?>" method="post" enctype="multipart/form-data">
-    <!-- Title -->
-    <div class="control-group <?php echo (form_error('course_code')?'has-error':''); ?>">
-        <label class="control-label" for="course_code">Course Code</label>
+    <!-- Period-->
+    <div class="control-group <?php echo (form_error('period')?'has-error':''); ?>">
+        <label class="control-label" for="period">Year</label>
         <div class="controls">
-            <input type="text" name="course_code" class="form-control" id="course_code" placeholder="รหัสวิชา" value="<?php echo set_value('course_code'); ?>">
-            <?php if(form_error('course_code')){ ?>
-            <span class="help-block"><?php echo form_error('course_code'); ?></span>
+            <input type="text" name="period" class="form-control" id="period" placeholder="รหัสวิชา" value="<?php echo set_value('period'); ?>">
+            <?php if(form_error('period')){ ?>
+            <span class="help-block"><?php echo form_error('period'); ?></span>
             <?php } ?>
         </div>
     </div>
     <br>
-    <!-- Name Thai -->
-    <div class="control-group <?php echo (form_error('name_th')?'has-error':''); ?>">
-        <label class="control-label" for="name_th">Thai Name</label>
-        <div class="controls">
-            <input type="text" name="name_th" class="form-control" id="name_th" placeholder="ชื่อวิชาภาษาไทย" value="<?php echo set_value('name_th'); ?>">
-            <?php if(form_error('name_th')){ ?>
-            <span class="help-block"><?php echo form_error('name_th'); ?></span>
-            <?php } ?>
-        </div>
-    </div>
-    <br>
-    <!-- Name English -->
-    <div class="control-group <?php echo (form_error('name_en')?'has-error':''); ?>">
-        <label class="control-label" for="name_en">English Name</label>
-        <div class="controls">
-            <input type="text" name="name_en" class="form-control" id="name_en" placeholder="ชื่อวิชาภาษาไทย" value="<?php echo set_value('name_en'); ?>">
-            <?php if(form_error('name_en')){ ?>
-            <span class="help-block"><?php echo form_error('name_en'); ?></span>
-            <?php } ?>
-        </div>
-    </div>
-    <br>
-
     <!-- Content -->
     <div class="control-group <?php echo (form_error('content')?'has-error':''); ?>">
         <label class="control-label" for="content">Content</label>
