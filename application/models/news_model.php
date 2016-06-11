@@ -17,15 +17,15 @@ class News_model extends CI_Model {
 		return null;
 	}
 
-	public function get_news($slug = FALSE)
+	public function get_news($id = FALSE)
 	{
-		if ($slug === FALSE)
+		if ($id === FALSE)
 		{
 			$query = $this->db->get('news');
 			return $query->result_array();
 		}
 		
-		$query = $this->db->get_where('news', array('slug' => $slug));
+		$query = $this->db->get_where('news', array('id' => $id));
 		return $query->row_array();
 	}
 
@@ -42,5 +42,21 @@ class News_model extends CI_Model {
 		);
 
 		return $this->db->insert('news', $data);
+	}
+
+	public function update_news($id)
+	{
+		$data = array(
+			'title' => $this->input->post('title'),
+			'content' => $this->input->post('content'),
+			'start_date' => $this->input->post('start_date'),
+			'end_date' => $this->input->post('end_date'),
+			'image_path' => $this->input->post('image_path'),
+			'created_at' => now(),
+			'updated_at' => now(),
+		);
+
+		$this->db->where('id', $id);
+		$this->db->update('news', $data);
 	}
 }

@@ -64,32 +64,46 @@ class Admin extends CI_Controller {
         }
         else
         {
-            // var_dump($this->input->post());
-            // die();
             $this->news_model->set_news();
 
-            $data['title'] = 'Admin';
-            $data['news'] = $this->news_model->get_news();
+            $this->session->set_userdata('flash_notification.message', 'Created Successfully');
 
-            $this->session->set_flashdata('flash_notification.message', 'Created Successfully');
-
-            $this->load->view('backend/layout', $data);
-            $this->load->view('backend/news/index', $data);
-            $this->load->view('backend/footer');
+            redirect('admin/news');
         }
     }
 
-    public function news_store()
+    public function news_edit($id)
     {
-        $data['title'] = 'Admin';
-        $data['news'] = array();
+        $data['title'] = 'News Edit';
+        $data['news_item'] = $this->news_model->get_news($id);
 
-        var_dump($_POST);
-        die();
+        if (empty($data['news_item']))
+        {
+            show_404();
+        }
 
-        $this->load->view('backend/layout', $data);
-        $this->load->view('backend/news/create', $data);
-        $this->load->view('backend/footer');
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('title', 'Title', 'required');
+        $this->form_validation->set_rules('start_date', 'Start Date', 'required');
+        $this->form_validation->set_rules('content', 'Content', 'required');
+        $this->form_validation->set_rules('end_date', 'End Date', 'required');
+
+        if ($this->form_validation->run() === FALSE)
+        {
+            $this->load->view('backend/layout', $data);
+            $this->load->view('backend/news/edit', $data);
+            $this->load->view('backend/footer');
+        }
+        else
+        {
+            $this->news_model->update_news($id);
+
+            $this->session->set_userdata('flash_notification.message', 'Update Successfully');
+
+            redirect('admin/news');
+        }
     }
 
     #course 

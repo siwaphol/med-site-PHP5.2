@@ -2,6 +2,7 @@
     $(document).ready(function () {
 
         $('#notification').show().delay(4000).fadeOut(700);
+        // $('#notification').show();
 
         // publish settings
         $(".publish").bind("click", function (e) {
@@ -66,7 +67,7 @@
                 <?php foreach ($news as $v){ ?>
                 <tr>
                     <td>
-                        <a href="#<?php echo site_url("admin/news"); ?><?php echo $v["id"]; ?>"
+                        <a href="<?php echo site_url("admin/news"); ?>/<?php echo $v["id"]; ?>"
                            class="btn btn-link btn-xs"><?php echo $v['title']; ?></a>
                     </td>
                     <td><?php echo $v['start_date']; ?></td>

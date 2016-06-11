@@ -5,8 +5,6 @@ $route['404_override'] = '';
 
 $route['api/news'] = 'api/news';
 
-$route['admin/news/(:any)'] = 'admin/news/$1';
-
 $route['admin/course/(:any)'] = 'admin/course/$1';
 
 // Admin
@@ -14,6 +12,7 @@ $route['admin'] = 'admin';
 $route['admin/news'] = 'admin/news';
 $route['admin/news/create'] = 'admin/news_create';
 $route['admin/news/store'] = 'admin/news_store';
+$route['admin/news/(:num)'] = 'admin/news_edit/$1';
 
 $route['admin/course'] = 'admin/course';
 $route['admin/course/create'] = 'admin/course_create';
