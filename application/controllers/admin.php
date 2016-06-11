@@ -6,6 +6,7 @@ class Admin extends CI_Controller {
         parent::__construct();
         $this->load->model('news_model');
         $this->load->model('course_model');
+        $this->load->model('staff_model');
         $this->load->model('curriculum_model');
     }
 
@@ -192,7 +193,74 @@ class Admin extends CI_Controller {
             $this->load->view('backend/course/create', $data);
             $this->load->view('backend/footer');
         }
-    #end course
+
+    public function staff()
+    {
+        $data['title'] = 'Staff';
+        $data['staff'] = $this->staff_model->get_staff();
+
+        $this->load->view('backend/layout', $data);
+        $this->load->view('backend/staff/index', $data);
+        $this->load->view('backend/footer');
+    }
+
+    public function staff_create()
+    {
+        $data['title'] = 'Staff';
+
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('first_name_en', 'First Name', 'required');
+        $this->form_validation->set_rules('last_name_en', 'Last Name', 'required');
+
+        if ($this->form_validation->run() === FALSE)
+        {
+            $this->load->view('backend/layout', $data);
+            $this->load->view('backend/staff/create', $data);
+            $this->load->view('backend/footer');
+        }
+        else
+        {
+            $this->staff_model->set_staff();
+
+            $this->session->set_userdata('flash_notification.message', 'Created Successfully');
+
+            redirect('admin/staff');
+        }
+    }
+
+    public function staff_edit($id)
+    {
+        $data['title'] = 'Staff Edit';
+        $data['staff_item'] = $this->staff_model->get_staff($id);
+
+        if (empty($data['staff_item']))
+        {
+            show_404();
+        }
+
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('first_name_en', 'First Name', 'required');
+        $this->form_validation->set_rules('last_name_en', 'Last Name', 'required');
+
+        if ($this->form_validation->run() === FALSE)
+        {
+            $this->load->view('backend/layout', $data);
+            $this->load->view('backend/staff/edit', $data);
+            $this->load->view('backend/footer');
+        }
+        else
+        {
+            $this->staff_model->update_staff($id);
+
+            $this->session->set_userdata('flash_notification.message', 'Update Successfully');
+
+            redirect('admin/staff');
+        }
+    }
 
     #course 
         public function course_group()

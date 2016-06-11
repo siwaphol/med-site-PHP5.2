@@ -3,39 +3,16 @@
 
         $('#notification').show().delay(4000).fadeOut(700);
         // $('#notification').show();
-
-        // publish settings
-        $(".publish").bind("click", function (e) {
-            var id = $(this).attr('id');
-            e.preventDefault();
-            $.ajax({
-                type: "POST",
-                url: "admin/news/" + id + "/toggle-publish/",
-                headers: {
-                    'X-CSRF-Token': $('meta[name="_token"]').attr('content')
-                },
-                success: function (response) {
-                    if (response['result'] == 'success') {
-                        var imagePath = (response['changed'] == 1) ? "<?php echo base_url("assets/assets/images/publish.png"); ?>"
-                            : "<?php echo base_url("assets/assets/images/not_publish.png"); ?>";
-                        $("#publish-image-" + id).attr('src', imagePath);
-                    }
-                },
-                error: function () {
-                    alert("error");
-                }
-            })
-        });
     });
 </script>
 
 <section class="content-header">
     <h1>
-        News
+        Staff
     </h1>
     <ol class="breadcrumb">
         <li><a href="#dashboard">Dashboard</a></li>
-        <li class="active">News</li>
+        <li class="active">Staff</li>
     </ol>
 </section>
 
@@ -47,31 +24,31 @@
         <br>
 
         <div class="pull-left">
-            <div class="btn-toolbar"><a href="<?php echo site_url("admin/news/create"); ?>" class="btn btn-primary">
-                    <span class="glyphicon glyphicon-plus"></span>&nbsp;Add News </a></div>
+            <div class="btn-toolbar"><a href="<?php echo site_url("admin/staff/create"); ?>" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-plus"></span>&nbsp;Add Staff </a></div>
         </div>
         <br> <br> <br>
-        <?php if(count($news)){ ?>
+        <?php if(count($staff)){ ?>
         <div class="">
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <th>Title</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Job Title</th>
                     <th>Action</th>
                     <th>Settings</th>
                 </tr>
                 </thead>
                 <tbody>
-                <?php foreach ($news as $v){ ?>
+                <?php foreach ($staff as $v){ ?>
                 <tr>
                     <td>
-                        <a href="<?php echo site_url("admin/news"); ?>/<?php echo $v["id"]; ?>"
-                           class="btn btn-link btn-xs"><?php echo $v['title']; ?></a>
+                        <a href="<?php echo site_url("admin/staff"); ?>/<?php echo $v["id"]; ?>"
+                           class="btn btn-link btn-xs"><?php echo $v['first_name_en']; ?></a>
                     </td>
-                    <td><?php echo $v['start_date']; ?></td>
-                    <td><?php echo $v['end_date']; ?></td>
+                    <td><?php echo $v['last_name_en']; ?></td>
+                    <td><?php echo $v['job_title_en']; ?></td>
                     <td>
                         <div class="btn-group">
                             <a class="btn btn-danger dropdown-toggle" data-toggle="dropdown" href="#">
@@ -95,9 +72,6 @@
                             </ul>
                         </div>
                     </td>
-                    <td><a href="#" id="{!! $v->id !!}" class="publish">
-                            <img id="publish-image-{!! $v->id !!}" src="{!!url('/')!!}/assets/images/{!! ($v->is_published) ? 'publish.png' : 'not_publish.png'  !!}"/>
-                        </a></td>
                 </tr>
                 <?php } ?>
                 </tbody>

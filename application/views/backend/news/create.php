@@ -82,8 +82,10 @@
         <label class="control-label" for="title">Content</label>
 
         <div class="controls">
-            <textarea name="content" id="content" cols="30" rows="10" placeholder="Content" class="form-control"> old content value here</textarea>
-            @if ($errors->first('content')) <span class="help-block">{!! $errors->first('content') !!}</span> @endif
+            <textarea name="content" id="content" cols="30" rows="10" placeholder="Content" class="form-control"></textarea>
+            <?php if(form_error('content')){ ?>
+                <span class="help-block"><?php echo form_error('content'); ?></span>
+            <?php } ?>
         </div>
     </div>
     <br>

@@ -40,7 +40,6 @@
 <br>
 <br>
 <div class="container">
-
     <form action="<?php echo site_url("admin/news"); ?>/<?php echo $news_item['id']; ?>" method="post" enctype="multipart/form-data">
     <!-- Title -->
     <div class="control-group <?php echo (form_error('title')?'has-error':''); ?>">
