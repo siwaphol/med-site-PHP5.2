@@ -2,6 +2,7 @@
     $(document).ready(function () {
 
         $('#notification').show().delay(4000).fadeOut(700);
+        // $('#notification').show();
 
         // publish settings
         $(".publish").bind("click", function (e) {

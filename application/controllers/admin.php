@@ -69,11 +69,12 @@ class Admin extends CI_Controller {
             $data['title'] = 'Admin';
             $data['news'] = $this->news_model->get_news();
 
-            $this->session->set_flashdata('flash_notification.message', 'Created Successfully');
+            $this->session->set_userdata('flash_notification.message', 'Created Successfully');
 
-            $this->load->view('backend/layout', $data);
-            $this->load->view('backend/news/index', $data);
-            $this->load->view('backend/footer');
+            redirect('admin/news');
+            // $this->load->view('backend/layout', $data);
+            // $this->load->view('backend/news/index', $data);
+            // $this->load->view('backend/footer');
         }
     }
 
