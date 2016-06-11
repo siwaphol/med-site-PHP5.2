@@ -17,16 +17,21 @@ class Course_model extends CI_Model {
 		return null;
 	}
 
-	public function get_course($slug = FALSE)
+	public function get_course($id = FALSE)
 	{
-		if ($slug === FALSE)
+		if ($id === FALSE)
 		{
 			$query = $this->db->get('courses');
 			return $query->result_array();
 		}
 		
-		$query = $this->db->get_where('courses', array('slug' => $slug));
+		$query = $this->db->get_where('courses', array('id' => $id));
 		return $query->row_array();
+	}
+
+	public function get_course_code(){
+		$query = $this->db->get('courses');
+		return $query->result_array();
 	}
 
 	public function set_course()
@@ -41,5 +46,19 @@ class Course_model extends CI_Model {
 		);
 
 		return $this->db->insert('courses', $data);
+	}
+
+	public function update_course($id)
+	{
+		$data = array(
+			'code' => $this->input->post('course_code'),
+			'name_th' => $this->input->post('name_th'),
+			'name_en' => $this->input->post('name_en'),
+			'other_details' => $this->input->post('content'),
+			'updated_at' => now(),
+		);
+
+		$this->db->where('id', $id);
+		$this->db->update('courses', $data);
 	}
 }

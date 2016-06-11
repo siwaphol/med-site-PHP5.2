@@ -139,19 +139,134 @@ class Admin extends CI_Controller {
             else
             {
                 $this->course_model->set_course();
+              
+                $this->session->set_userdata('flash_notification.message', 'Created Successfully');
 
-                $data['title'] = 'Admin';
-                $data['course'] = $this->course_model->get_course();
+                redirect('admin/course');
+            }
+        }
 
-                $this->session->set_flashdata('flash_notification.message', 'Created Successfully');
+        public function course_edit($id)
+        {
+            $data['title'] = 'Course Edit';
+            $data['course_item'] = $this->course_model->get_course($id);
 
+            if (empty($data['course_item']))
+            {
+                show_404();
+            }
+
+            $this->load->helper('form');
+            $this->load->library('form_validation');
+
+            $this->form_validation->set_rules('course_code', 'Course Code', 'required');
+            $this->form_validation->set_rules('name_th', 'Thai Name', 'required');
+            $this->form_validation->set_rules('name_en', 'English Name', 'required');
+            $this->form_validation->set_rules('content', 'Content', 'required');
+
+            if ($this->form_validation->run() === FALSE)
+            {
                 $this->load->view('backend/layout', $data);
-                $this->load->view('backend/course/index', $data);
+                $this->load->view('backend/course/edit', $data);
                 $this->load->view('backend/footer');
+            }
+            else
+            {
+                $this->course_model->update_course($id);
+              
+                $this->session->set_userdata('flash_notification.message', 'Created Successfully');
+
+                redirect('admin/course');
             }
         }
 
         public function course_store()
+        {
+            $data['title'] = 'Admin';
+            $data['course'] = array();
+
+            var_dump($_POST);
+            die();
+
+            $this->load->view('backend/layout', $data);
+            $this->load->view('backend/course/create', $data);
+            $this->load->view('backend/footer');
+        }
+    #end course
+
+    #course 
+        public function course_group()
+        {
+            $data['title'] = 'Admin';
+            $data['course_group_items'] = $this->course_model->get_course();
+
+            $this->load->view('backend/layout', $data);
+            $this->load->view('backend/course_group/index', $data);
+            $this->load->view('backend/footer');
+        }
+
+        public function course_group_create()
+        {
+            $data['title'] = 'Admin';
+            $data['course_group_items'] = $this->course_model->get_course_code();
+
+            $this->load->helper('form');
+            $this->load->library('form_validation');
+
+            $this->form_validation->set_rules('group', 'Group', 'required');
+            $this->form_validation->set_rules('course_code', 'Course Code', 'required');
+
+            if ($this->form_validation->run() === FALSE)
+            {
+                $this->load->view('backend/layout', $data);
+                $this->load->view('backend/course_group/create', $data);
+                $this->load->view('backend/footer');
+            }
+            else
+            {
+                $this->course_model->set_course();
+              
+                $this->session->set_userdata('flash_notification.message', 'Created Successfully');
+
+                redirect('admin/course');
+            }
+        }
+
+        public function course_group_edit($id)
+        {
+            $data['title'] = 'Course Edit';
+            $data['course_item'] = $this->course_model->get_course($id);
+
+            if (empty($data['course_item']))
+            {
+                show_404();
+            }
+
+            $this->load->helper('form');
+            $this->load->library('form_validation');
+
+            $this->form_validation->set_rules('course_code', 'Course Code', 'required');
+            $this->form_validation->set_rules('name_th', 'Thai Name', 'required');
+            $this->form_validation->set_rules('name_en', 'English Name', 'required');
+            $this->form_validation->set_rules('content', 'Content', 'required');
+
+            if ($this->form_validation->run() === FALSE)
+            {
+                $this->load->view('backend/layout', $data);
+                $this->load->view('backend/course/edit', $data);
+                $this->load->view('backend/footer');
+            }
+            else
+            {
+                $this->course_model->update_course($id);
+              
+                $this->session->set_userdata('flash_notification.message', 'Created Successfully');
+
+                redirect('admin/course');
+            }
+        }
+
+        public function course_group_store()
         {
             $data['title'] = 'Admin';
             $data['course'] = array();
@@ -184,6 +299,7 @@ class Admin extends CI_Controller {
             $this->load->helper('form');
             $this->load->library('form_validation');
 
+            $this->form_validation->set_rules('group', 'Group', 'required');
             $this->form_validation->set_rules('period', 'Year', 'required');
             $this->form_validation->set_rules('content', 'Content', 'required');
 
@@ -196,15 +312,43 @@ class Admin extends CI_Controller {
             else
             {
                 $this->curriculum_model->set_curriculum();
+              
+                $this->session->set_userdata('flash_notification.message', 'Created Successfully');
 
-                $data['title'] = 'Admin';
-                $data['curriculum'] = $this->curriculum_model->get_curriculum();
+                redirect('admin/curriculum');
+            }
+        }
 
-                $this->session->set_flashdata('flash_notification.message', 'Created Successfully');
+        public function curriculum_edit($id)
+        {
+            $data['title'] = 'Curriculum Edit';
+            $data['curriculum_item'] = $this->curriculum_model->get_curriculum($id);
 
+            if (empty($data['curriculum_item']))
+            {
+                show_404();
+            }
+
+            $this->load->helper('form');
+            $this->load->library('form_validation');
+
+            $this->form_validation->set_rules('group', 'Group', 'required');
+            $this->form_validation->set_rules('period', 'Period', 'required');
+            $this->form_validation->set_rules('content', 'Content', 'required');
+
+            if ($this->form_validation->run() === FALSE)
+            {
                 $this->load->view('backend/layout', $data);
-                $this->load->view('backend/curriculum/index', $data);
+                $this->load->view('backend/curriculum/edit', $data);
                 $this->load->view('backend/footer');
+            }
+            else
+            {
+                $this->curriculum_model->update_curriculum($id);
+
+                $this->session->set_userdata('flash_notification.message', 'Update Successfully');
+
+                redirect('admin/curriculum');
             }
         }
 

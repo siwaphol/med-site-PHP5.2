@@ -48,6 +48,15 @@
                     </li>
                 </ul>
             </li>
+            <li class="treeview"><a href="#"> <i class="fa fa-bookmark"></i> <span>Courses List</span>
+                    <i class="fa fa-angle-left pull-right"></i> </a>
+                <ul class="treeview-menu">
+                    <li><a href="#admin/course_list"><i class="fa fa-folder"></i> All Courses List</a>
+                    </li>
+                    <li><a href="#admin/course_list/create"><i class="fa fa-plus-square"></i> Add Course List</a>
+                    </li>
+                </ul>
+            </li>
             <li class="treeview"><a href="#"> <i class="fa fa-picture-o"></i> <span>Curriculum</span>
                     <i class="fa fa-angle-left pull-right"></i> </a>
                 <ul class="treeview-menu">

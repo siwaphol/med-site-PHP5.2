@@ -32,10 +32,10 @@
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
-    <h1> Curriculum <small> | Add Curriculum</small> </h1>
+    <h1> Course <small> | Add Course Group</small> </h1>
     <ol class="breadcrumb">
-        <li><a href="<?php echo site_url("admin/curriculum"); ?>"><i class="fa fa-bookmark"></i> Curriculum</a></li>
-        <li class="active">Add Curriculum</li>
+        <li><a href="<?php echo site_url("admin/course"); ?>"><i class="fa fa-bookmark"></i> Course Group</a></li>
+        <li class="active">Add Course Group</li>
     </ol>
 </section>
 <br>
@@ -44,18 +44,17 @@
 
     <?php //echo validation_errors(); ?>
 
-    <form action="<?php echo site_url("admin/curriculum/create"); ?>" method="post" enctype="multipart/form-data">
-    <!-- Group-->
-    <div class="control-group <?php echo (form_error('group')?'has-error':''); ?>">
-        <label class="control-label" for="group">Year</label>
+    <form action="<?php echo site_url("admin/course/create"); ?>" method="post" enctype="multipart/form-data">
+    <!-- Course Group Id -->
+    <div class="control-group <?php echo (form_error('course_code')?'has-error':''); ?>">
+        <label class="control-label" for="course_code">Course Group</label>
         <div class="controls">
-            <!-- <input type="text" name="period" class="form-control" id="period" placeholder="ปีการศึกษา" value="<?php //echo set_value('period'); ?>"> -->
             <select name="group" id="group" class="selectpicker form-control">
                 <option value="">--Select--</option>
-                <option value="Medicine">Medicine</option>
-                <option value="Master of Science (M.Sc.)">Master of Science (M.Sc.)</option>
-                <option value="Doctor of Philosophy (Ph.D.)">Doctor of Philosophy (Ph.D.)</option>
-                <option value="International Program">International Program</option>
+                <option value="1">Medicine</option>
+                <option value="2">Dentistry</option>
+                <option value="3">Pharmacy</option>
+                <option value="4">Nurse</option>
             </select>
 
             <?php if(form_error('group')){ ?>
@@ -64,24 +63,23 @@
         </div>
     </div>
     <br>
-    <!-- Period-->
-    <div class="control-group <?php echo (form_error('period')?'has-error':''); ?>">
-        <label class="control-label" for="period">Year</label>
-        <div class="controls">
-            <input type="text" name="period" class="form-control" id="period" placeholder="ปีการศึกษา" value="<?php echo set_value('period'); ?>">
-            <?php if(form_error('period')){ ?>
-            <span class="help-block"><?php echo form_error('period'); ?></span>
-            <?php } ?>
-        </div>
-    </div>
-    <br>
-    <!-- Content -->
-    <div class="control-group <?php echo (form_error('content')?'has-error':''); ?>">
-        <label class="control-label" for="content">Content</label>
+    <!-- Course Id -->
+    <div class="control-group <?php echo (form_error('course_code')?'has-error':''); ?>">
+        <label class="control-label" for="course_code">Course Code</label>
+        <select name="course_code" id="course_code" class="selectpicker form-control">
+            <option value="">--Select--</option>
+            <?php //if() 
+                   print "<pre>";
+            print_r($course_group_items);
+            print "</pre>";
 
-        <div class="controls">
-            <textarea name="content" id="content" cols="30" rows="10" placeholder="Content" class="form-control"></textarea>
-        </div>
+            ?>
+            <option value="1">Medicine</option>
+  
+        </select>
+        <?php if(form_error('course_code')){ ?>
+            <span class="help-block"><?php echo form_error('course_code'); ?></span>
+        <?php } ?>
     </div>
     <br>
 

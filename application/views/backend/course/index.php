@@ -73,11 +73,11 @@
                 <?php foreach ($course as $v){ ?>
                 <tr>
                     <td>
-                        <a href="#<?php echo site_url("admin/course"); ?><?php echo $v["id"]; ?>"
+                        <a href="<?php echo site_url("admin/course"); ?>/<?php echo $v["id"]; ?>"
                            class="btn btn-link btn-xs"><?php echo $v['code']; ?></a>
                     </td>
                     <td>
-                        <a href="#<?php echo site_url("admin/course"); ?><?php echo $v["id"]; ?>"
+                        <a href="<?php echo site_url("admin/course"); ?>/<?php echo $v["id"]; ?>"
                            class="btn btn-link btn-xs"><?php echo $v['name_th']."(".$v['name_en'].")"; ?></a>
                     </td>
                     <td><?php echo $v['updated_at']; ?></td>

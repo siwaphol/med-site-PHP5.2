@@ -17,28 +17,41 @@ class Curriculum_model extends CI_Model {
 		return null;
 	}
 
-	public function get_curriculum($slug = FALSE)
+	public function get_curriculum($id = FALSE)
 	{
-		if ($slug === FALSE)
+		if ($id === FALSE)
 		{
 			$query = $this->db->get('curriculums');
 			return $query->result_array();
 		}
 		
-		$query = $this->db->get_where('curriculums', array('slug' => $slug));
+		$query = $this->db->get_where('curriculums', array('id' => $id));
 		return $query->row_array();
 	}
 
 	public function set_curriculum()
 	{
 		$data = array(
-			'group' =>"med",
+			'group' =>$this->input->post('group'),
 			'period' => $this->input->post('period'),
 			'content' => $this->input->post('content'),
 			'created_at' => now(),
 			'updated_at' => now(),
 		);
 
-		return $this->db->insert('curriculum', $data);
+		return $this->db->insert('curriculums', $data);
+	}
+
+	public function update_curriculum($id)
+	{
+		$data = array(
+			'group' =>$this->input->post('group'),
+			'period' => $this->input->post('period'),
+			'content' => $this->input->post('content'),
+			'updated_at' => now(),
+		);
+
+		$this->db->where('id', $id);
+		$this->db->update('curriculums', $data);
 	}
 }

@@ -63,8 +63,8 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <th>Code</th>
-                    <th>รายชื่อกระบวนวิชา</th>
+                    <th>Group</th>
+                    <th>Period</th>
                     <th>Updated Date</th>
                     <th>Settings</th>
                 </tr>
@@ -73,12 +73,12 @@
                 <?php foreach ($curriculum as $v){ ?>
                 <tr>
                     <td>
-                        <a href="#<?php echo site_url("admin/curriculum"); ?><?php echo $v["id"]; ?>"
-                           class="btn btn-link btn-xs"><?php echo $v['code']; ?></a>
+                        <a href="<?php echo site_url("admin/curriculum");?>/<?php echo $v["id"]; ?>"
+                           class="btn btn-link btn-xs"><?php echo $v['group']; ?></a>
                     </td>
                     <td>
                         <a href="#<?php echo site_url("admin/curriculum"); ?><?php echo $v["id"]; ?>"
-                           class="btn btn-link btn-xs"><?php echo $v['name_th']."(".$v['name_en'].")"; ?></a>
+                           class="btn btn-link btn-xs"><?php echo $v['period']; ?></a>
                     </td>
                     <td><?php echo $v['updated_at']; ?></td>
                     <td>
