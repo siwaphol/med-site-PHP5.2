@@ -4,7 +4,7 @@ $autoload['packages'] = array();
 
 $autoload['libraries'] = array('pagination','session');
 
-$autoload['helper'] = array('nong_query_helper','nong_view_helper','url');
+$autoload['helper'] = array('nong_query_helper','nong_view_helper','url','date');
 
 $autoload['config'] = array();
 

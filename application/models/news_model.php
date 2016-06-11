@@ -31,14 +31,14 @@ class News_model extends CI_Model {
 
 	public function set_news()
 	{
-		$this->load->helper('url');
-
-		$slug = url_title($this->input->post('title'), 'dash', TRUE);
-
 		$data = array(
-			'headline' => $this->input->post('title'),
-			'slug' => $slug,
-			'message' => $this->input->post('text')
+			'title' => $this->input->post('title'),
+			'content' => $this->input->post('content'),
+			'start_date' => $this->input->post('start_date'),
+			'end_date' => $this->input->post('end_date'),
+			'image_path' => $this->input->post('image_path'),
+			'created_at' => now(),
+			'updated_at' => now(),
 		);
 
 		return $this->db->insert('news', $data);

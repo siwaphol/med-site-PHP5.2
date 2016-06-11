@@ -11,7 +11,13 @@
     $(document).ready(function () {
         $("#title").slug();
 
-        $('#datetime').datepicker({
+        $('#start_date').datepicker({
+            format: "yyyy-mm-dd",
+            todayBtn: "linked",
+            orientation: "top auto"
+        });
+
+        $('#end_date').datepicker({
             format: "yyyy-mm-dd",
             todayBtn: "linked",
             orientation: "top auto"
@@ -50,20 +56,32 @@
         </div>
     </div>
     <br>
-    <!-- Datetime -->
-    <div class="control-group <?php echo (form_error('datetime')?'has-error':''); ?>">
-        <label class="control-label" for="title">Datetime</label>
+    <!-- Start Date -->
+    <div class="control-group <?php echo (form_error('start_date')?'has-error':''); ?>">
+        <label class="control-label" for="title">Start Date</label>
 
         <div class="controls">
-            <input type="text" name="datetime" class="form-control" id="datetime" value="">
-            <?php if(form_error('datetime')){ ?>
-                <span class="help-block"><?php echo form_error('datetime'); ?></span>
+            <input type="text" name="start_date" class="form-control" id="start_date" value="">
+            <?php if(form_error('start_date')){ ?>
+                <span class="help-block"><?php echo form_error('start_date'); ?></span>
+            <?php } ?>
+        </div>
+    </div>
+    <br>
+        <!-- End Date -->
+    <div class="control-group <?php echo (form_error('end_date')?'has-error':''); ?>">
+        <label class="control-label" for="title">End Date</label>
+
+        <div class="controls">
+            <input type="text" name="end_date" class="form-control" id="end_date" value="">
+            <?php if(form_error('end_date')){ ?>
+                <span class="help-block"><?php echo form_error('end_date'); ?></span>
             <?php } ?>
         </div>
     </div>
     <br>
     <!-- Content -->
-    <div class="control-group {!! $errors->has('content') ? 'has-error' : '' !!}">
+    <div class="control-group <?php echo (form_error('content')?'has-error':''); ?>">
         <label class="control-label" for="title">Content</label>
 
         <div class="controls">
@@ -73,20 +91,12 @@
     </div>
     <br>
     <!-- Image -->
-    <div class="fileinput fileinput-new control-group {!! $errors->has('image') ? 'has-error' : '' !!}" data-provides="fileinput">
+    <div class="fileinput fileinput-new control-group <?php echo (form_error('image_path')?'has-error':''); ?>" data-provides="fileinput">
         <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 50px;"></div>
         <div> <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>
-                <input type="file" name="image" class="form-control" id="image" placeholder="Image" value="">
-                    @if ($errors->first('image')) <span class="help-block">{!! $errors->first('image') !!}</span> @endif </span>
+                <input type="file" name="image_path" class="form-control" id="image" placeholder="Image" value="">
+                    @if ($errors->first('image_path')) <span class="help-block">{!! $errors->first('image_path') !!}</span> @endif </span>
             <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a></div>
-    </div>
-    <br>
-    <!-- Published -->
-    <div class="control-group {!! $errors->has('is_published') ? 'has-error' : '' !!}">
-        <div class="controls">
-            <label class="">{!! Form::checkbox('is_published', 'is_published') !!} Publish ?</label>
-            @if ($errors->first('is_published'))
-            <span class="help-block">{!! $errors->first('is_published') !!}</span> @endif </div>
     </div>
     <br>
         <input type="submit" value="Create" class="btn btn-success">
