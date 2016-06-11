@@ -33,18 +33,18 @@
             <li class="treeview"><a href="#"> <i class="fa fa-th"></i> <span>News</span>
                     <i class="fa fa-angle-left pull-right"></i> </a>
                 <ul class="treeview-menu">
-                    <li><a href="#admin/news"><i class="fa fa-calendar"></i> All News</a>
+                    <li><a href="<?php echo site_url("admin/news"); ?>"><i class="fa fa-calendar"></i> All News</a>
                     </li>
-                    <li><a href="#admin/news/create"><i class="fa fa-plus-square"></i> Add News</a>
+                    <li><a href="<?php echo site_url("admin/news/create"); ?>"><i class="fa fa-plus-square"></i> Add News</a>
                     </li>
                 </ul>
             </li>
             <li class="treeview"><a href="#"> <i class="fa fa-bookmark"></i> <span>Courses</span>
                     <i class="fa fa-angle-left pull-right"></i> </a>
                 <ul class="treeview-menu">
-                    <li><a href="#admin/course"><i class="fa fa-folder"></i> All Courses</a>
+                    <li><a href="<?php echo site_url("admin/course"); ?>"><i class="fa fa-folder"></i> All Courses</a>
                     </li>
-                    <li><a href="#admin/course/create"><i class="fa fa-plus-square"></i> Add Course</a>
+                    <li><a href="<?php echo site_url("admin/course/create"); ?>"><i class="fa fa-plus-square"></i> Add Course</a>
                     </li>
                 </ul>
             </li>
@@ -52,20 +52,20 @@
                     <i class="fa fa-angle-left pull-right"></i> </a>
                 <ul class="treeview-menu">
                     <li>
-                        <a href="#admin/curriculum"><i class="fa fa-camera"></i> All Curriculum</a>
+                        <a href="<?php echo site_url("admin/curriculum"); ?>"><i class="fa fa-camera"></i> All Curriculum</a>
                     </li>
                     <li>
-                        <a href="#admin/curriculum/create"><i class="fa fa-play-circle-o"></i> Add Curriculum</a>
+                        <a href="<?php echo site_url("admin/curriculum/create"); ?>"><i class="fa fa-play-circle-o"></i> Add Curriculum</a>
                     </li>
 
                 </ul>
             </li>
-            <li class="treeview"><a href="#"> <i class="fa fa-user"></i> <span>Profile</span>
+            <li class="treeview"><a href="#"> <i class="fa fa-user"></i> <span>Staff</span>
                     <i class="fa fa-angle-left pull-right"></i> </a>
                 <ul class="treeview-menu">
-                    <li><a href="#admin/user"><i class="fa fa-user"></i> All Profile</a>
+                    <li><a href="<?php echo site_url("admin/staff"); ?>"><i class="fa fa-user"></i> All Staff</a>
                     </li>
-                    <li><a href="admin/role"><i class="fa fa-group"></i> Add Role</a>
+                    <li><a href="<?php echo site_url("admin/staff/create"); ?>"><i class="fa fa-group"></i> Add Staff</a>
                     </li>
                 </ul>
             </li>

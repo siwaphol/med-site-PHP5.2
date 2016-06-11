@@ -2,6 +2,12 @@
 
 class Pages extends CI_Controller {
 
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('course_model');
+    }
+
 	public function view($page = 'home')
 	{
 
@@ -23,6 +29,28 @@ class Pages extends CI_Controller {
 			$this->load->view('frontend/home/content');
 		}
 		$this->load->view('templates/footer', $data);
+	}
 
+	public function course($group = 'medicine')
+	{
+
+		$data['title'] = ucfirst($group); // Capitalize the first letter
+
+		$data['course_item'] = $this->course_model->get_course($group);
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/before_content');
+		$this->load->view('frontend/course/display',$data);
+		$this->load->view('templates/footer', $data);
+	}
+
+	public function course_group($group)
+	{
+		$data['courses'] = $this->course_model->get_by_group($group);
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/before_content');
+		$this->load->view('frontend/course_group/index',$data);
+		$this->load->view('templates/footer', $data);
 	}
 }

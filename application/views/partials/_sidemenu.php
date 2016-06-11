@@ -5,7 +5,7 @@
   
             <ul id="menu-content" class="menu-content collapse out">
                 <li>
-                  <a href="{{url('/')}}">Home</a>
+                  <a href="<?php echo site_url("/"); ?>">Home</a>
                 </li>
 
                 <li  data-toggle="collapse" data-target="#faculty_Staff" class="collapsed">
@@ -13,9 +13,9 @@
                 </li>
                 <ul class="sub-menu collapse" id="faculty_Staff">
                     <li><a href="#">Faculty</a></li>
-                    <li><a href="{{url('browse')}}">Staff</a></li>
-                    <li><a href="#">Graduate Student</a></li>
-                    <li><a href="#">Visiting Scholar & Postdocs</a></li>
+                    <li><a href="<?php echo site_url('browse');?>">Staff</a></li>
+                    <li><a href="<?php echo site_url('browse');?>">Graduate Student</a></li>
+                    <li><a href="<?php echo site_url('browse');?>">Visiting Scholar & Postdocs</a></li>
                 </ul>
 
                 <li  data-toggle="collapse" data-target="#curriculum" class="collapsed">
@@ -32,9 +32,9 @@
                     Graduate<span class="arrow"></span>
                     </li>
                     <ul class="sub-menu collapse" id="curriculum_graduate">
-                        <li><a href="{{url('curriculum')}}">Master of Science (M.Sc.)</a></li>
-                        <li><a href="{{url('curriculum')}}">Doctor of Philosophy (Ph.D.)</a></li>
-                        <li><a href="{{url('curriculum')}}">International Program</a></li>
+                        <li><a href="<?php echo site_url('curriculum');?>">Master of Science (M.Sc.)</a></li>
+                        <li><a href="<?php echo site_url('curriculum');?>">Doctor of Philosophy (Ph.D.)</a></li>
+                        <li><a href="<?php echo site_url('curriculum');?>">International Program</a></li>
                     </ul>
                 </ul>
 
@@ -46,21 +46,21 @@
                     Undergraduate<span class="arrow"></span>
                     </li>
                     <ul class="sub-menu collapse" id="courses_undergraduate">
-                        <li><a href="{{url('courses')}}">Medilicine</a></li>
-                        <li><a href="{{url('courses')}}">Dentistry</a></li>
-                        <li><a href="{{url('courses')}}">Pharmacy</a></li>
-                        <li><a href="{{url('courses')}}">Nurse</a></li>
+                        <li><a href="<?php echo site_url('courses');?>">Medilicine</a></li>
+                        <li><a href="<?php echo site_url('courses');?>">Dentistry</a></li>
+                        <li><a href="<?php echo site_url('courses');?>">Pharmacy</a></li>
+                        <li><a href="<?php echo site_url('courses');?>">Nurse</a></li>
                     </ul>
 
-                    <li><a href="{{url('courses')}}">Graduate</a></li>
+                    <li><a href="<?php echo site_url('courses');?>">Graduate</a></li>
                 </ul>
 
                 <li>
-                  <a href="{{url('research')}}">Research</a>
+                  <a href="<?php echo site_url('research');?>">Research</a>
                 </li>
 
                 <li>
-                  <a href="{{url('contact')}}">Contact Us</a>
+                  <a href="<?php echo site_url('contact');?>">Contact Us</a>
                 </li>
             </ul>
      </div>
