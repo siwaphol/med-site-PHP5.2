@@ -62,8 +62,12 @@ class Admin extends CI_Controller {
         {
             var_dump($this->input->post());
             die();
-            $this->news_model->set_news();
-            $this->load->view('news/success');
+            $data['title'] = 'Admin';
+            $data['news'] = $this->news_model->get_news();
+
+            $this->load->view('backend/layout', $data);
+            $this->load->view('backend/news/index', $data);
+            $this->load->view('backend/footer');
         }
     }
 
