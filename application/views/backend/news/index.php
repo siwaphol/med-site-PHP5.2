@@ -67,7 +67,7 @@
                 <?php foreach ($news as $v){ ?>
                 <tr>
                     <td>
-                        <a href="#<?php echo site_url("admin/news"); ?><?php echo $v["id"]; ?>"
+                        <a href="<?php echo site_url("admin/news"); ?>/<?php echo $v["id"]; ?>"
                            class="btn btn-link btn-xs"><?php echo $v['title']; ?></a>
                     </td>
                     <td><?php echo $v['start_date']; ?></td>
