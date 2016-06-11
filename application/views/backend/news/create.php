@@ -11,7 +11,13 @@
     $(document).ready(function () {
         $("#title").slug();
 
-        $('#datetime').datepicker({
+        $('#start_date').datepicker({
+            format: "yyyy-mm-dd",
+            todayBtn: "linked",
+            orientation: "top auto"
+        });
+
+        $('#end_date').datepicker({
             format: "yyyy-mm-dd",
             todayBtn: "linked",
             orientation: "top auto"

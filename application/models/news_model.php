@@ -37,6 +37,8 @@ class News_model extends CI_Model {
 			'start_date' => $this->input->post('start_date'),
 			'end_date' => $this->input->post('end_date'),
 			'image_path' => $this->input->post('image_path'),
+			'created_at' => now(),
+			'updated_at' => now(),
 		);
 
 		return $this->db->insert('news', $data);

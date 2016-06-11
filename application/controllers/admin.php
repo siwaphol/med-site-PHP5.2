@@ -50,7 +50,9 @@ class Admin extends CI_Controller {
         $this->load->library('form_validation');
 
         $this->form_validation->set_rules('title', 'Title', 'required');
-        $this->form_validation->set_rules('datetime', 'Date Time', 'required');
+        $this->form_validation->set_rules('start_date', 'Start Date', 'required');
+        $this->form_validation->set_rules('content', 'Content', 'required');
+        $this->form_validation->set_rules('end_date', 'End Date', 'required');
 
         if ($this->form_validation->run() === FALSE)
         {
@@ -60,10 +62,14 @@ class Admin extends CI_Controller {
         }
         else
         {
-            var_dump($this->input->post());
-            die();
+            // var_dump($this->input->post());
+            // die();
+            $this->news_model->set_news();
+
             $data['title'] = 'Admin';
             $data['news'] = $this->news_model->get_news();
+
+            $this->session->set_flashdata('flash_notification.message', 'Created Successfully');
 
             $this->load->view('backend/layout', $data);
             $this->load->view('backend/news/index', $data);

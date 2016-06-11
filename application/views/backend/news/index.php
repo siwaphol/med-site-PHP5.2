@@ -56,8 +56,8 @@
                 <thead>
                 <tr>
                     <th>Title</th>
-                    <th>Created Date</th>
-                    <th>Updated Date</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
                     <th>Action</th>
                     <th>Settings</th>
                 </tr>
@@ -69,8 +69,8 @@
                         <a href="#<?php echo site_url("admin/news"); ?><?php echo $v["id"]; ?>"
                            class="btn btn-link btn-xs"><?php echo $v['title']; ?></a>
                     </td>
-                    <td><?php echo $v['created_at']; ?></td>
-                    <td><?php echo $v['updated_at']; ?></td>
+                    <td><?php echo $v['start_date']; ?></td>
+                    <td><?php echo $v['end_date']; ?></td>
                     <td>
                         <div class="btn-group">
                             <a class="btn btn-danger dropdown-toggle" data-toggle="dropdown" href="#">
