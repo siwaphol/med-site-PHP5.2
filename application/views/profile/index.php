@@ -73,7 +73,8 @@
         <li v-for="profile in list">
             <div class="mini-profile media">
                 <a href="#">
-                    <img class="pull-left" src="" alt="" data-empty-src="<?php echo base_url("assets/images/profile.png"); ?>" />
+                    <img v-if="profile.image_path" src="../{{profile.image_path}}" class="pull-left"/>
+                    <img v-else class="pull-left" src="" alt="" data-empty-src="<?php echo base_url("assets/images/profile.png"); ?>" />
                 </a>
                 <div class="media-body">
                     <a href="profile/{{profile.id}}" class="media-heading">

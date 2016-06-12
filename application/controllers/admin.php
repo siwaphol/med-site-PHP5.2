@@ -244,9 +244,18 @@ class Admin extends CI_Controller {
     public function staff_create()
     {
         $data['title'] = 'Staff';
+        $config['upload_path'] = './uploads/staff/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = '2048';
+        $config['max_width']  = '0';
+        $config['max_height']  = '0';
 
         $this->load->helper('form');
         $this->load->library('form_validation');
+        if($this->input->post('first_name_en') && $this->input->post('last_name_en')){
+            $config['file_name'] = strtolower($this->input->post('first_name_en')).'_' .strtolower($this->input->post('last_name_en')).'.jpg';
+        }
+        $this->load->library('upload', $config);
 
         $this->form_validation->set_rules('first_name_en', 'First Name', 'required');
         $this->form_validation->set_rules('last_name_en', 'Last Name', 'required');
@@ -259,11 +268,23 @@ class Admin extends CI_Controller {
         }
         else
         {
-            $this->staff_model->set_staff();
+            if ( ! $this->upload->do_upload('image_path'))
+            {
+                $error = array('error' => $this->upload->display_errors());
 
-            $this->session->set_userdata('flash_notification.message', 'Created Successfully');
+                $this->load->view('backend/layout', $data);
+                $this->load->view('backend/staff/create', $data);
+                $this->load->view('backend/footer');
+            }
+            else
+            {
+                $uploaded = $this->upload->data();
+                $_POST['image_path'] = 'uploads/staff/' . $uploaded['file_name'];
 
-            redirect('admin/staff');
+                $this->staff_model->set_staff();
+                $this->session->set_userdata('flash_notification.message', 'Created Successfully');
+                redirect('admin/staff');
+            }
         }
     }
 
@@ -277,8 +298,17 @@ class Admin extends CI_Controller {
             show_404();
         }
 
+        $config['upload_path'] = './uploads/staff/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = '2048';
+        $config['max_width']  = '0';
+        $config['max_height']  = '0';
         $this->load->helper('form');
         $this->load->library('form_validation');
+        if($this->input->post('first_name_en') && $this->input->post('last_name_en')){
+            $config['file_name'] = strtolower($this->input->post('first_name_en')).'_' .strtolower($this->input->post('last_name_en')).'.jpg';
+        }
+        $this->load->library('upload', $config);
 
         $this->form_validation->set_rules('first_name_en', 'First Name', 'required');
         $this->form_validation->set_rules('last_name_en', 'Last Name', 'required');
@@ -291,11 +321,23 @@ class Admin extends CI_Controller {
         }
         else
         {
-            $this->staff_model->update_staff($id);
+            if ( ! $this->upload->do_upload('image_path'))
+            {
+                $error = array('error' => $this->upload->display_errors());
 
-            $this->session->set_userdata('flash_notification.message', 'Update Successfully');
+                $this->load->view('backend/layout', $data);
+                $this->load->view('backend/staff/edit', $data);
+                $this->load->view('backend/footer');
+            }
+            else
+            {
+                $uploaded = $this->upload->data();
+                $_POST['image_path'] = 'uploads/staff/' . $uploaded['file_name'];
 
-            redirect('admin/staff');
+                $this->staff_model->update_staff($id);
+                $this->session->set_userdata('flash_notification.message', 'Update Successfully');
+                redirect('admin/staff');
+            }
         }
     }
 

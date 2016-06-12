@@ -74,7 +74,15 @@
                 }
             };
         },
-
+        methods: {
+            urlExists : function(url)
+            {
+                var http = new XMLHttpRequest();
+                http.open('HEAD', url, false);
+                http.send();
+                return http.status!=404;
+            }
+        },
         created: function  () {
             $.getJSON('<?php echo site_url("api/profile"); ?>', {page: this.currentPage, per_page: this.perPage}, function (profiles) {
                 this.list = profiles.data;

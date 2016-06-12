@@ -52,7 +52,7 @@
 
     <!-- English Job Title -->
     <div class="control-group <?php echo (form_error('job_title_en')?'has-error':''); ?>">
-        <label class="control-label" for="job_title_en">Title</label>
+        <label class="control-label" for="job_title_en">English Job Title</label>
         <div class="controls">
             <input type="text" name="job_title_en" class="form-control" id="job_title_en" placeholder="English Job Title" value="<?php echo set_value('job_title_en')?set_value('job_title_en'):$staff_item['job_title_en']; ?>">
             <?php if(form_error('job_title_en')){ ?>
@@ -209,7 +209,9 @@
    <!-- Image -->
     <div class="fileinput fileinput-new control-group <?php echo (form_error('image_path')?'has-error':''); ?>" data-provides="fileinput">
         <label class="control-label" for="image_path">Staff Image</label>
-        <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 50px;"></div>
+        <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 50px;">
+            <img src="<?php echo base_url($staff_item['image_path']); ?>" style="width: 200px; height: 50px;">
+        </div>
         <div> <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>
                 <input type="file" name="image_path" class="form-control" id="image" placeholder="Image" value="<?php echo set_value('image_path')?set_value('image_path'):$staff_item['image_path']; ?>">
                     <?php if(form_error('image_path')){ ?>
@@ -232,12 +234,8 @@
     </div>
     <br>
 
-        <input type="submit" value="Create" class="btn btn-success">
+        <input type="submit" value="Update" class="btn btn-success">
     </form>
+
     <script type="text/javascript">
-        // window.onload = function () {
-        //     CKEDITOR.replace('content', {
-        //         "filebrowserBrowseUrl": "{!! url('filemanager/show') !!}",
-        //     });
-        // };
     </script>

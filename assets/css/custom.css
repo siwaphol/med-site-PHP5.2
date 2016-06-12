@@ -21,21 +21,6 @@
   margin-bottom: 0px;
 }
 
-@media (max-width: 767px) {
-    .navbar-default .navbar-nav .open .dropdown-menu>li>a {
-        color: white;
-    }
-}
-
-@media (min-width: 767px) {
-    .img-responsive {
-        height: 100px;
-        margin-left: 50px;
-        margin-top: 5px;
-        margin-bottom: 5px;
-    }
-}
-
 /*CSS page curriculum*/
 .sp_hilight_thin{
     font-size:14px;
@@ -212,5 +197,93 @@ body {
   margin: 0px;
   padding: 0px;
 }
+#carousel-example-generic {
+  margin-bottom: 40px;
+}
+#carousel-example-generic .carousel-control {
+    background: none repeat scroll 0 0 #2e2d29;
+    border: none;
+    border-radius: 25px;
+    color: #FFF;
+    height: 45px;
+    left: 15px;
+    opacity: .5;
+    top: 43%;
+    width: 45px;
+    text-decoration: none;
+    font-size: 2em;
+}
 
+#carousel-example-generic .carousel-control.right {
+    right: 15px;
+    left: auto;
+}
+
+#carousel-example-generic .carousel-indicators {
+    bottom: -40px;
+}
+
+#carousel-example-generic .carousel-indicators li {
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    border: 1px solid #8e44ad;
+}
+
+#carousel-example-generic .carousel-inner .item img {
+/*  width: 100%;
+  height: 300px;*/
+  width: 100%;
+  max-height: 400px;
+}
+
+#carousel-example-generic .carousel-indicators li.active {
+  background-color: #8e44ad;
+}
+
+@media (min-width: 1200px){
+  .carousel.container {
+    width: 100%;
+  }
+
+  #carousel-example-generic .carousel-inner .item img {
+    width: 100%;
+    height: 400px;
+  }
+}
+
+@media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a {
+        color: white;
+    }
+
+    #carousel-example-generic .carousel-indicators li {
+        margin: 0 6px
+    }
+
+    #carousel-example-generic .carousel-indicators li {
+        width: 20px;
+        height: 20px;
+    }
+
+    #carousel-example-generic .carousel-indicators{
+        width: auto;
+    }
+}
+
+@media (min-width: 767px) {
+    .img-responsive {
+        height: 100px;
+        margin-left: 50px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+}
+
+@media(max-width: 544px){
+    #carousel-example-generic .carousel-inner .item img {
+    width: 100%;
+    height: 255px;
+  }
+}
 /*end side manu*/
