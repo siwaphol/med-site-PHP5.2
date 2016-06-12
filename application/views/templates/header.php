@@ -16,7 +16,6 @@
 </head>
 
 <body>
-
 	<?php echo includeView("partials/_navbar"); ?>
 
 	<div row="main">

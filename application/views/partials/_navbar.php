@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default" style="background-color: #8e44ad;" >
+<nav class="navbar navbar-default" style="background-color: #8e44ad;" id="custom-nav" role="navigation">
         <div class="container-fluid">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -9,8 +9,8 @@
             </button>
           </div>
           <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
-              <ul class="nav navbar-nav navbar-right ">
-                <ul class="nav navbar-nav" >
+              <ul class="nav navbar-right navbar-nav">
+                <!-- <ul class="nav navbar-nav" > -->
                     <li><a href="<?php echo site_url("/"); ?>" style="color: #ffffff;">Home</a></li>
 
                     <li class="dropdown">
@@ -50,7 +50,7 @@
                     <li><a href="<?php echo site_url("research");?>" style="color: #ffffff;">Research</a></li>
                     <li><a href="<?php echo site_url("contact");?>" style="color: #ffffff;">Contact Us</a></li>
                 </ul>
-            </ul>
+            <!-- </ul> -->
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
       </nav>
