@@ -2,6 +2,13 @@
 <script src="<?php echo base_url("assets/js/vue-resource.js"); ?>"></script>
 
 <script>
+    function imageExists(image_url){
+        var http = new XMLHttpRequest();
+        http.open('HEAD', image_url, false);
+        http.send(null);
+        return http.status != 404;
+    }
+
     var profileCom = Vue.component('profiles', {
         template: '#profile-template',
 
@@ -64,6 +71,12 @@
                 }.bind(this),
                 pageReCreate: function () {
                     $.getJSON('<?php echo site_url("api/profile"); ?>', {page: this.currentPage, per_page: this.perPage}, function (profiles) {
+                        profiles.data.forEach(function(item, index){
+                            item.image_path = '../'+item.image_path;
+                            if(!imageExists(item.image_path)){
+                                item.image_path = null;
+                            }
+                        });
                         this.list = profiles.data;
                         this.totalPage = profiles.last_page;
                         this.currentPage = profiles.current_page;
@@ -78,13 +91,21 @@
             urlExists : function(url)
             {
                 var http = new XMLHttpRequest();
-                http.open('HEAD', url, false);
-                http.send();
+                try{
+                    http.open('HEAD', url, false);
+                    http.send();
+                }catch(err){}
                 return http.status!=404;
             }
         },
         created: function  () {
             $.getJSON('<?php echo site_url("api/profile"); ?>', {page: this.currentPage, per_page: this.perPage}, function (profiles) {
+                profiles.data.forEach(function(item, index){
+                    item.image_path = '../'+item.image_path;
+                    if(!imageExists(item.image_path)){
+                        item.image_path = null;
+                    }
+                });
                 this.list = profiles.data;
                 this.totalPage = profiles.last_page;
                 this.currentPage = profiles.current_page;
