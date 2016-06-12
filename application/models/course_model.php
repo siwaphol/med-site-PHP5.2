@@ -29,11 +29,6 @@ class Course_model extends CI_Model {
 		return $query->row_array();
 	}
 
-	public function get_course_code(){
-		$query = $this->db->get('courses');
-		return $query->result_array();
-	}
-
 	public function set_course()
 	{
 		$data = array(
@@ -61,4 +56,40 @@ class Course_model extends CI_Model {
 		$this->db->where('id', $id);
 		$this->db->update('courses', $data);
 	}
+
+	public function set_course_group()
+	{
+		$data = array(
+			'course_group_id' => $this->input->post('group'),
+			'course_id' => $this->input->post('course_code'),
+		);
+
+		$this->db->insert('course_group_list ', $data);
+	}
+
+	public function get_course_group(){
+		$sql = "select cl.course_id, cl.course_group_id, c.code, cg.name from course_group_list cl 
+				INNER JOIN courses c ON cl.course_id = c.id
+				INNER JOIN  course_group cg ON cl.course_group_id = cg.id
+				ORDER BY cl.course_group_id";
+        $query = $this->db->query($sql);
+		return $query->result_array();
+	}
+
+	public function get_course_code(){
+		$query = $this->db->get('courses');
+		return $query->result_array();
+	}
+
+	public function get_course_by_group($id){
+		$sql = "select cl.course_id, cl.course_group_id, c.code, cg.name, c.name_th, c.name_en from course_group_list cl 
+				INNER JOIN courses c ON cl.course_id = c.id
+				INNER JOIN  course_group cg ON cl.course_group_id = cg.id
+				WHERE cl.course_group_id = ".$id."
+				ORDER BY cl.course_group_id";
+        $query = $this->db->query($sql);
+		return $query->result_array();
+	}
+
+
 }

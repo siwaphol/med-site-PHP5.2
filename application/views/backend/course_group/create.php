@@ -42,9 +42,14 @@
 <br>
 <div class="container">
 
-    <?php //echo validation_errors(); ?>
+    <?php //echo validation_errors(); 
+           // print "<pre>";
+           //  print_r($course_group_items);
+           //  print "</pre>";
 
-    <form action="<?php echo site_url("admin/course/create"); ?>" method="post" enctype="multipart/form-data">
+    ?>
+
+    <form action="<?php echo site_url("admin/course_group/create"); ?>" method="post" enctype="multipart/form-data">
     <!-- Course Group Id -->
     <div class="control-group <?php echo (form_error('course_code')?'has-error':''); ?>">
         <label class="control-label" for="course_code">Course Group</label>
@@ -69,12 +74,16 @@
         <select name="course_code" id="course_code" class="selectpicker form-control">
             <option value="">--Select--</option>
             <?php //if() 
-                   print "<pre>";
-            print_r($course_group_items);
-            print "</pre>";
 
+            if(!empty($course_group_items)){
+                foreach ($course_group_items as $key => $value) {
+                    ?>
+                    <option value="<?php echo $value['id']; ?>"><?php echo $value['code']; ?></option>
+                    <?php
+                }
+            }
             ?>
-            <option value="1">Medicine</option>
+
   
         </select>
         <?php if(form_error('course_code')){ ?>

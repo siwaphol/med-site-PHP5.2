@@ -31,16 +31,50 @@ class Pages extends CI_Controller {
 		$this->load->view('templates/footer', $data);
 	}
 
-	public function course($group = 'medicine')
+	public function course_index()
 	{
 
-		$data['title'] = ucfirst($group); // Capitalize the first letter
-
-		$data['course_item'] = $this->course_model->get_course($group);
+		$data['title'] = "กระบวนวิชาทั้งหมด";
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/before_content');
-		$this->load->view('frontend/course/display',$data);
+		$this->load->view('frontend/course/index',$data);
+		$this->load->view('templates/footer', $data);
+	}
+
+	public function course($group)
+	{
+		if(!empty($group)){
+			if($group == 1){
+				$data['title'] =  "Medicine";
+			}
+			else if($group == 2){
+				$data['title'] =  "Dentistry";
+			}
+			else if($group == 3){
+				$data['title'] =  "Pharmacy";
+			}
+			else{
+				$data['title'] =  "Nurse";
+			}
+		}
+		
+
+		$data['course_item'] = $this->course_model->get_course_by_group($group);
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/before_content');
+		$this->load->view('frontend/course_group/index',$data);
+		$this->load->view('templates/footer', $data);
+	}
+
+	public function course_detail($id){
+		$data['course_item'] = $this->course_model->get_course($id);
+		$data['title'] = $data['course_item']['name_th']."(".$data['course_item']['name_en'].")";
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/before_content');
+		$this->load->view('frontend/course/detail',$data);
 		$this->load->view('templates/footer', $data);
 	}
 
