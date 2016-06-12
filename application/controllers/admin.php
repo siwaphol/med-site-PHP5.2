@@ -193,6 +193,7 @@ class Admin extends CI_Controller {
             $this->load->view('backend/course/create', $data);
             $this->load->view('backend/footer');
         }
+    # end course
 
     public function staff()
     {
@@ -262,11 +263,11 @@ class Admin extends CI_Controller {
         }
     }
 
-    #course 
+    #course group 
         public function course_group()
         {
             $data['title'] = 'Admin';
-            $data['course_group_items'] = $this->course_model->get_course();
+            $data['course_group_items'] = $this->course_model->get_course_group();
 
             $this->load->view('backend/layout', $data);
             $this->load->view('backend/course_group/index', $data);
@@ -292,45 +293,38 @@ class Admin extends CI_Controller {
             }
             else
             {
-                $this->course_model->set_course();
+                $this->course_model->set_course_group();
               
                 $this->session->set_userdata('flash_notification.message', 'Created Successfully');
 
-                redirect('admin/course');
+                redirect('admin/course_group');
             }
         }
 
         public function course_group_edit($id)
         {
-            $data['title'] = 'Course Edit';
-            $data['course_item'] = $this->course_model->get_course($id);
-
-            if (empty($data['course_item']))
-            {
-                show_404();
-            }
-
+            $data['title'] = 'Admin';
+            $data['course_group_items'] = $this->course_model->get_course_code();
+            
             $this->load->helper('form');
             $this->load->library('form_validation');
 
+            $this->form_validation->set_rules('group', 'Group', 'required');
             $this->form_validation->set_rules('course_code', 'Course Code', 'required');
-            $this->form_validation->set_rules('name_th', 'Thai Name', 'required');
-            $this->form_validation->set_rules('name_en', 'English Name', 'required');
-            $this->form_validation->set_rules('content', 'Content', 'required');
 
             if ($this->form_validation->run() === FALSE)
             {
                 $this->load->view('backend/layout', $data);
-                $this->load->view('backend/course/edit', $data);
+                $this->load->view('backend/course_group/edit', $data);
                 $this->load->view('backend/footer');
             }
             else
             {
-                $this->course_model->update_course($id);
+                $this->course_model->update_course_group($id);
               
                 $this->session->set_userdata('flash_notification.message', 'Created Successfully');
 
-                redirect('admin/course');
+                redirect('admin/course_group');
             }
         }
 
