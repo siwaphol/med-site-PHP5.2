@@ -8,6 +8,7 @@ class Admin extends CI_Controller {
         $this->load->model('course_model');
         $this->load->model('staff_model');
         $this->load->model('curriculum_model');
+        $this->load->model('banner_model');
     }
 
     public function index()
@@ -446,4 +447,106 @@ class Admin extends CI_Controller {
             $this->load->view('backend/footer');
         }
     #end Curriculum
+        public function banner()
+        {
+            $data['title'] = 'Banner';
+            $data['banner'] = $this->banner_model->get_banner();
+
+            $this->load->view('backend/layout', $data);
+            $this->load->view('backend/banner/index', $data);
+            $this->load->view('backend/footer');
+        }
+
+        public function banner_create()
+        {
+            $data['title'] = 'Admin';
+
+            $config['upload_path'] = './uploads/';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size'] = '2048';
+            $config['max_width']  = '0';
+            $config['max_height']  = '0';
+            if($this->input->post('name')){
+                $config['file_name'] = $this->input->post('name') . '.jpg';
+            }
+            $this->load->library('upload', $config);
+            $this->load->helper('form');
+            $this->load->library('form_validation');
+
+            $this->form_validation->set_rules('name', 'File Name', 'required');
+
+            if ($this->form_validation->run() === FALSE)
+            {
+                $this->load->view('backend/layout', $data);
+                $this->load->view('backend/banner/create', $data);
+                $this->load->view('backend/footer');
+            }
+            else
+            {
+                if ( ! $this->upload->do_upload('image_path'))
+                {
+                    $error = array('error' => $this->upload->display_errors());
+
+                    $this->load->view('backend/layout', $data);
+                    $this->load->view('backend/banner/create', $data);
+                    $this->load->view('backend/footer');
+                }
+                else
+                {
+                    $uploaded = $this->upload->data();
+                    $_POST['image_path'] = 'uploads/' . $uploaded['file_name'];
+
+                    $this->banner_model->set_banner();
+                    $this->session->set_userdata('flash_notification.message', 'Created Successfully');
+                    redirect('admin/banner');
+                }
+            }
+        }
+
+        public function banner_edit($id)
+        {
+            $config['upload_path'] = './uploads/';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size'] = '2048';
+            $config['max_width']  = '0';
+            $config['max_height']  = '0';
+            if($this->input->post('name')){
+                $config['file_name'] = $this->input->post('name') . '.jpg';
+            }
+            $this->load->library('upload', $config);
+            $this->load->helper('form');
+            $this->load->library('form_validation');
+
+            $this->form_validation->set_rules('name', 'File Name', 'required');
+
+            if ($this->form_validation->run() === FALSE)
+            {
+                $data['title'] = 'Banner';
+                $data['banner_item'] = $this->banner_model->get_banner($id);
+
+                $this->load->view('backend/layout', $data);
+                $this->load->view('backend/banner/edit', $data);
+                $this->load->view('backend/footer');
+            }
+            else
+            {
+                if ( ! $this->upload->do_upload('image_path'))
+                {
+                    $error = array('error' => $this->upload->display_errors());
+
+                    $this->load->view('backend/layout', $data);
+                    $this->load->view('backend/banner/create', $data);
+                    $this->load->view('backend/footer');
+                }
+                else
+                {
+                    $uploaded = $this->upload->data();
+                    $_POST['image_path'] = 'uploads/' . $uploaded['file_name'];
+
+                    $this->banner_model->update_banner($id);
+                    $this->session->set_userdata('flash_notification.message', 'Update Successfully');
+                    redirect('admin/banner');
+                }
+            }
+        }
 }
