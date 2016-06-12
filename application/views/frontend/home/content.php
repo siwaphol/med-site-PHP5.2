@@ -1,5 +1,5 @@
 <div class="container-fluid">
-      <div class="row-md-6">
+      <div class="row headline">
         <h4>Our Mission</h4>
           <p style="font-size: 14px;">The mission of the Department of Microbiology and Immunology is to conduct the best possible research and provide the most rigorous and inspiring training in the areas of microbiology, immunology, host-pathogen interaction and related fields. Through such activities, our goal is to improve human and animal health as well as to improve our ability to be responsible stewards of a fragile earth. Through this website, we hope to present an overview of our research and training activities and to inspire like-minded individuals to join us in our quest.
           <a href="#">More >></a>
@@ -7,7 +7,7 @@
       </div>
       <hr>
       
-      <div class="row-md-6">
+      <div class="row headline">
         <h4>ABOUT US</h4>
           <p style="font-size: 12px;">The Department of Microbiology and Immunology is a community of over 200 individuals, all of whom share a common passion for research and learning. We have over 25 faculty among our ranks, ~50 graduate students, over 100 post-doctoral fellows, ~25 research, administrative and support staff and ~25 undergraduate and medical students working in labs. About 40% of our faculty have an M.D. and 70% a Ph.D. with most also holding joint appointments in other departments in the School.
               <br><br>
@@ -17,7 +17,7 @@
       <br>
       <!-- news -->
       <hr>
-      <div class="row">
+      <div class="row headline">
       <h4>NEWS</h4>
           <div class="row">
               <?php foreach ($top4news as $aNews) { ?>

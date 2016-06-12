@@ -20,7 +20,7 @@
 
 	<div row="main">
 		<!--CMU LOGO-->
-		<div row="banner">
+		<div row="banner" class="below-shadow">
 			<a href="<?php echo site_url("/"); ?>"><img  src="<?php echo base_url("assets/images/main_logo.png"); ?>" class="img-responsive">
 			</a>
 		</div>

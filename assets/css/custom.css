@@ -145,6 +145,20 @@ body {
     background-color: #e7e7e7;
 }
 
+.headline>h4 {
+  border-bottom: 1px solid #d5d0c0;
+}
+
+.top-shadow {
+    -webkit-box-shadow: 0 -4px 8px -2px rgba(0,0,0,.2);
+    box-shadow: 0 -4px 8px -2px rgba(0,0,0,.2);
+}
+
+.below-shadow{
+    -webkit-box-shadow: 0 4px 8px -2px rgba(0,0,0,.2);
+    box-shadow: 0 4px 8px -2px rgba(0,0,0,.2);
+}
+
 @media (max-width: 767px) {
   .nav-side-menu {
     position: relative;
