@@ -12,7 +12,6 @@
                 Faculty & Staff<span class="arrow"></span>
                 </li>
                 <ul class="sub-menu collapse" id="faculty_Staff">
-                    <li><a href="#">Faculty</a></li>
                     <li><a href="<?php echo site_url('browse');?>">Staff</a></li>
                     <li><a href="<?php echo site_url('browse');?>">Graduate Student</a></li>
                     <li><a href="<?php echo site_url('browse');?>">Visiting Scholar & Postdocs</a></li>

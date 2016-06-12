@@ -38,6 +38,11 @@ $route['admin/banner'] = 'admin/banner';
 $route['admin/banner/create'] = 'admin/banner_create';
 $route['admin/banner/(:num)'] = 'admin/banner_edit/$1';
 
+$route['admin/publication'] = 'admin/news';
+$route['admin/publication/create'] = 'admin/news_create';
+$route['admin/publication/store'] = 'admin/news_store';
+$route['admin/publication/(:num)'] = 'admin/news_edit/$1';
+
 $route['admin/(:any)'] = 'admin';
 
 // Browse profile
@@ -46,7 +51,7 @@ $route['api/profile'] = 'api/profile';
 $route['profile/(:any)'] = 'profile/show/$1';
 
 $route['news/create'] = 'news/create';
-$route['news/(:any)'] = 'news/view/$1';
+$route['news/(:num)'] = 'news/show/$1';
 $route['news'] = 'news';
 
 

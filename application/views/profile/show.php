@@ -19,7 +19,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#send-mail-to<?php echo $user['email']; ?>" rel="nofollow" data-bypass>
+                        <a href="#send-mail-to<?php echo $user['email1']; ?>" rel="nofollow" data-bypass>
                   <span class="icon-background">
                     <i class="icon-envelope-alt"></i>
                   </span>Email Profile

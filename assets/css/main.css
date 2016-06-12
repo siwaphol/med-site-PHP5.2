@@ -9821,8 +9821,6 @@ header {
   box-shadow: 0 0 0.3em rgba(0, 0, 0, 0.5); }
   @media only screen and (min-width: 980px) {
     #wrapper {
-      /*width: 60em;*/
-      margin: 2.25em auto 0;
       z-index: 2;
       border-radius: 0.625em 0.625em 0 0; } }
   #wrapper .banner {

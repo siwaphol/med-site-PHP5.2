@@ -7,19 +7,21 @@
       <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
       <li data-target="#carousel-example-generic" data-slide-to="1"></li>
       <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+      <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+      <li data-target="#carousel-example-generic" data-slide-to="4"></li>
     </ol>
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
-      <div class="item active">
-        <img src="<?php echo base_url("assets/images/micro_test.jpg"); ?>">
-      </div>
-      <div class="item">
-        <img src="<?php echo base_url("assets/images/micro_test.jpg"); ?>">
-      </div>
-      <div class="item">
-        <img src="<?php echo base_url("assets/images/micro_test.jpg"); ?>">
-      </div>
+      <?php foreach ($banner as $v) { ?>
+        <?php if ($v === reset($banner)){ ?>
+          <div class="item active">
+        <?php }else{ ?>
+          <div class="item">
+        <?php } ?>
+          <img src="<?php echo base_url($v['image_path']); ?>" style="width:1296px; height:324px;">
+        </div>
+      <?php } ?>
     </div>
 
     <!-- Controls -->

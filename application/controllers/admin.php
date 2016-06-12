@@ -49,7 +49,12 @@ class Admin extends CI_Controller {
     {
         $data['title'] = 'Admin';
         $data['news'] = array();
-
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = '2048';
+        $config['max_width']  = '0';
+        $config['max_height']  = '0';
+        $this->load->library('upload', $config);
         $this->load->helper('form');
         $this->load->library('form_validation');
 
@@ -66,11 +71,23 @@ class Admin extends CI_Controller {
         }
         else
         {
-            $this->news_model->set_news();
+            if ( ! $this->upload->do_upload('image_path'))
+            {
+                $this->session->set_userdata('flash_notification.message', $this->upload->display_errors());
 
-            $this->session->set_userdata('flash_notification.message', 'Created Successfully');
+                $this->load->view('backend/layout', $data);
+                $this->load->view('backend/news', $data);
+                $this->load->view('backend/footer');
+            }
+            else
+            {
+                $uploaded = $this->upload->data();
+                $_POST['image_path'] = 'uploads/' . $uploaded['file_name'];
 
-            redirect('admin/news');
+                $this->news_model->set_news();
+                $this->session->set_userdata('flash_notification.message', 'Created Successfully');
+                redirect('admin/news');
+            }
         }
     }
 
@@ -84,6 +101,12 @@ class Admin extends CI_Controller {
             show_404();
         }
 
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = '2048';
+        $config['max_width']  = '0';
+        $config['max_height']  = '0';
+        $this->load->library('upload', $config);
         $this->load->helper('form');
         $this->load->library('form_validation');
 
@@ -100,11 +123,23 @@ class Admin extends CI_Controller {
         }
         else
         {
-            $this->news_model->update_news($id);
+            if ( ! $this->upload->do_upload('image_path'))
+            {
+                $this->session->set_userdata('flash_notification.message', $this->upload->display_errors());
 
-            $this->session->set_userdata('flash_notification.message', 'Update Successfully');
+                $this->load->view('backend/layout', $data);
+                $this->load->view('backend/news/edit', $data);
+                $this->load->view('backend/footer');
+            }
+            else
+            {
+                $uploaded = $this->upload->data();
+                $_POST['image_path'] = 'uploads/' . $uploaded['file_name'];
 
-            redirect('admin/news');
+                $this->news_model->update_news($id);
+                $this->session->set_userdata('flash_notification.message', 'Update Successfully');
+                redirect('admin/news');
+            }
         }
     }
 
@@ -529,5 +564,15 @@ class Admin extends CI_Controller {
                     redirect('admin/banner');
                 }
             }
+        }
+
+        public function publication()
+        {
+            $data['title'] = 'Publication';
+            $data['banner'] = $this->publication_model->get_publication();
+
+            $this->load->view('backend/layout', $data);
+            $this->load->view('backend/publication/index', $data);
+            $this->load->view('backend/footer');
         }
 }

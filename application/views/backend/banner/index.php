@@ -15,7 +15,6 @@
     </ol>
 </section>
 
-
 <br>
 <div class="container">
     <div class="col-lg-10">
@@ -47,23 +46,7 @@
                            class="btn btn-link btn-xs"><?php echo $v['name']; ?></a>
                     </td>
                     <td>
-                        <div class="btn-group">
-                            <a class="btn btn-danger dropdown-toggle" data-toggle="dropdown" href="#">
-                                Action <span class="caret"></span> </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#admin.news.show.<?php echo $v['id']; ?>">
-                                        <span class="glyphicon glyphicon-eye-open"></span>&nbsp;Show Banner
-                                    </a></li>
-                                <li><a href="#admin.news.edit.<?php echo $v['id']; ?>">
-                                        <span class="glyphicon glyphicon-edit"></span>&nbsp;Edit News </a>
-                                </li>
-                                <li class="divider"></li>
-                                <li>
-                                    <a target="_blank" href="#dashboard.news.show.from_slug">
-                                        <span class="glyphicon glyphicon-eye-open"></span>&nbsp;View On Site
-                                    </a></li>
-                            </ul>
-                        </div>
+                        <img style="width: 100px; height: 50px;" src="<?php echo base_url($v['image_path']);?>" alt="">
                     </td>
                 </tr>
                 <?php } ?>
