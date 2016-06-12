@@ -302,8 +302,18 @@ class Admin extends CI_Controller {
     #course group 
         public function course_group()
         {
+            if(empty($_GET['group'])){
+                $group = 1;
+            }
+            else{
+                $group = $_GET['group'];
+            }
             $data['title'] = 'Admin';
-            $data['course_group_items'] = $this->course_model->get_course_group();
+            $data['course_group_items'] = $this->course_model->get_course_by_group($group);
+            if(!empty($data['course_group_items'])){
+                $data['sub_title'] = $data['course_group_items'][0]['name'];
+            }
+            
 
             $this->load->view('backend/layout', $data);
             $this->load->view('backend/course_group/index', $data);
@@ -337,10 +347,19 @@ class Admin extends CI_Controller {
             }
         }
 
-        public function course_group_edit($id)
+        public function course_group_edit()
         {
+            if(!empty($_GET['group_id']) && $_GET['course_id']){
+                $group_id = $_GET['group_id'];
+                $course_id = $_GET['course_id'];
+                $data['course_group_value'] = $this->course_model->get_course_list($group_id, $course_id);
+            }
             $data['title'] = 'Admin';
             $data['course_group_items'] = $this->course_model->get_course_code();
+            // print $group_id;
+            // print $course_id;
+            // exit();
+            
             
             $this->load->helper('form');
             $this->load->library('form_validation');
@@ -356,7 +375,7 @@ class Admin extends CI_Controller {
             }
             else
             {
-                $this->course_model->update_course_group($id);
+                $this->course_model->update_course_group($group_id, $course_id);
               
                 $this->session->set_userdata('flash_notification.message', 'Created Successfully');
 
@@ -397,7 +416,7 @@ class Admin extends CI_Controller {
             $this->load->helper('form');
             $this->load->library('form_validation');
 
-            $this->form_validation->set_rules('group', 'Group', 'required');
+            $this->form_validation->set_rules('group_name', 'Group', 'required');
             $this->form_validation->set_rules('period', 'Year', 'required');
             $this->form_validation->set_rules('content', 'Content', 'required');
 
@@ -430,7 +449,7 @@ class Admin extends CI_Controller {
             $this->load->helper('form');
             $this->load->library('form_validation');
 
-            $this->form_validation->set_rules('group', 'Group', 'required');
+            $this->form_validation->set_rules('group_name', 'Group', 'required');
             $this->form_validation->set_rules('period', 'Period', 'required');
             $this->form_validation->set_rules('content', 'Content', 'required');
 

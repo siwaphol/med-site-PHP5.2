@@ -25,15 +25,15 @@
                     Undergraduate<span class="arrow"></span>
                     </li>
                     <ul class="sub-menu collapse" id="curriculum_undergraduate">
-                        <li><a href="{{url('curriculum')}}">Medilicine</a></li>
+                        <li><a href="<?php echo site_url('curriculum'); ?>/1">Medilicine</a></li>
                     </ul>
                     <li  data-toggle="collapse" data-target="#curriculum_graduate" class="collapsed">
                     Graduate<span class="arrow"></span>
                     </li>
                     <ul class="sub-menu collapse" id="curriculum_graduate">
-                        <li><a href="<?php echo site_url('curriculum');?>">Master of Science (M.Sc.)</a></li>
-                        <li><a href="<?php echo site_url('curriculum');?>">Doctor of Philosophy (Ph.D.)</a></li>
-                        <li><a href="<?php echo site_url('curriculum');?>">International Program</a></li>
+                        <li><a href="<?php echo site_url('curriculum');?>/2">Master of Science (M.Sc.)</a></li>
+                        <li><a href="<?php echo site_url('curriculum');?>/3">Doctor of Philosophy (Ph.D.)</a></li>
+                        <li><a href="<?php echo site_url('curriculum');?>/4">International Program</a></li>
                     </ul>
                 </ul>
 
@@ -45,13 +45,13 @@
                     Undergraduate<span class="arrow"></span>
                     </li>
                     <ul class="sub-menu collapse" id="courses_undergraduate">
-                        <li><a href="<?php echo site_url('courses');?>">Medilicine</a></li>
-                        <li><a href="<?php echo site_url('courses');?>">Dentistry</a></li>
-                        <li><a href="<?php echo site_url('courses');?>">Pharmacy</a></li>
-                        <li><a href="<?php echo site_url('courses');?>">Nurse</a></li>
+                        <li><a href="<?php echo site_url('courses');?>/1">Medilicine</a></li>
+                        <li><a href="<?php echo site_url('courses');?>/2">Dentistry</a></li>
+                        <li><a href="<?php echo site_url('courses');?>/3">Pharmacy</a></li>
+                        <li><a href="<?php echo site_url('courses');?>/4">Nurse</a></li>
                     </ul>
 
-                    <li><a href="<?php echo site_url('courses');?>">Graduate</a></li>
+                    <li><a href="<?php echo site_url('courses');?>/5">Graduate</a></li>
                 </ul>
 
                 <li>

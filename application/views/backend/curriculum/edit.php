@@ -43,20 +43,20 @@
 
     <form action="<?php echo site_url("admin/curriculum"); ?>/<?php echo $curriculum_item['id']; ?>" method="post" enctype="multipart/form-data">
     <!-- Group-->
-    <div class="control-group <?php echo (form_error('group')?'has-error':''); ?>">
-        <label class="control-label" for="group">Year</label>
+    <div class="control-group <?php echo (form_error('group_name')?'has-error':''); ?>">
+        <label class="control-label" for="group_name">Year</label>
         <div class="controls">
             <!-- <input type="text" name="period" class="form-control" id="period" placeholder="ปีการศึกษา" value="<?php //echo set_value('period'); ?>"> -->
-            <select name="group" id="group" class="selectpicker form-control">
+            <select name="group_name" id="group_name" class="selectpicker form-control">
                 <option value="">--Select--</option>
-                <option value="Medicine" <?php if($curriculum_item['group'] == "Medicine") echo "Selected" ?> >Medicine</option>
-                <option value="Master of Science (M.Sc.)" <?php if($curriculum_item['group'] == "Master of Science (M.Sc.)") echo "Selected" ?>  >Master of Science (M.Sc.)</option>
-                <option value="Doctor of Philosophy (Ph.D.)" <?php if($curriculum_item['group'] == "Doctor of Philosophy (Ph.D.)") echo "Selected" ?>  >Doctor of Philosophy (Ph.D.)</option>
-                <option value="International Program" <?php if($curriculum_item['group'] == "International Program") echo "Selected" ?>  >International Program</option>
+                <option value="Medicine" <?php if($curriculum_item['group_name'] == "Medicine") echo "Selected" ?> >Medicine</option>
+                <option value="Master of Science (M.Sc.)" <?php if($curriculum_item['group_name'] == "Master of Science (M.Sc.)") echo "Selected" ?>  >Master of Science (M.Sc.)</option>
+                <option value="Doctor of Philosophy (Ph.D.)" <?php if($curriculum_item['group_name'] == "Doctor of Philosophy (Ph.D.)") echo "Selected" ?>  >Doctor of Philosophy (Ph.D.)</option>
+                <option value="International Program" <?php if($curriculum_item['group_name'] == "International Program") echo "Selected" ?>  >International Program</option>
             </select>
 
-            <?php if(form_error('group')){ ?>
-            <span class="help-block"><?php echo form_error('group'); ?></span>
+            <?php if(form_error('group_name')){ ?>
+            <span class="help-block"><?php echo form_error('group_name'); ?></span>
             <?php } ?>
         </div>
     </div>

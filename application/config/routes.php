@@ -26,6 +26,7 @@ $route['admin/course/(:num)'] = 'admin/course_edit/$1';
 
 $route['admin/course_group'] = 'admin/course_group';
 $route['admin/course_group/create'] = 'admin/course_group_create';
+$route['admin/course_group/edit'] = 'admin/course_group_edit';
 $route['admin/course_group/store'] = 'admin/course_group_store';
 $route['admin/course_group/(:num)'] = 'admin/course_group_edit/$1';
 
@@ -54,10 +55,14 @@ $route['news/create'] = 'news/create';
 $route['news/(:num)'] = 'news/show/$1';
 $route['news'] = 'news';
 
-
 $route['course'] = 'pages/course_index';
 $route['course/(:num)'] = 'pages/course/$1';
 $route['course_detail/(:num)'] = 'pages/course_detail/$1';
+
+$route['curriculum'] = 'pages/curriculum_index';
+$route['curriculum/(:num)'] = 'pages/curriculum/$1';
+$route['curriculum_detail/(:num)'] = 'pages/curriculum_detail/$1';
+
 $route['(:any)'] = 'pages/view/$1';
 $route['default_controller'] = 'pages/view';
 

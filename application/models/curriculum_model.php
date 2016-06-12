@@ -21,7 +21,8 @@ class Curriculum_model extends CI_Model {
 	{
 		if ($id === FALSE)
 		{
-			$query = $this->db->get('curriculums');
+			$sql = "select * from curriculums ORDER BY group_name ASC";
+            $query = $this->db->query($sql);
 			return $query->result_array();
 		}
 		
@@ -29,10 +30,20 @@ class Curriculum_model extends CI_Model {
 		return $query->row_array();
 	}
 
+	public function get_curriculum_by_group($group)
+	{
+		// $sql = "select * from curriculums WHERE group = '".$group."'";
+  		// $query = $this->db->query($sql);
+		// return $query->result_array();
+		$query = $this->db->get_where('curriculums', array('group_name' => $group));
+		return $query->result_array();
+	}
+
+
 	public function set_curriculum()
 	{
 		$data = array(
-			'group' =>$this->input->post('group'),
+			'group_name' =>$this->input->post('group_name'),
 			'period' => $this->input->post('period'),
 			'content' => $this->input->post('content'),
 			'created_at' => now(),
@@ -45,7 +56,7 @@ class Curriculum_model extends CI_Model {
 	public function update_curriculum($id)
 	{
 		$data = array(
-			'group' =>$this->input->post('group'),
+			'group_name' =>$this->input->post('group_name'),
 			'period' => $this->input->post('period'),
 			'content' => $this->input->post('content'),
 			'updated_at' => now(),
