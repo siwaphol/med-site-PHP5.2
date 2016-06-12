@@ -26,7 +26,7 @@
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
-            <li class=""><a href="#admin"> <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+            <li class=""><a href="<?php echo site_url("banner");?>banner"> <i class="fa fa-dashboard"></i> <span>Banner</span>
                 </a></li>
             <li class=""><a href="#admin/menu"> <i class="fa fa-bars"></i> <span>Menu</span> </a>
             </li>

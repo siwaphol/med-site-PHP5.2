@@ -433,4 +433,8 @@ class Admin extends CI_Controller {
             $this->load->view('backend/footer');
         }
     #end Curriculum
+        public function banner()
+        {
+            
+        }
 }
