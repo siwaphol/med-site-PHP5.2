@@ -45,21 +45,44 @@
         <?php echo includeView("flash/message"); ?>
         <br>
 
-        <div class="pull-left">
-            <div class="btn-toolbar"><a href="<?php echo site_url("admin/course_group/create"); ?>" class="btn btn-primary">
-                    <span class="glyphicon glyphicon-plus"></span>&nbsp;Add curriculum </a></div>
+        <div><h1><?php print $title; ?></h1></div>
+
+        <div>
+            <div ><a href="<?php echo site_url("admin/course_group?group=1"); ?>" class="btn btn-primary">
+                &nbsp;Medicine </a></div>
         </div>
-        <br> <br> <br>
+        <br>
+
+        <div>
+            <div ><a href="<?php echo site_url("admin/course_group?group=2"); ?>" class="btn btn-primary">
+                &nbsp;Dentistry </a></div>
+        </div>
+        <br>
+
+        <div>
+            <div ><a href="<?php echo site_url("admin/course_group?group=3"); ?>" class="btn btn-primary">
+                &nbsp;Pharmacy </a></div>
+        </div>
+        <br>
+
+        <div>
+            <div ><a href="<?php echo site_url("admin/course_group?group=4"); ?>" class="btn btn-primary">
+                &nbsp;Nurse</a></div>
+        </div>
+
+        <br> 
+
+        <div>
+            <div ><a href="<?php echo site_url("admin/course_group?group=5"); ?>" class="btn btn-primary">
+                &nbsp;Graduate</a></div>
+        </div>
+
+        <br><br> 
         <?php 
-
-        print "<pre>";
-        print_r($course_group_items);
-        print "</pre>";
-
-
 
         if(count($course_group_items)){ ?>
         <div class="">
+            <p><h2><?php print $sub_title; ?></h2></p>
             <table class="table table-striped">
                 <thead>
                 <tr>
@@ -72,11 +95,11 @@
                 <?php foreach ($course_group_items as $v){ ?>
                 <tr>
                     <td>
-                        <a href="<?php echo site_url("admin/course_group");?>/<?php echo $v["id"]; ?>"
+                        <a href="<?php echo site_url("admin/course_group/edit");?>?group_id=<?php echo $v["course_group_id"]; ?>&course_id=<?php echo $v["course_id"]; ?>"
                            class="btn btn-link btn-xs"><?php echo $v['name']; ?></a>
                     </td>
                     <td>
-                        <a href="#<?php echo site_url("admin/course_group"); ?><?php echo $v["id"]; ?>"
+                        <a href="<?php echo site_url("admin/course_group/edit");?>?group_id=<?php echo $v["course_group_id"]; ?>&course_id=<?php echo $v["course_id"]; ?>"
                            class="btn btn-link btn-xs"><?php echo $v['code']; ?></a>
                     </td>
                     <td>
@@ -84,14 +107,14 @@
                             <a class="btn btn-danger dropdown-toggle" data-toggle="dropdown" href="#">
                                 Action <span class="caret"></span> </a>
                             <ul class="dropdown-menu">
-                                <li><a href="#admin.course_group.show.<?php echo $v['id']; ?>">
+                                <li><a href="#admin.course_group.show.<?php echo $v['course_id']; ?>">
                                         <span class="glyphicon glyphicon-eye-open"></span>&nbsp;Show course_group
                                     </a></li>
-                                <li><a href="#admin.course_group.edit.<?php echo $v['id']; ?>">
+                                <li><a href="#admin.course_group.edit.<?php echo $v['course_id']; ?>">
                                         <span class="glyphicon glyphicon-edit"></span>&nbsp;Edit course_group </a>
                                 </li>
                                 <li class="divider"></li>
-                                <li><a href="#admin.course_group.delete.<?php echo $v['id']; ?>">
+                                <li><a href="#admin.course_group.delete.<?php echo $v['course_id']; ?>">
                                         <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;Delete
                                         course_group </a></li>
                                 <li class="divider"></li>

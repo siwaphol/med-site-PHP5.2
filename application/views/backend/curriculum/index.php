@@ -74,10 +74,10 @@
                 <tr>
                     <td>
                         <a href="<?php echo site_url("admin/curriculum");?>/<?php echo $v["id"]; ?>"
-                           class="btn btn-link btn-xs"><?php echo $v['group']; ?></a>
+                           class="btn btn-link btn-xs"><?php echo $v['group_name']; ?></a>
                     </td>
                     <td>
-                        <a href="#<?php echo site_url("admin/curriculum"); ?><?php echo $v["id"]; ?>"
+                        <a href="<?php echo site_url("admin/curriculum"); ?>/<?php echo $v["id"]; ?>"
                            class="btn btn-link btn-xs"><?php echo $v['period']; ?></a>
                     </td>
                     <td><?php echo $v['updated_at']; ?></td>

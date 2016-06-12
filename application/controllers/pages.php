@@ -6,6 +6,7 @@ class Pages extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('course_model');
+        $this->load->model('curriculum_model');
     }
 
 	public function view($page = 'home')
@@ -54,8 +55,11 @@ class Pages extends CI_Controller {
 			else if($group == 3){
 				$data['title'] =  "Pharmacy";
 			}
-			else{
+			else if($group == 4){
 				$data['title'] =  "Nurse";
+			}
+			else{
+				$data['title'] =  "Graduate";
 			}
 		}
 		
@@ -85,6 +89,52 @@ class Pages extends CI_Controller {
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/before_content');
 		$this->load->view('frontend/course_group/index',$data);
+		$this->load->view('templates/footer', $data);
+	}
+
+	public function curriculum_index()
+	{
+
+		$data['title'] = "Curriculum";
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/before_content');
+		$this->load->view('frontend/curriculum/index',$data);
+		$this->load->view('templates/footer', $data);
+	}
+
+	public function curriculum($group){
+		if(!empty($group)){
+			if($group == 1){
+				$group =  "Medicine";
+			}
+			else if($group == 2){
+				$group =  "Master of Science (M.Sc.)";
+			}
+			else if($group == 3){
+				$group =  "Doctor of Philosophy (Ph.D.)";
+			}
+			else{
+				$group =  "International Program";
+			}
+		}
+
+		$data['title'] = "Curriculum";
+		$data['curriculum_item'] = $this->curriculum_model->get_curriculum_by_group($group);
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/before_content');
+		$this->load->view('frontend/curriculum/index',$data);
+		$this->load->view('templates/footer', $data);
+	}
+
+	public function curriculum_detail($id){
+		$data['curriculum_item'] = $this->curriculum_model->get_curriculum($id);
+		$data['title'] = "หลักสูตรการศึกษา ประจำปี ";
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/before_content');
+		$this->load->view('frontend/curriculum/detail',$data);
 		$this->load->view('templates/footer', $data);
 	}
 }
