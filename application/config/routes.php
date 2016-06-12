@@ -34,6 +34,9 @@ $route['admin/curriculum/create'] = 'admin/curriculum_create';
 $route['admin/curriculum/store'] = 'admin/curriculum_store';
 $route['admin/curriculum/(:num)'] = 'admin/curriculum_edit/$1';
 
+$route['admin/banner'] = 'admin/banner';
+$route['admin/banner/create'] = 'admin/banner_create';
+$route['admin/banner/(:num)'] = 'admin/banner_edit/$1';
 
 $route['admin/(:any)'] = 'admin';
 
