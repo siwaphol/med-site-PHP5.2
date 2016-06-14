@@ -2,29 +2,6 @@
     $(document).ready(function () {
 
         $('#notification').show().delay(4000).fadeOut(700);
-
-        // publish settings
-        $(".publish").bind("click", function (e) {
-            var id = $(this).attr('id');
-            e.preventDefault();
-            $.ajax({
-                type: "POST",
-                url: "admin/curriculum/" + id + "/toggle-publish/",
-                headers: {
-                    'X-CSRF-Token': $('meta[name="_token"]').attr('content')
-                },
-                success: function (response) {
-                    if (response['result'] == 'success') {
-                        var imagePath = (response['changed'] == 1) ? "<?php echo base_url("assets/assets/images/publish.png"); ?>"
-                            : "<?php echo base_url("assets/assets/images/not_publish.png"); ?>";
-                        $("#publish-image-" + id).attr('src', imagePath);
-                    }
-                },
-                error: function () {
-                    alert("error");
-                }
-            })
-        });
     });
 </script>
 
@@ -47,40 +24,21 @@
 
         <div><h1><?php print $title; ?></h1></div>
 
-        <div>
-            <div ><a href="<?php echo site_url("admin/course_group?group=1"); ?>" class="btn btn-primary">
-                &nbsp;Medicine </a></div>
+        <div class="btn-group" role="group" aria-label="Group">
+          <a type="button" class="btn btn-default" href="<?php echo site_url("admin/course_group?group=1"); ?>">&nbsp;Medicine </a>
+          <a type="button" class="btn btn-default" href="<?php echo site_url("admin/course_group?group=2"); ?>">&nbsp;Dentistry</a>
+          <a type="button" class="btn btn-default" href="<?php echo site_url("admin/course_group?group=3"); ?>">&nbsp;Pharmacy</a>
+          <a type="button" class="btn btn-default" href="<?php echo site_url("admin/course_group?group=4"); ?>">&nbsp;Nurse</a>
+          <a type="button" class="btn btn-default" href="<?php echo site_url("admin/course_group?group=5"); ?>">&nbsp;Graduate</a>
         </div>
         <br>
-
-        <div>
-            <div ><a href="<?php echo site_url("admin/course_group?group=2"); ?>" class="btn btn-primary">
-                &nbsp;Dentistry </a></div>
-        </div>
         <br>
-
-        <div>
-            <div ><a href="<?php echo site_url("admin/course_group?group=3"); ?>" class="btn btn-primary">
-                &nbsp;Pharmacy </a></div>
+        <div class="btn-group" role="group">
+          <a type="button" class="btn btn-primary" href="<?php echo site_url("admin/course_group/create"); ?>">Add New Course Group</a>
         </div>
+
         <br>
-
-        <div>
-            <div ><a href="<?php echo site_url("admin/course_group?group=4"); ?>" class="btn btn-primary">
-                &nbsp;Nurse</a></div>
-        </div>
-
-        <br> 
-
-        <div>
-            <div ><a href="<?php echo site_url("admin/course_group?group=5"); ?>" class="btn btn-primary">
-                &nbsp;Graduate</a></div>
-        </div>
-
-        <br><br> 
-        <?php 
-
-        if(count($course_group_items)){ ?>
+        <?php if(count($course_group_items)){ ?>
         <div class="">
             <p><h2><?php print $sub_title; ?></h2></p>
             <table class="table table-striped">
@@ -135,7 +93,7 @@
         <?php } ?></div>
     <div class="pull-left">
         <ul class="pagination">
-            {!! $curriculum->render() !!}
+
         </ul>
     </div>
 </div>

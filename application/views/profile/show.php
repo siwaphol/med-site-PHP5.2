@@ -3,7 +3,7 @@
         <div class="row-fluid">
             <div class="span12">
                 <div class="image-holder">
-                    <img src="<?php echo base_url("assets/images/profile.png"); ?>" alt="Nima Aghaee Pour"
+                    <img src="<?php echo (file_exists($user['image_path']))?'../../'.$user['image_path']:base_url("assets/images/profile.png"); ?>" alt="Nima Aghaee Pour"
                          data-empty-src="{{asset('images/profile.png')}}"/>
                 </div>
                 <div class="nameAndTitle">
@@ -75,7 +75,7 @@
 
                 <div class="row-fluid">
                     <div class="span8 page-content">
-                        <div id="clinicalFocusContent" class="content-section">
+<!--                         <div id="clinicalFocusContent" class="content-section">
                             <div><h3>Research Focus</h3>
                                 <hr>
                                 <ul class="section-listing">
@@ -83,7 +83,7 @@
                                     <li><span>Pediatric Infectious Disease</span></li>
                                 </ul>
                             </div>
-                        </div>
+                        </div> -->
 
                         <div id="professionalEducationContent" class="content-section">
                             <h3>Educations</h3>
@@ -107,8 +107,11 @@
                                         <div><span class="icon-background"><i class="icon-user"></i></span>
                                             <div class="contact-info primary">
                                                 <label>Email</label>
-                                                <a href="mailto:email@cmu.ac.th" class="email" rel="nofollow"
-                                                   data-bypass="">email@cmu.ac.th</a>
+                                                <a href="mailto:<?php echo $user['email1'];?>" class="email" rel="nofollow"
+                                                   data-bypass=""><?php echo $user['email1'];?></a>
+                                                   <br>
+                                                <a href="mailto:<?php echo $user['email2'];?>" class="email" rel="nofollow"
+                                                   data-bypass=""><?php echo $user['email2'];?></a>
                                                 <ul class="unstyled phone-number">
                                                 </ul>
                                             </div>
@@ -118,14 +121,7 @@
                                         <div><span class="icon-background"><i class="icon-stethoscope"></i></span>
                                             <div class="contact-info clinical">
                                                 <label>Office</label>
-                                                <span class="office-name">Office Name</span>
-                                                <span class="address">address1</span>
-                                                <span class="address2">address2</span>
-                                                <span class="location">location</span>
-                                                <ul class="unstyled phone-number">
-                                                    <li><span>Tel: 000000000</span></li>
-                                                </ul>
-                                                <span class="fax">Fax: 00000000</span>
+                                                <span><?php echo $user['office_details'];?></span>
                                             </div>
                                         </div>
                                     </li>
@@ -160,18 +156,7 @@
                             <div id="currentResearchAndScholarlyInterestsContent" class="content-section">
                                 <div><h3>Current Research and Scholarly Interests</h3>
                                     <hr>
-                                    <p>My laboratory studies the strategies pathogens utilize to colonize and subvert
-                                        the epithelial barrier. We have focused on the epithelial junctions as a target
-                                        for bacterial pathogens, since the cell-cell junctions serve as both a barrier
-                                        to infection and also a major control site for epithelial function. In
-                                        particular, we are interested in how the gastric pathogen Helicobater pylori may
-                                        cause cancer by interfering with cell signaling at the epithelial junctions. We
-                                        are also studying how various bacteria cross and invade the epithelium. For
-                                        example, we recently found that Listeria monocytogenes targets a specialized
-                                        subset of cell-cell junctions at the tip of the intestinal villi to find its
-                                        receptor for invasion. We are interested in determining whether this mode of
-                                        gastrointestinal invasion of the epithelium is also used by other
-                                        gastrointestinal pathogens.</p></div>
+                                    <p><?php echo $user['research_of_interest'];?></p></div>
                             </div>
                         </div>
                     </div>

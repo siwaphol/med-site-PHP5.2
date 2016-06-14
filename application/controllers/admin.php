@@ -321,19 +321,26 @@ class Admin extends CI_Controller {
         }
         else
         {
-            if ( ! $this->upload->do_upload('image_path'))
-            {
-                $error = array('error' => $this->upload->display_errors());
+            if (isset($_FILES['image_path']['name']) && !empty($_FILES['image_path']['name'])) {
+                if (! $this->upload->do_upload('image_path'))
+                {
+                    $error = array('error' => $this->upload->display_errors());
 
-                $this->load->view('backend/layout', $data);
-                $this->load->view('backend/staff/edit', $data);
-                $this->load->view('backend/footer');
-            }
-            else
-            {
-                $uploaded = $this->upload->data();
-                $_POST['image_path'] = 'uploads/staff/' . $uploaded['file_name'];
+                    $this->load->view('backend/layout', $data);
+                    $this->load->view('backend/staff/edit', $data);
+                    $this->load->view('backend/footer');
+                }
+                else
+                {
+                    $uploaded = $this->upload->data();
+                    $_POST['image_path'] = 'uploads/staff/' . $uploaded['file_name'];
 
+                    $this->staff_model->update_staff($id);
+                    $this->session->set_userdata('flash_notification.message', 'Update Successfully');
+                    redirect('admin/staff');
+                }
+            }else{
+                $_POST['image_path'] = $data['staff_item']['image_path'];
                 $this->staff_model->update_staff($id);
                 $this->session->set_userdata('flash_notification.message', 'Update Successfully');
                 redirect('admin/staff');

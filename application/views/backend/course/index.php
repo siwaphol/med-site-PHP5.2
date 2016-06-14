@@ -2,29 +2,6 @@
     $(document).ready(function () {
 
         $('#notification').show().delay(4000).fadeOut(700);
-
-        // publish settings
-        $(".publish").bind("click", function (e) {
-            var id = $(this).attr('id');
-            e.preventDefault();
-            $.ajax({
-                type: "POST",
-                url: "admin/course/" + id + "/toggle-publish/",
-                headers: {
-                    'X-CSRF-Token': $('meta[name="_token"]').attr('content')
-                },
-                success: function (response) {
-                    if (response['result'] == 'success') {
-                        var imagePath = (response['changed'] == 1) ? "<?php echo base_url("assets/assets/images/publish.png"); ?>"
-                            : "<?php echo base_url("assets/assets/images/not_publish.png"); ?>";
-                        $("#publish-image-" + id).attr('src', imagePath);
-                    }
-                },
-                error: function () {
-                    alert("error");
-                }
-            })
-        });
     });
 </script>
 
@@ -114,7 +91,7 @@
         <?php } ?></div>
     <div class="pull-left">
         <ul class="pagination">
-            {!! $course->render() !!}
+
         </ul>
     </div>
 </div>

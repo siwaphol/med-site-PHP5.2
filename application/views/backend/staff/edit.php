@@ -213,7 +213,7 @@
             <img src="<?php echo base_url($staff_item['image_path']); ?>" style="width: 200px; height: 50px;">
         </div>
         <div> <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>
-                <input type="file" name="image_path" class="form-control" id="image" placeholder="Image" value="<?php echo set_value('image_path')?set_value('image_path'):$staff_item['image_path']; ?>">
+                <input type="file" name="image_path" class="form-control" id="image" placeholder="Image" value="">
                     <?php if(form_error('image_path')){ ?>
                     <span class="help-block"><?php echo form_error('image_path'); ?></span>
                     <?php } ?>
