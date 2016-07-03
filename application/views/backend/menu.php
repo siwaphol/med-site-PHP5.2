@@ -79,7 +79,7 @@
                 </ul>
             </li>
             <li class="">
-                <a href="#admin/settings"> <i class="fa fa-gear"></i> <span>Settings</span> </a>
+                <a href="<?php echo site_url("admin/setting"); ?>"> <i class="fa fa-gear"></i> <span>Settings</span> </a>
             </li>
             <li class="">
                 <a href="#admin/logout"> <i class="fa fa-sign-out"></i> <span>Logout</span> </a>

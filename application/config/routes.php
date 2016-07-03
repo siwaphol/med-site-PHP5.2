@@ -35,6 +35,9 @@ $route['admin/curriculum/create'] = 'admin/curriculum_create';
 $route['admin/curriculum/store'] = 'admin/curriculum_store';
 $route['admin/curriculum/(:num)'] = 'admin/curriculum_edit/$1';
 
+$route['admin/setting'] = 'admin/setting';
+$route['admin/setting/(:num)'] = 'admin/setting_edit/$1';
+
 $route['admin/banner'] = 'admin/banner';
 $route['admin/banner/create'] = 'admin/banner_create';
 $route['admin/banner/(:num)'] = 'admin/banner_edit/$1';
@@ -57,6 +60,10 @@ $route['course_detail/(:num)'] = 'pages/course_detail/$1';
 $route['curriculum'] = 'pages/curriculum_index';
 $route['curriculum/(:num)'] = 'pages/curriculum/$1';
 $route['curriculum_detail/(:num)'] = 'pages/curriculum_detail/$1';
+
+$route['research'] = 'pages/research';
+
+$route['contact'] = 'pages/contact';
 
 $route['(:any)'] = 'pages/view/$1';
 $route['default_controller'] = 'pages/view';

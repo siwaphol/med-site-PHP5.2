@@ -7,6 +7,7 @@ class Pages extends CI_Controller {
         parent::__construct();
         $this->load->model('course_model');
         $this->load->model('curriculum_model');
+        $this->load->model('setting_model');
     }
 
 	public function view($page = 'home')
@@ -27,7 +28,9 @@ class Pages extends CI_Controller {
 		$this->load->view('pages/'.$page, $data);
 		$this->load->view('templates/before_content');
 		if($page==='home'){
-			$this->load->view('frontend/home/content');
+			$data['setting_item'] = $this->setting_model->get_setting();
+
+			$this->load->view('frontend/home/content',$data);
 		}
 		$this->load->view('templates/footer', $data);
 	}
@@ -89,6 +92,28 @@ class Pages extends CI_Controller {
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/before_content');
 		$this->load->view('frontend/course_group/index',$data);
+		$this->load->view('templates/footer', $data);
+	}
+
+	public function research()
+	{
+		$data['setting_item'] = $this->setting_model->get_setting(3);
+		$data['title'] = $data['setting_item']['name'];
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/before_content');
+		$this->load->view('frontend/research/index',$data);
+		$this->load->view('templates/footer', $data);
+	}
+
+	public function contact()
+	{
+		$data['setting_item'] = $this->setting_model->get_setting(4);
+		$data['title'] = $data['setting_item']['name'];
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/before_content');
+		$this->load->view('frontend/contact/index',$data);
 		$this->load->view('templates/footer', $data);
 	}
 

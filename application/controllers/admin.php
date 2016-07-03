@@ -9,6 +9,7 @@ class Admin extends CI_Controller {
         $this->load->model('staff_model');
         $this->load->model('curriculum_model');
         $this->load->model('banner_model');
+        $this->load->model('setting_model');
     }
 
     public function index()
@@ -195,6 +196,50 @@ class Admin extends CI_Controller {
             $this->load->view('backend/footer');
         }
     # end course
+
+    #setting
+        public function setting()
+        {
+            $data['title'] = 'Admin';
+            $data['setting_items'] = $this->setting_model->get_setting();
+
+            $this->load->view('backend/layout', $data);
+            $this->load->view('backend/setting/index', $data);
+            $this->load->view('backend/footer');
+        }
+
+        public function setting_edit($id)
+        {
+            $data['title'] = 'Setting Edit';
+            $data['setting_item'] = $this->setting_model->get_setting($id);
+
+            if (empty($data['setting_item']))
+            {
+                show_404();
+            }
+
+            $this->load->helper('form');
+            $this->load->library('form_validation');
+
+            $this->form_validation->set_rules('setting_name', 'Name', 'required');
+            $this->form_validation->set_rules('content', 'Content', 'required');
+
+            if ($this->form_validation->run() === FALSE)
+            {
+                $this->load->view('backend/layout', $data);
+                $this->load->view('backend/setting/edit', $data);
+                $this->load->view('backend/footer');
+            }
+            else
+            {
+                $this->setting_model->update_setting($id);
+              
+                $this->session->set_userdata('flash_notification.message', 'Created Successfully');
+
+                redirect('admin/setting');
+            }
+        }
+    #end setting
 
     public function staff()
     {
