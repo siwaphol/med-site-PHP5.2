@@ -29,6 +29,10 @@ class Admin extends CI_Controller {
 
     public function view($slug)
     {
+        if($this->check_login() == true){
+            $session_data = $this->session->userdata('logged_in');
+            $data['username'] = $session_data['username'];
+        }
         $data['news_item'] = $this->news_model->get_news($slug);
 
         if (empty($data['news_item']))
@@ -45,6 +49,10 @@ class Admin extends CI_Controller {
 
     public function news()
     {
+        if($this->check_login() == true){
+            $session_data = $this->session->userdata('logged_in');
+            $data['username'] = $session_data['username'];
+        }
         $data['title'] = 'Admin';
         $data['news'] = $this->news_model->get_news();
 
@@ -55,6 +63,10 @@ class Admin extends CI_Controller {
 
     public function news_create()
     {
+        if($this->check_login() == true){
+            $session_data = $this->session->userdata('logged_in');
+            $data['username'] = $session_data['username'];
+        }
         $data['title'] = 'Admin';
         $data['news'] = array();
         $config['upload_path'] = './uploads/';
@@ -101,6 +113,10 @@ class Admin extends CI_Controller {
 
     public function news_edit($id)
     {
+        if($this->check_login() == true){
+            $session_data = $this->session->userdata('logged_in');
+            $data['username'] = $session_data['username'];
+        }
         $data['title'] = 'News Edit';
         $data['news_item'] = $this->news_model->get_news($id);
 
@@ -241,7 +257,11 @@ class Admin extends CI_Controller {
     #course 
         public function course()
         {
-            $this->check_login();
+            if($this->check_login() == true){
+                $session_data = $this->session->userdata('logged_in');
+                $data['username'] = $session_data['username'];
+            }
+
             $data['title'] = 'Admin';
             $data['course'] = $this->course_model->get_course();
 
@@ -252,6 +272,10 @@ class Admin extends CI_Controller {
 
         public function course_create()
         {
+            if($this->check_login() == true){
+                $session_data = $this->session->userdata('logged_in');
+                $data['username'] = $session_data['username'];
+            }
             $data['title'] = 'Admin';
             $data['course'] = array();
 
@@ -281,6 +305,10 @@ class Admin extends CI_Controller {
 
         public function course_edit($id)
         {
+            if($this->check_login() == true){
+                $session_data = $this->session->userdata('logged_in');
+                $data['username'] = $session_data['username'];
+            }
             $data['title'] = 'Course Edit';
             $data['course_item'] = $this->course_model->get_course($id);
 
@@ -315,6 +343,10 @@ class Admin extends CI_Controller {
 
         public function course_store()
         {
+            if($this->check_login() == true){
+                $session_data = $this->session->userdata('logged_in');
+                $data['username'] = $session_data['username'];
+            }
             $data['title'] = 'Admin';
             $data['course'] = array();
 
@@ -330,6 +362,10 @@ class Admin extends CI_Controller {
     #setting
         public function setting()
         {
+            if($this->check_login() == true){
+                $session_data = $this->session->userdata('logged_in');
+                $data['username'] = $session_data['username'];
+            }
             $data['title'] = 'Admin';
             $data['setting_items'] = $this->setting_model->get_setting();
 
@@ -340,6 +376,10 @@ class Admin extends CI_Controller {
 
         public function setting_edit($id)
         {
+            if($this->check_login() == true){
+                $session_data = $this->session->userdata('logged_in');
+                $data['username'] = $session_data['username'];
+            }
             $data['title'] = 'Setting Edit';
             $data['setting_item'] = $this->setting_model->get_setting($id);
 
@@ -373,6 +413,10 @@ class Admin extends CI_Controller {
 
     public function staff()
     {
+        if($this->check_login() == true){
+            $session_data = $this->session->userdata('logged_in');
+            $data['username'] = $session_data['username'];
+        }
         $data['title'] = 'Staff';
         $data['staff'] = $this->staff_model->get_staff();
 
@@ -383,6 +427,10 @@ class Admin extends CI_Controller {
 
     public function staff_create()
     {
+        if($this->check_login() == true){
+            $session_data = $this->session->userdata('logged_in');
+            $data['username'] = $session_data['username'];
+        }
         $data['title'] = 'Staff';
         $config['upload_path'] = './uploads/staff/';
         $config['allowed_types'] = 'gif|jpg|png';
@@ -430,6 +478,10 @@ class Admin extends CI_Controller {
 
     public function staff_edit($id)
     {
+        if($this->check_login() == true){
+            $session_data = $this->session->userdata('logged_in');
+            $data['username'] = $session_data['username'];
+        }
         $data['title'] = 'Staff Edit';
         $data['staff_item'] = $this->staff_model->get_staff($id);
 
@@ -491,6 +543,10 @@ class Admin extends CI_Controller {
     #course group 
         public function course_group()
         {
+            if($this->check_login() == true){
+                $session_data = $this->session->userdata('logged_in');
+                $data['username'] = $session_data['username'];
+            }
             if(empty($_GET['group'])){
                 $group = 1;
             }
@@ -511,6 +567,10 @@ class Admin extends CI_Controller {
 
         public function course_group_create()
         {
+            if($this->check_login() == true){
+                $session_data = $this->session->userdata('logged_in');
+                $data['username'] = $session_data['username'];
+            }
             $data['title'] = 'Admin';
             $data['course_group_items'] = $this->course_model->get_course_code();
 
@@ -538,6 +598,10 @@ class Admin extends CI_Controller {
 
         public function course_group_edit()
         {
+            if($this->check_login() == true){
+                $session_data = $this->session->userdata('logged_in');
+                $data['username'] = $session_data['username'];
+            }
             if(!empty($_GET['group_id']) && $_GET['course_id']){
                 $group_id = $_GET['group_id'];
                 $course_id = $_GET['course_id'];
@@ -574,6 +638,10 @@ class Admin extends CI_Controller {
 
         public function course_group_store()
         {
+            if($this->check_login() == true){
+                $session_data = $this->session->userdata('logged_in');
+                $data['username'] = $session_data['username'];
+            }
             $data['title'] = 'Admin';
             $data['course'] = array();
 
@@ -589,6 +657,10 @@ class Admin extends CI_Controller {
     #Curriculum 
         public function curriculum()
         {
+            if($this->check_login() == true){
+                $session_data = $this->session->userdata('logged_in');
+                $data['username'] = $session_data['username'];
+            }
             $data['title'] = 'Admin';
             $data['curriculum'] = $this->curriculum_model->get_curriculum();
 
@@ -599,6 +671,10 @@ class Admin extends CI_Controller {
 
         public function curriculum_create()
         {
+            if($this->check_login() == true){
+                $session_data = $this->session->userdata('logged_in');
+                $data['username'] = $session_data['username'];
+            }
             $data['title'] = 'Admin';
             $data['curriculum'] = array();
 
@@ -627,6 +703,10 @@ class Admin extends CI_Controller {
 
         public function curriculum_edit($id)
         {
+            if($this->check_login() == true){
+                $session_data = $this->session->userdata('logged_in');
+                $data['username'] = $session_data['username'];
+            }
             $data['title'] = 'Curriculum Edit';
             $data['curriculum_item'] = $this->curriculum_model->get_curriculum($id);
 
@@ -660,6 +740,10 @@ class Admin extends CI_Controller {
 
         public function curriculum_store()
         {
+            if($this->check_login() == true){
+                $session_data = $this->session->userdata('logged_in');
+                $data['username'] = $session_data['username'];
+            }
             $data['title'] = 'Admin';
             $data['curriculum'] = array();
 
@@ -673,6 +757,10 @@ class Admin extends CI_Controller {
     #end Curriculum
         public function banner()
         {
+            if($this->check_login() == true){
+                $session_data = $this->session->userdata('logged_in');
+                $data['username'] = $session_data['username'];
+            }
             $data['title'] = 'Banner';
             $data['banner'] = $this->banner_model->get_banner();
 
@@ -683,6 +771,10 @@ class Admin extends CI_Controller {
 
         public function banner_create()
         {
+            if($this->check_login() == true){
+                $session_data = $this->session->userdata('logged_in');
+                $data['username'] = $session_data['username'];
+            }
             $data['title'] = 'Admin';
 
             $config['upload_path'] = './uploads/';
@@ -729,6 +821,10 @@ class Admin extends CI_Controller {
 
         public function banner_edit($id)
         {
+            if($this->check_login() == true){
+                $session_data = $this->session->userdata('logged_in');
+                $data['username'] = $session_data['username'];
+            }
             $config['upload_path'] = './uploads/';
             $config['allowed_types'] = 'gif|jpg|png';
             $config['max_size'] = '2048';
@@ -776,6 +872,10 @@ class Admin extends CI_Controller {
 
         public function publication()
         {
+            if($this->check_login() == true){
+                $session_data = $this->session->userdata('logged_in');
+                $data['username'] = $session_data['username'];
+            }
             $data['title'] = 'Publication';
             $data['banner'] = $this->publication_model->get_publication();
 
@@ -785,6 +885,10 @@ class Admin extends CI_Controller {
         }
 
         public function educations(){
+            if($this->check_login() == true){
+                $session_data = $this->session->userdata('logged_in');
+                $data['username'] = $session_data['username'];
+            }
             $data['title'] = 'Educations';
             $data['staff'] = $this->staff_model->get_staff();
 
@@ -795,6 +899,10 @@ class Admin extends CI_Controller {
 
         public function staff_educations($staff_id)
         {
+            if($this->check_login() == true){
+                $session_data = $this->session->userdata('logged_in');
+                $data['username'] = $session_data['username'];
+            }
             $data['title'] = 'Firstname Lastname Educations';
             $data['educations'] = $this->staff_education_model->get_staff_educations($staff_id);
             $data['staff_id'] = $staff_id;
@@ -806,6 +914,10 @@ class Admin extends CI_Controller {
 
         public function staff_educations_create($staff_id)
         {
+            if($this->check_login() == true){
+                $session_data = $this->session->userdata('logged_in');
+                $data['username'] = $session_data['username'];
+            }
             $data['title'] = 'Firstname Lastname Education Create';
             $data['educations'] = $this->staff_education_model->get_staff_educations($staff_id);
             $data['staff_id'] = $staff_id;
@@ -832,6 +944,10 @@ class Admin extends CI_Controller {
 
         public function staff_educations_edit($staff_id, $id)
         {
+            if($this->check_login() == true){
+                $session_data = $this->session->userdata('logged_in');
+                $data['username'] = $session_data['username'];
+            }
             $data['title'] = 'Firstname Lastname Education Edit';
             $data['education'] = $this->staff_education_model->get_staff_educations($staff_id, $id);
             $data['staff_id'] = $staff_id;
