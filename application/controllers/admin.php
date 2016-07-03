@@ -1,4 +1,5 @@
 <?php
+session_start();
 class Admin extends CI_Controller {
 
     public function __construct()
@@ -10,10 +11,15 @@ class Admin extends CI_Controller {
         $this->load->model('curriculum_model');
         $this->load->model('banner_model');
         $this->load->model('setting_model');
+        $this->load->model('users_model');
     }
 
     public function index()
     {
+        if($this->check_login() == true){
+            $session_data = $this->session->userdata('logged_in');
+            $data['username'] = $session_data['username'];
+        }
         $data['title'] = 'Admin';
 
         $this->load->view('backend/layout', $data);
@@ -144,9 +150,97 @@ class Admin extends CI_Controller {
         }
     }
 
+    #user 
+        function user_login()
+        {
+            //This method will have the credentials validation
+            $this->load->library('form_validation');
+         
+            $this->form_validation->set_rules('username', 'Username', 'trim|required');
+            $this->form_validation->set_rules('password', 'Password', 'trim|required|callback_check_database');
+         
+            if($this->form_validation->run() == FALSE)
+            {
+                //Field validation failed.  User redirected to login page
+                // $data['title'] = 'Admin';
+                // $this->load->view('backend/layout', $data);
+                $this->load->view('backend/login/login_view');
+                //$this->load->view('backend/footer');
+            }
+            else
+            {
+                //Go to private area
+                redirect('admin', 'refresh');
+            }
+         
+        }
+
+        function check_database($password)
+        {
+            //Field validation succeeded.  Validate against database
+            $username = $this->input->post('username');
+         
+            //query the database
+            $result = $this->users_model->login($username, $password);
+         
+            if($result)
+            {
+                $sess_array = array();
+                foreach($result as $row)
+                {
+                    $sess_array = array(
+                        'id' => $row->id,
+                        'username' => $row->username
+                    );
+                    $this->session->set_userdata('logged_in', $sess_array);
+                }
+                return TRUE;
+            }
+            else
+            {
+                $this->form_validation->set_message('check_database', 'Invalid username or password');
+                return false;
+            }
+        }
+
+        function check_login()
+        {
+            if($this->session->userdata('logged_in'))
+            {
+                //get data from session
+                // $session_data = $this->session->userdata('logged_in');
+                // $data['username'] = $session_data['username'];
+                //$this->load->view('home_view', $data);
+                return true;
+            }
+            else
+            {
+                //If no session, redirect to login page
+                // $this->load->view('backend/layout', $data);
+                //$this->load->view('');
+                redirect('admin/check_login', 'refresh');
+                // $this->load->view('backend/footer');
+            }
+        }
+
+        function login_view(){
+            $this->load->library('form_validation');
+            $this->load->view('backend/login/login_view');
+        }
+         
+        function logout()
+        {
+            $this->session->unset_userdata('logged_in');
+            session_destroy();
+            redirect('admin', 'refresh');
+        }
+
+    #end user
+
     #course 
         public function course()
         {
+            $this->check_login();
             $data['title'] = 'Admin';
             $data['course'] = $this->course_model->get_course();
 

@@ -71,7 +71,7 @@
                     <li class="dropdown messages-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                             <img alt="" src="img/flags/us.png">
-                            <span class="username">Echo Username here</span>
+                            <span class="username"><?php print $username; ?></span>
                             <b class="caret"></b>
                         </a>
                     </li>
