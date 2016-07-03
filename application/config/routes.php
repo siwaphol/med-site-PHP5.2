@@ -55,6 +55,11 @@ $route['admin/publication/create'] = 'admin/news_create';
 $route['admin/publication/store'] = 'admin/news_store';
 $route['admin/publication/(:num)'] = 'admin/news_edit/$1';
 
+$route['admin/educations'] = 'admin/educations';
+$route['admin/staff_educations/(:num)'] = 'admin/staff_educations/$1';
+$route['admin/staff_educations/(:num)/create'] = 'admin/staff_educations_create/$1';
+$route['admin/staff_educations/(:num)/(:num)'] = 'admin/staff_educations_edit/$1/$2';
+
 $route['admin/(:any)'] = 'admin';
 
 // Browse profile

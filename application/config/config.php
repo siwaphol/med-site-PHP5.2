@@ -1,6 +1,6 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-$config['base_url'] = 'http://localhost:80/med/';
+$config['base_url'] = 'http://localhost:8082/med/';
 
 $config['index_page'] = 'index.php';
 

@@ -51,7 +51,7 @@
                         <li class="">
                             <a id="researchAndScholarshipTabLink" href="#?tab=research-and-scholarship"
                                class="no-trigger" rel="nofollow" data-toggle="tab"
-                               data-target="#research-and-scholarship">Research &amp; Scholarship</a>
+                               data-target="#research-and-scholarship">Research</a>
                         </li>
                         <li class="">
                             <a id="teachingTabLink" href="#?tab=teaching" class="no-trigger" rel="nofollow"
