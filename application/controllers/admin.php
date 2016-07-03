@@ -10,6 +10,7 @@ class Admin extends CI_Controller {
         $this->load->model('curriculum_model');
         $this->load->model('banner_model');
         $this->load->model('setting_model');
+        $this->load->model('staff_education_model');
     }
 
     public function index()
@@ -687,5 +688,83 @@ class Admin extends CI_Controller {
             $this->load->view('backend/layout', $data);
             $this->load->view('backend/publication/index', $data);
             $this->load->view('backend/footer');
+        }
+
+        public function educations(){
+            $data['title'] = 'Educations';
+            $data['staff'] = $this->staff_model->get_staff();
+
+            $this->load->view('backend/layout', $data);
+            $this->load->view('backend/educations/index', $data);
+            $this->load->view('backend/footer');
+        }
+
+        public function staff_educations($staff_id)
+        {
+            $data['title'] = 'Firstname Lastname Educations';
+            $data['educations'] = $this->staff_education_model->get_staff_educations($staff_id);
+            $data['staff_id'] = $staff_id;
+
+            $this->load->view('backend/layout', $data);
+            $this->load->view('backend/educations/staff_index', $data);
+            $this->load->view('backend/footer');
+        }
+
+        public function staff_educations_create($staff_id)
+        {
+            $data['title'] = 'Firstname Lastname Education Create';
+            $data['educations'] = $this->staff_education_model->get_staff_educations($staff_id);
+            $data['staff_id'] = $staff_id;
+
+            $this->load->helper('form');
+            $this->load->library('form_validation');
+
+            $this->form_validation->set_rules('year', 'Year', 'required');
+            $this->form_validation->set_rules('other_details', 'Details', 'required');
+
+            if ($this->form_validation->run() === FALSE)
+            {
+                $this->load->view('backend/layout', $data);
+                $this->load->view('backend/educations/create', $data);
+                $this->load->view('backend/footer');
+            }
+            else
+            {
+                $this->staff_education_model->set_staff_education($staff_id);
+                $this->session->set_userdata('flash_notification.message', 'Created Successfully');
+                redirect('admin/staff_educations/'.$staff_id);
+            }
+        }
+
+        public function staff_educations_edit($staff_id, $id)
+        {
+            $data['title'] = 'Firstname Lastname Education Edit';
+            $data['education'] = $this->staff_education_model->get_staff_educations($staff_id, $id);
+            $data['staff_id'] = $staff_id;
+
+            if (empty($data['education']))
+            {
+                show_404();
+            }
+
+            $this->load->helper('form');
+            $this->load->library('form_validation');
+
+            $this->form_validation->set_rules('year', 'Year', 'required');
+            $this->form_validation->set_rules('other_details', 'Details', 'required');
+
+            if ($this->form_validation->run() === FALSE)
+            {
+                $this->load->view('backend/layout', $data);
+                $this->load->view('backend/educations/edit', $data);
+                $this->load->view('backend/footer');
+            }
+            else
+            {
+                $this->staff_education_model->update_staff_education($staff_id, $id);
+                $this->session->set_userdata('flash_notification.message', 'Update Successfully');
+
+                redirect('admin/staff_educations/'.$staff_id);
+            }
         }
 }
