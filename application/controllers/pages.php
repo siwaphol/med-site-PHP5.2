@@ -6,6 +6,8 @@ class Pages extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('course_model');
+        $this->load->model('banner_model');
+        $this->load->model('news_model');
         $this->load->model('curriculum_model');
         $this->load->model('setting_model');
     }
@@ -23,12 +25,16 @@ class Pages extends CI_Controller {
 
 		$this->load->view('templates/header', $data);
 		if($page==='home'){
-			$this->load->view('frontend/home/carousel');
+			$data['banner'] = $this->banner_model->get_banner();
+			$this->load->view('frontend/home/carousel', $data);
 		}
 		$this->load->view('pages/'.$page, $data);
 		$this->load->view('templates/before_content');
 		if($page==='home'){
+
 			$data['setting_item'] = $this->setting_model->get_setting();
+
+			$data['top4news'] = $this->news_model->get_latest_4_news();
 
 			$this->load->view('frontend/home/content',$data);
 		}

@@ -24,22 +24,17 @@
                     <div class="accordian-body">
                         <ul class="unstyled accordian-inner affiliation">
                             <li class=" ">
-                                <a href="/profiles/browse?affiliations=capFaculty">
-                                    Faculty and Teaching Staff
-                                </a>
-                            </li>
-                            <li class=" ">
-                                <a href="/profiles/browse?affiliations=capStaff">
+                                <a href="#showStaff">
                                     Staff
                                 </a>
                             </li>
                             <li class=" ">
-                                <a href="/profiles/browse?affiliations=capPostdoc">
+                                <a href="#showPostdocs">
                                     Postdocs
                                 </a>
                             </li>
                             <li class=" ">
-                                <a href="/profiles/browse?affiliations=capMdStudent,capMsStudent,capPhdStudent">
+                                <a href="#showGraduate">
                                     Graduate Students
                                 </a>
                             </li>
@@ -48,138 +43,17 @@
                 </div>
                 <div class="filter-group accordion-group">
                     <h2 class="accordion-heading">
-                        <a class="accordian-toggle" href="/profiles/browse">Last Name</a>
+                        <a class="accordian-toggle" href="#findFirstNameByFirstCapital">First Name</a>
                     </h2>
                     <div class="accordian-body">
                         <ul class="unstyled accordian-inner lastInitial">
-                            <li class=" ">
-                                <a href="/profiles/browse?name=a">
-                                    A
-                                </a>
-                            </li>
-                            <li class=" ">
-                                <a href="/profiles/browse?name=b">
-                                    B
-                                </a>
-                            </li>
-                            <li class=" ">
-                                <a href="/profiles/browse?name=c">
-                                    C
-                                </a>
-                            </li>
-                            <li class=" ">
-                                <a href="/profiles/browse?name=d">
-                                    D
-                                </a>
-                            </li>
-                            <li class=" ">
-                                <a href="/profiles/browse?name=e">
-                                    E
-                                </a>
-                            </li>
-                            <li class=" ">
-                                <a href="/profiles/browse?name=f">
-                                    F
-                                </a>
-                            </li>
-                            <li class=" ">
-                                <a href="/profiles/browse?name=g">
-                                    G
-                                </a>
-                            </li>
-                            <li class=" ">
-                                <a href="/profiles/browse?name=h">
-                                    H
-                                </a>
-                            </li>
-                            <li class=" ">
-                                <a href="/profiles/browse?name=i">
-                                    I
-                                </a>
-                            </li>
-                            <li class=" ">
-                                <a href="/profiles/browse?name=j">
-                                    J
-                                </a>
-                            </li>
-                            <li class=" ">
-                                <a href="/profiles/browse?name=k">
-                                    K
-                                </a>
-                            </li>
-                            <li class=" ">
-                                <a href="/profiles/browse?name=l">
-                                    L
-                                </a>
-                            </li>
-                            <li class=" ">
-                                <a href="/profiles/browse?name=m">
-                                    M
-                                </a>
-                            </li>
-                            <li class=" ">
-                                <a href="/profiles/browse?name=n">
-                                    N
-                                </a>
-                            </li>
-                            <li class=" ">
-                                <a href="/profiles/browse?name=o">
-                                    O
-                                </a>
-                            </li>
-                            <li class=" ">
-                                <a href="/profiles/browse?name=p">
-                                    P
-                                </a>
-                            </li>
-                            <li class=" ">
-                                <a href="/profiles/browse?name=q">
-                                    Q
-                                </a>
-                            </li>
-                            <li class=" ">
-                                <a href="/profiles/browse?name=r">
-                                    R
-                                </a>
-                            </li>
-                            <li class=" ">
-                                <a href="/profiles/browse?name=s">
-                                    S
-                                </a>
-                            </li>
-                            <li class=" ">
-                                <a href="/profiles/browse?name=t">
-                                    T
-                                </a>
-                            </li>
-                            <li class=" ">
-                                <a href="/profiles/browse?name=U">
-                                    U
-                                </a>
-                            </li>
-                            <li class=" ">
-                                <a href="/profiles/browse?name=v">
-                                    V
-                                </a>
-                            </li>
-                            <li class=" ">
-                                <a href="/profiles/browse?name=w">
-                                    W
-                                </a>
-                            </li>
-                            <li class=" ">
-                                <a href="/profiles/browse?name=x">X</a>
-                            </li>
-                            <li class=" ">
-                                <a href="/profiles/browse?name=y">
-                                    Y
-                                </a>
-                            </li>
-                            <li class=" ">
-                                <a href="/profiles/browse?name=z">
-                                    Z
-                                </a>
-                            </li>
+                            <?php foreach (range('A', 'Z') as $char) { ?>
+                                <li class=" ">
+                                    <a href="#browse?name=<?php echo $char;?>">
+                                        <?php echo $char;?>
+                                    </a>
+                                </li>
+                            <?php }?>
                         </ul>
                     </div>
                 </div>
@@ -199,7 +73,8 @@
         <li v-for="profile in list">
             <div class="mini-profile media">
                 <a href="#">
-                    <img class="pull-left" src="" alt="" data-empty-src="<?php echo base_url("assets/images/profile.png"); ?>" />
+                    <img v-if="profile.image_path" v-bind:src="profile.image_path" class="pull-left"/>
+                    <img v-else class="pull-left" src="" alt="" data-empty-src="<?php echo base_url("assets/images/profile.png"); ?>" />
                 </a>
                 <div class="media-body">
                     <a href="profile/{{profile.id}}" class="media-heading">

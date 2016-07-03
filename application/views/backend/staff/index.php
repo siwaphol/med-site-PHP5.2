@@ -33,6 +33,7 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
+                    <th>No.</th>
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Job Title</th>
@@ -41,8 +42,10 @@
                 </tr>
                 </thead>
                 <tbody>
-                <?php foreach ($staff as $v){ ?>
+                <?php $no = 1;
+                foreach ($staff as $v){ ?>
                 <tr>
+                    <td><?php echo $no++; ?></td>
                     <td>
                         <a href="<?php echo site_url("admin/staff"); ?>/<?php echo $v["id"]; ?>"
                            class="btn btn-link btn-xs"><?php echo $v['first_name_en']; ?></a>

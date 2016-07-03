@@ -90,9 +90,11 @@
     <br>
     <!-- Image -->
     <div class="fileinput fileinput-new control-group <?php echo (form_error('image_path')?'has-error':''); ?>" data-provides="fileinput">
-        <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 50px;"></div>
+        <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 50px;">
+            <img src="<?php echo base_url($news_item['image_path']); ?>" style="width: 200px; height: 50px;" alt="">
+        </div>
         <div> <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>
-                <input type="file" name="image_path" class="form-control" id="image" placeholder="Image" value="<?php echo $news_item['image_path']; ?>">
+                <input type="file" name="image_path" class="form-control" id="image" placeholder="Image">
             <?php if(form_error('image_path')){ ?>
                 <span class="help-block"><?php echo form_error('image_path'); ?></span>
             <?php } ?>

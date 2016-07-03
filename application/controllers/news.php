@@ -17,9 +17,9 @@ class News extends CI_Controller {
 		$this->load->view('templates/footer');
 	}
 
-	public function view($slug)
+	public function show($id)
 	{
-		$data['news_item'] = $this->news_model->get_news($slug);
+		$data['news_item'] = $this->news_model->get_news($id);
 
 		if (empty($data['news_item']))
 		{
@@ -29,8 +29,9 @@ class News extends CI_Controller {
 		$data['title'] = $data['news_item']['title'];
 
 		$this->load->view('templates/header', $data);
-		$this->load->view('news/view', $data);
-		$this->load->view('templates/footer');
+		$this->load->view('templates/before_content');
+		$this->load->view('frontend/news/show',$data);
+		$this->load->view('templates/footer', $data);
 	}
 
 	public function create()

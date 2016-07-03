@@ -1,3 +1,4 @@
+
 <?php 
       // print "<pre>";
       // print_r($setting_item);
@@ -13,7 +14,6 @@
           <a href="#">More >></a>
           </p>
       </div>
-      <hr>
       
       <div class="row-md-6">
         <h4><?php echo $setting_item[1]['name']; ?></h4>
@@ -23,35 +23,34 @@
       </div>
       <br>
       <!-- news -->
-      <hr>
-      <div class="row">
-      <h4>NEWS</h4><a href="{{url('news')}}">Add</a>
+      <div class="row headline">
+      <h4>News & Announcement</h4>
           <div class="row">
-              @foreach($top4news as $aNews)
-                  <div class="col-md-6">
+              <?php foreach ($top4news as $aNews) { ?>
+                <div class="col-md-6">
+                  <center>
+                    <a href="<?php echo site_url("news");?>/<?php echo $aNews['id']; ?>">
+                      <img src="<?php echo base_url($aNews['image_path']);?>" width="300" height="258">
+                      <br>
+                      <h4><?php echo $aNews['title'];?></h4>
+                    </a>
+                      <hr>
+                  </center>
+                </div>
+              <?php } ?>
+
+              <?php if(count($top4news) < 4) { ?>
+                <?php for ($i=0; $i < 4-count($top4news); $i++) { ?>
+                  <div class="col-md-6 col-xs-12">
                       <center>
-                          <img src="{{url("upload_images/{$aNews->image}")}}" width="300" height="258">
+                          <img src="<?php echo base_url('assets/images/02.jpb');?>" width="300" height="258">
                           <br>
-                          <h4>{{$aNews->headline}}</h4>
-                          <p style="font-size: 13px;">{{$aNews->message}}</p>
+                          <h4>News Head</h4>
                           <hr>
                       </center>
                   </div>
-              @endforeach
-
-              @if(count($top4news) < 4)
-                  @for($i=0; $i < 4 - count($top4news); $i++)
-                      <div class="col-md-6 col-xs-12">
-                          <center>
-                              <img src="{{asset("images/02.jpg")}}" width="300" height="258">
-                              <br>
-                              <h4>News Head</h4>
-                              <p style="font-size: 13px;">description</p>
-                              <hr>
-                          </center>
-                      </div>
-                  @endfor
-              @endif
+                <?php } ?>
+              <?php } ?>
           </div>
       </div>
 </div>

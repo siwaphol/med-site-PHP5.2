@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default" style="background-color: #8e44ad;" >
+<nav class="navbar navbar-default" style="background-color: #8e44ad;" id="custom-nav" role="navigation">
         <div class="container-fluid">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -9,12 +9,11 @@
             </button>
           </div>
           <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
-              <ul class="nav navbar-nav navbar-right ">
-                <ul class="nav navbar-nav" >
-                    <li><a href="<?php echo site_url("/"); ?>" style="color: #ffffff;">Home</a></li>
-
+              <ul class="nav navbar-right navbar-nav">
+                <!-- <ul class="nav navbar-nav" > -->
+                    <li><a href="<?php echo site_url("/"); ?>" >Home</a></li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: #ffffff;">Faculty & Staff<span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >Faculty & Staff<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="<?php echo site_url("browse");?>">Staff</a></li>
                             <li><a href="<?php echo site_url("browse");?>">Graduate Student</a></li>
@@ -22,9 +21,8 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: #ffffff;">Curriculum<span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >Curriculum<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li role="separator" class="divider"></li>
                             <li class="dropdown-header"><h4>Undergraduate</h4></li>
                                 <li><a href="<?php echo site_url("curriculum");?>/1">Medicine</a></li>
                             <li class="dropdown-header"><h4>Graduate</h4></li>
@@ -34,9 +32,8 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: #ffffff;">Courses<span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >Courses<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li role="separator" class="divider"></li>
                             <li class="dropdown-header"><h4>Undergraduate</h4></li>
                                 <li><a href="<?php echo site_url("course");?>/1">Medicine</a></li>
                                 <li><a href="<?php echo site_url("course");?>/2">Dentistry</a></li>
@@ -47,10 +44,10 @@
                         </ul>
                     </li>
 
-                    <li><a href="<?php echo site_url("research");?>" style="color: #ffffff;">Research</a></li>
-                    <li><a href="<?php echo site_url("contact");?>" style="color: #ffffff;">Contact Us</a></li>
+                    <li><a href="<?php echo site_url("research");?>" >Research</a></li>
+                    <li><a href="<?php echo site_url("contact");?>" >Contact Us</a></li>
                 </ul>
-            </ul>
+            <!-- </ul> -->
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
       </nav>

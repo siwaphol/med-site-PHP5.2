@@ -26,7 +26,7 @@
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
-            <li class=""><a href="<?php echo site_url("banner");?>banner"> <i class="fa fa-dashboard"></i> <span>Banner</span>
+            <li class=""><a href="<?php echo site_url("admin/banner");?>"> <i class="fa fa-dashboard"></i> <span>Banner</span>
                 </a></li>
             <li class=""><a href="#admin/menu"> <i class="fa fa-bars"></i> <span>Menu</span> </a>
             </li>
@@ -75,6 +75,15 @@
                     <li><a href="<?php echo site_url("admin/staff"); ?>"><i class="fa fa-user"></i> All Staff</a>
                     </li>
                     <li><a href="<?php echo site_url("admin/staff/create"); ?>"><i class="fa fa-group"></i> Add Staff</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="treeview"><a href="#"> <i class="fa fa-user"></i> <span>Publications</span>
+                    <i class="fa fa-angle-left pull-right"></i> </a>
+                <ul class="treeview-menu">
+                    <li><a href="<?php echo site_url("admin/publication"); ?>"><i class="fa fa-user"></i> All Publications</a>
+                    </li>
+                    <li><a href="<?php echo site_url("admin/publication/create"); ?>"><i class="fa fa-group"></i> Add Publication</a>
                     </li>
                 </ul>
             </li>

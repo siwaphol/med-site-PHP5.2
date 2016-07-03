@@ -38,7 +38,6 @@
     </ol>
 </section>
 
-
 <br>
 <div class="container">
     <div class="col-lg-10">
@@ -50,15 +49,7 @@
                     <span class="glyphicon glyphicon-plus"></span>&nbsp;Add curriculum </a></div>
         </div>
         <br> <br> <br>
-        <?php 
-
-        // print "<pre>";
-        // print_r($curriculum);
-        // print "</pre>";
-
-
-
-        if(count($curriculum)){ ?>
+        <?php if(count($curriculum)){ ?>
         <div class="">
             <table class="table table-striped">
                 <thead>
@@ -114,7 +105,7 @@
         <?php } ?></div>
     <div class="pull-left">
         <ul class="pagination">
-            {!! $curriculum->render() !!}
+
         </ul>
     </div>
 </div>

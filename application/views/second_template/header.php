@@ -38,11 +38,6 @@
                                        autocomplete="off"/>
                                 <button class="icon-search" type="submit" name="search" title="Search"></button>
                                 <div class="btn-group ">
-                                    <a class="btn btn-small btn-first-page" href="<?php echo site_url("profile/create"); ?>">
-                                        <span class="hidden-phone">Add Staff (temporary)</span>
-                                        <span class="hidden-desktop hidden-tablet icon-double-angle-left"></span>
-                                    </a>
-
                                 </div>
                             </form>
                         </div>
