@@ -5,6 +5,7 @@ class Profile extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('profile_model');
+        $this->load->model('staff_education_model');
     }
 
     public function index()
@@ -33,7 +34,7 @@ class Profile extends CI_Controller {
         $data['body_class'] = 'profile';
 
         // for future use
-        $data['userEducations'] = array();
+        $data['userEducations'] = $this->staff_education_model->get_staff_educations($id);
 
         $this->load->view('second_template/header', $data);
         $this->load->view('profile/show', $data);

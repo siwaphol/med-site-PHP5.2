@@ -91,7 +91,7 @@
                             <ul class="section-listing">
                                 <?php foreach($userEducations as $aEd){ ?>
                                 <li class="section-list-item">
-                                    <div class="description"><?php echo $aEd['education'];?> (<?php echo $aEd['year']; ?>)</div>
+                                    <div class="description"><?php echo $aEd['other_details'];?> (<?php echo $aEd['year']; ?>)</div>
                                 </li>
                                 <?php } ?>
                             </ul>

@@ -26,7 +26,8 @@ class Pages extends CI_Controller {
 		$this->load->view('templates/header', $data);
 		if($page==='home'){
 			$data['banner'] = $this->banner_model->get_banner();
-			$this->load->view('frontend/home/carousel', $data);
+			// $this->load->view('frontend/home/carousel', $data);
+			$this->load->view('frontend/home/carousel_lightslider', $data);
 		}
 		$this->load->view('pages/'.$page, $data);
 		$this->load->view('templates/before_content');
