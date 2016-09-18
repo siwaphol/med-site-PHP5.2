@@ -25,7 +25,7 @@
                     Undergraduate<span class="arrow"></span>
                     </li>
                     <ul class="sub-menu collapse" id="curriculum_undergraduate">
-                        <li><a href="<?php echo site_url('curriculum'); ?>/1">Medilicine</a></li>
+                        <li><a href="<?php echo site_url('curriculum'); ?>/1">Medicine</a></li>
                     </ul>
                     <li  data-toggle="collapse" data-target="#curriculum_graduate" class="collapsed">
                     Graduate<span class="arrow"></span>
