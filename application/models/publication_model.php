@@ -10,11 +10,11 @@ class Publication_model extends CI_Model {
 	{
 		if ($id === FALSE)
 		{
-			$query = $this->db->get('publication');
+			$query = $this->db->get('publications');
 			return $query->result_array();
 		}
 		
-		$query = $this->db->get_where('publication', array('id' => $id));
+		$query = $this->db->get_where('publications', array('id' => $id));
 		return $query->row_array();
 	}
 
@@ -33,8 +33,27 @@ class Publication_model extends CI_Model {
 			'updated_at' => now(),
 		);
 
-		return $this->db->insert('publication', $data);
+		return $this->db->insert('publications', $data);
 	}
+
+	public function import_publication($data)
+	{
+		// $data = array(
+		// 	'title' => $this->input->post('title'),
+		// 	'journal' => $this->input->post('journal'),
+		// 	'authors' => $this->input->post('authors'),
+		// 	'abstract' => $this->input->post('abstract'),
+		// 	'pubmed_link' => $this->input->post('pubmed_link'),
+		// 	'year' => $this->input->post('year'),
+		// 	'volume' => $this->input->post('volume'),
+		// 	'pages' => $this->input->post('pages'),
+		// 	'created_at' => now(),
+		// 	'updated_at' => now(),
+		// );
+
+		return $this->db->insert('publications', $data);
+	}
+
 
 	public function update_publication($id)
 	{
@@ -51,6 +70,6 @@ class Publication_model extends CI_Model {
 		);
 
 		$this->db->where('id', $id);
-		$this->db->update('publication', $data);
+		$this->db->update('publications', $data);
 	}
 }

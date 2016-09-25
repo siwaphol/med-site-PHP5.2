@@ -24,7 +24,10 @@
 <br>
 <br>
 <div class="container">
-
+    <form method="post" action="<?php echo site_url("admin/publication/import"); ?>" enctype="multipart/form-data">
+        <input type="file" name="doc"/>
+        <input type="submit" value="Upload File"/>
+        </form>
     <form action="<?php echo site_url("admin/publication/create"); ?>" method="post">
     <!-- Title -->
     <div class="control-group <?php echo (form_error('title')?'has-error':''); ?>">

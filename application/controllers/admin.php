@@ -13,6 +13,7 @@ class Admin extends CI_Controller {
         $this->load->model('setting_model');
         $this->load->model('users_model');
         $this->load->model('staff_education_model');
+        $this->load->model('publication_model');
     }
 
     public function index()
@@ -411,6 +412,186 @@ class Admin extends CI_Controller {
         }
     #end setting
 
+    #publication
+        public function publication()
+        {
+            if($this->check_login() == true){
+                $session_data = $this->session->userdata('logged_in');
+                $data['username'] = $session_data['username'];
+            }
+            $data['title'] = 'Publication';
+            $data['publications'] = $this->publication_model->get_publication();
+
+            $this->load->view('backend/layout', $data);
+            $this->load->view('backend/publication/index', $data);
+            $this->load->view('backend/footer');
+        }
+
+        public function publication_create()
+        {
+            if($this->check_login() == true){
+                $session_data = $this->session->userdata('logged_in');
+                $data['username'] = $session_data['username'];
+            }
+            $data['title'] = 'Admin';
+            $data['publication'] = array();
+
+            $this->load->helper('form');
+            $this->load->library('form_validation');
+
+            $this->form_validation->set_rules('title', 'Title', 'required');
+            // $this->form_validation->set_rules('name_th', 'Thai Name', 'required');
+            // $this->form_validation->set_rules('name_en', 'English Name', 'required');
+            // $this->form_validation->set_rules('content', 'Content', 'required');
+
+            if ($this->form_validation->run() === FALSE)
+            {
+                $this->load->view('backend/layout', $data);
+                $this->load->view('backend/publication/create', $data);
+                $this->load->view('backend/footer');
+            }
+            else
+            {
+                $this->publication_model->set_publication();
+              
+                $this->session->set_userdata('flash_notification.message', 'Created Successfully');
+
+                redirect('admin/publication');
+            }
+        }
+
+         public function publication_import_xml()
+        {
+            if (isset($_FILES['doc']) && ($_FILES['doc']['error'] == UPLOAD_ERR_OK)) {
+                $xml = simplexml_load_file($_FILES['doc']['tmp_name']);    
+                $json_string = json_encode($xml);    
+                $result_array = json_decode($json_string, TRUE);        
+            }else {
+                redirect('admin/publication');
+                exit('Failed to open test.xml.');
+            }
+            // print "<pre>";
+            // print_r($result_array);
+            // print "</pre>";
+
+            $publication = array();
+
+            if(!empty($result_array['PubmedArticle']['MedlineCitation']['Article']['ArticleTitle'])){
+                $publication['title'] =  $result_array['PubmedArticle']['MedlineCitation']['Article']['ArticleTitle']; 
+            }
+
+            if(!empty($result_array['PubmedArticle']['MedlineCitation']['Article']['Journal']['Title'])){
+                $publication['journal'] =  $result_array['PubmedArticle']['MedlineCitation']['Article']['Journal']['Title']; 
+            }
+
+            if(!empty($result_array['PubmedArticle']['MedlineCitation']['Article']['AuthorList']['Author'])){
+
+                foreach ($result_array['PubmedArticle']['MedlineCitation']['Article']['AuthorList']['Author'] as $key => $value) {
+                    if($key == 0){
+                        if(!empty($value['ForeName'])){
+                            $publication['authors'] = $value['LastName']." ".$value['ForeName'];
+                        }else{
+                            $publication['authors'] = $value['LastName'];
+                        }
+                        
+                    }else{
+                        if(!empty($value['ForeName'])){
+                            $publication['authors'] = $publication['authors'].", ".$value['LastName']." ".$value['ForeName'];
+                        }else{
+                            $publication['authors'] = $publication['authors'].", ".$value['LastName'];
+                        }
+                        
+                    }
+                }
+            }
+
+            if(!empty($result_array['PubmedArticle']['MedlineCitation']['Article']['Abstract']['AbstractText'])){
+                if(count($result_array['PubmedArticle']['MedlineCitation']['Article']['Abstract']['AbstractText']) > 1){
+                    $publication['abstract'] =  $result_array['PubmedArticle']['MedlineCitation']['Article']['Abstract']['AbstractText'][1]; 
+                }else{
+                    $publication['abstract'] =  $result_array['PubmedArticle']['MedlineCitation']['Article']['Abstract']['AbstractText']; 
+                }
+            }
+
+            if(!empty($result_array['PubmedArticle']['PubmedData']['ArticleIdList']['ArticleId'])){
+                if(count($result_array['PubmedArticle']['PubmedData']['ArticleIdList']['ArticleId']) == 3){
+                    $publication['pubmed_link'] =  $result_array['PubmedArticle']['PubmedData']['ArticleIdList']['ArticleId'][2]; 
+                }else if(count($result_array['PubmedArticle']['PubmedData']['ArticleIdList']['ArticleId']) == 2){
+                    $publication['pubmed_link'] =  $result_array['PubmedArticle']['PubmedData']['ArticleIdList']['ArticleId'][1]; 
+                }else{
+                    $publication['pubmed_link'] =  $result_array['PubmedArticle']['PubmedData']['ArticleIdList']['ArticleId']; 
+                }
+            }
+
+            if(!empty($result_array['PubmedArticle']['MedlineCitation']['Article']['Journal']['JournalIssue']['PubDate']['Year'])){
+                $publication['year'] =  $result_array['PubmedArticle']['MedlineCitation']['Article']['Journal']['JournalIssue']['PubDate']['Year']; 
+            }else{
+                $publication['year'] =  "";
+            }
+
+            if(!empty($result_array['PubmedArticle']['MedlineCitation']['Article']['Journal']['JournalIssue']['Volume'])){
+                $publication['volume'] =  $result_array['PubmedArticle']['MedlineCitation']['Article']['Journal']['JournalIssue']['Volume']; 
+            }else{
+                $publication['volume'] =  "";
+            }
+
+            if(!empty($result_array['PubmedArticle']['MedlineCitation']['Article']['Pagination']['MedlinePgn'])){
+                $publication['pages'] =  $result_array['PubmedArticle']['MedlineCitation']['Article']['Pagination']['MedlinePgn']; 
+            }else{
+                $publication['pages'] = "";
+            }
+
+            $publication['created_at'] = now();
+            $publication['updated_at'] = now();
+
+
+            $this->publication_model->import_publication($publication);
+
+            $this->session->set_userdata('flash_notification.message', 'Created Successfully');
+
+            redirect('admin/publication');
+            print "<pre>";
+            print_r($publication);
+            print "</pre>";
+        }
+
+
+        public function publication_edit($id)
+        {
+            if($this->check_login() == true){
+                $session_data = $this->session->userdata('logged_in');
+                $data['username'] = $session_data['username'];
+            }
+            $data['title'] = 'Setting Edit';
+            $data['setting_item'] = $this->setting_model->get_setting($id);
+
+            if (empty($data['setting_item']))
+            {
+                show_404();
+            }
+
+            $this->load->helper('form');
+            $this->load->library('form_validation');
+
+            $this->form_validation->set_rules('setting_name', 'Name', 'required');
+            $this->form_validation->set_rules('content', 'Content', 'required');
+
+            if ($this->form_validation->run() === FALSE)
+            {
+                $this->load->view('backend/layout', $data);
+                $this->load->view('backend/setting/edit', $data);
+                $this->load->view('backend/footer');
+            }
+            else
+            {
+                $this->setting_model->update_setting($id);
+              
+                $this->session->set_userdata('flash_notification.message', 'Created Successfully');
+
+                redirect('admin/setting');
+            }
+        }
+    #end publication
     public function staff()
     {
         if($this->check_login() == true){
@@ -755,19 +936,19 @@ class Admin extends CI_Controller {
             $this->load->view('backend/footer');
         }
     #end Curriculum
-        public function banner()
-        {
-            if($this->check_login() == true){
-                $session_data = $this->session->userdata('logged_in');
-                $data['username'] = $session_data['username'];
-            }
-            $data['title'] = 'Banner';
-            $data['banner'] = $this->banner_model->get_banner();
-
-            $this->load->view('backend/layout', $data);
-            $this->load->view('backend/banner/index', $data);
-            $this->load->view('backend/footer');
+    public function banner()
+    {
+        if($this->check_login() == true){
+            $session_data = $this->session->userdata('logged_in');
+            $data['username'] = $session_data['username'];
         }
+        $data['title'] = 'Banner';
+        $data['banner'] = $this->banner_model->get_banner();
+
+        $this->load->view('backend/layout', $data);
+        $this->load->view('backend/banner/index', $data);
+        $this->load->view('backend/footer');
+    }
 
         public function banner_create()
         {
@@ -870,19 +1051,7 @@ class Admin extends CI_Controller {
             }
         }
 
-        public function publication()
-        {
-            if($this->check_login() == true){
-                $session_data = $this->session->userdata('logged_in');
-                $data['username'] = $session_data['username'];
-            }
-            $data['title'] = 'Publication';
-            $data['banner'] = $this->publication_model->get_publication();
-
-            $this->load->view('backend/layout', $data);
-            $this->load->view('backend/publication/index', $data);
-            $this->load->view('backend/footer');
-        }
+        
 
         public function educations(){
             if($this->check_login() == true){
