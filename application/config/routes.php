@@ -42,9 +42,8 @@ $route['admin/curriculum/store'] = 'admin/curriculum_store';
 $route['admin/curriculum/(:num)'] = 'admin/curriculum_edit/$1';
 
 $route['admin/setting'] = 'admin/setting';
+// $route['admin/setting/create'] = 'admin/setting_create';
 $route['admin/setting/(:num)'] = 'admin/setting_edit/$1';
-
-
 
 $route['admin/banner'] = 'admin/banner';
 $route['admin/banner/create'] = 'admin/banner_create';

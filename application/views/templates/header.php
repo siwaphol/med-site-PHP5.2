@@ -39,7 +39,21 @@
 			$("#content-slider").lightSlider({
                 loop:true,
                 keyPress:true,
-                item: 3
+                item: 3,
+                responsive : [
+		            {
+		                breakpoint:800,
+		                settings: {
+		                    item:1
+		                }
+		            },
+		            {
+		                breakpoint:480,
+		                settings: {
+		                    item:1
+		                }
+		            }
+		        ]
             });
 		});
 	</script>

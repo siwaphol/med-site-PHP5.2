@@ -45,7 +45,7 @@
                     Undergraduate<span class="arrow"></span>
                     </li>
                     <ul class="sub-menu collapse" id="courses_undergraduate">
-                        <li><a href="<?php echo site_url('courses');?>/1">Medilicine</a></li>
+                        <li><a href="<?php echo site_url('courses');?>/1">Medicine</a></li>
                         <li><a href="<?php echo site_url('courses');?>/2">Dentistry</a></li>
                         <li><a href="<?php echo site_url('courses');?>/3">Pharmacy</a></li>
                         <li><a href="<?php echo site_url('courses');?>/4">Nurse</a></li>
