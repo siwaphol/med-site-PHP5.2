@@ -39,7 +39,7 @@
                 <tr>
                     <td>
                         <a href="<?php echo site_url("admin/publication"); ?>/<?php echo $v["id"]; ?>"
-                           class="btn btn-link btn-xs"><?php echo $v['code']; ?></a>
+                           class="btn btn-link btn-xs"><?php echo $v['authors']; ?></a>
                     </td>
                     <td><?php echo $v['title']; ?></td>
                 </tr>

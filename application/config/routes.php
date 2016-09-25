@@ -50,10 +50,10 @@ $route['admin/banner'] = 'admin/banner';
 $route['admin/banner/create'] = 'admin/banner_create';
 $route['admin/banner/(:num)'] = 'admin/banner_edit/$1';
 
-$route['admin/publication'] = 'admin/news';
-$route['admin/publication/create'] = 'admin/news_create';
-$route['admin/publication/store'] = 'admin/news_store';
-$route['admin/publication/(:num)'] = 'admin/news_edit/$1';
+$route['admin/publication'] = 'admin/publication';
+$route['admin/publication/create'] = 'admin/publication_create';
+$route['admin/publication/import'] = 'admin/publication_import_xml';
+$route['admin/publication/(:num)'] = 'admin/publication_edit/$1';
 
 $route['admin/educations'] = 'admin/educations';
 $route['admin/staff_educations/(:num)'] = 'admin/staff_educations/$1';
