@@ -26,6 +26,13 @@
 		.demo{
 			width: 1000px;
 		}
+
+		.cS-hidden {
+		    height: 1px;
+		    opacity: 0;
+		    filter: alpha(opacity=0);
+		    overflow: hidden;
+		}
 	</style>
 
 	<script src="<?php echo base_url("assets/js/jquery.min.js"); ?>"></script>
@@ -40,6 +47,11 @@
                 loop:true,
                 keyPress:true,
                 item: 3,
+                autoWidth: true,
+                mode: 'fade',
+                onSliderLoad: function() {
+                	$('#content-slider').removeClass('cS-hidden');
+                },
                 responsive : [
 		            {
 		                breakpoint:800,
