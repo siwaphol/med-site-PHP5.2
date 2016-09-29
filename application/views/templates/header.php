@@ -8,65 +8,54 @@
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/bootstrap.min.css");?>">
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/animate.min.css");?>">
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/font-awesome.min.css");?>">
-	<link rel="stylesheet" href="<?php echo base_url("assets/lightslider/css/lightslider.min.css");?>">
+	<link rel="stylesheet" href="<?php echo base_url("assets/slick/slick.css");?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/slick/slick-theme.css");?>"/>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/custom.css");?>">
+
 	<style>
-        .demo .item{
-            margin-bottom: 60px;
-        }
-		.content-slider li{
-		    background-color: #ed3020;
-		    text-align: center;
-		    color: #FFF;
-		}
-		.content-slider h3 {
-		    margin: 0;
-		    padding: 70px 0;
-		}
-		.demo{
-			width: 1000px;
+		.slick-prev {
+			z-index: 1;
+			left: 10px;
 		}
 
-		.cS-hidden {
-		    height: 1px;
-		    opacity: 0;
-		    filter: alpha(opacity=0);
-		    overflow: hidden;
+		.slick-next {
+			right: 25px;
+		}
+
+		.slick-prev:before, .slick-next:before {
+		    font-size: 40px;
+		    color: #131111;
 		}
 	</style>
 
 	<script src="<?php echo base_url("assets/js/jquery.min.js"); ?>"></script>
 	<script src="<?php echo base_url("assets/js/bootstrap.min.js"); ?>"></script>
 	<script src="<?php echo base_url("assets/js/hoe.js"); ?>"></script>
-
-	<script src="<?php echo base_url("assets/lightslider/js/lightslider.min.js"); ?>"></script>
+	<script type="text/javascript" src="<?php echo base_url("assets/slick/slick.min.js"); ?>"></script>
 
 	<script>
-		$(document).ready(function() {
-			$("#content-slider").lightSlider({
-                loop:true,
-                keyPress:true,
-                item: 3,
-                autoWidth: true,
-                mode: 'fade',
-                onSliderLoad: function() {
-                	$('#content-slider').removeClass('cS-hidden');
-                },
-                responsive : [
-		            {
-		                breakpoint:800,
-		                settings: {
-		                    item:1
-		                }
-		            },
-		            {
-		                breakpoint:480,
-		                settings: {
-		                    item:1
-		                }
-		            }
-		        ]
-            });
+		$(document).ready(function(){
+	      $(".center").slick({
+	      	autoplay: true,
+	        dots: true,
+	        infinite: true,
+	        centerMode: true,
+	        slidesToShow: 3,
+	        centerPadding: '60px',
+	        responsive: [
+	        	{
+	        		breakpoint: 480,
+	        		settings: {
+	        			autoplay: false,
+	        			arrows: false,
+	        			centerMode: true,
+	        			centerPadding: '40px',
+	        			slidesToShow: 1,
+	        			slidesToScroll: 1
+	        		}
+	        	}
+	        ]
+	      });
 		});
 	</script>
 </head>
