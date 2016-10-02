@@ -8,11 +8,56 @@
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/bootstrap.min.css");?>">
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/animate.min.css");?>">
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/font-awesome.min.css");?>">
+	<link rel="stylesheet" href="<?php echo base_url("assets/slick/slick.css");?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/slick/slick-theme.css");?>"/>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/custom.css");?>">
+
+	<style>
+		.slick-prev {
+			z-index: 1;
+			left: 10px;
+		}
+
+		.slick-next {
+			right: 25px;
+		}
+
+		.slick-prev:before, .slick-next:before {
+		    font-size: 40px;
+		    color: #131111;
+		}
+	</style>
 
 	<script src="<?php echo base_url("assets/js/jquery.min.js"); ?>"></script>
 	<script src="<?php echo base_url("assets/js/bootstrap.min.js"); ?>"></script>
 	<script src="<?php echo base_url("assets/js/hoe.js"); ?>"></script>
+	<script type="text/javascript" src="<?php echo base_url("assets/slick/slick.min.js"); ?>"></script>
+
+	<script>
+		$(document).ready(function(){
+	      $(".center").slick({
+	      	autoplay: true,
+	        dots: true,
+	        infinite: true,
+	        centerMode: true,
+	        slidesToShow: 3,
+	        centerPadding: '60px',
+	        responsive: [
+	        	{
+	        		breakpoint: 480,
+	        		settings: {
+	        			autoplay: false,
+	        			arrows: false,
+	        			centerMode: true,
+	        			centerPadding: '40px',
+	        			slidesToShow: 1,
+	        			slidesToScroll: 1
+	        		}
+	        	}
+	        ]
+	      });
+		});
+	</script>
 </head>
 
 <body>

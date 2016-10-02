@@ -1,43 +1,14 @@
 <script type="text/javascript">
     $(document).ready(function () {
-
         $('#notification').show().delay(4000).fadeOut(700);
-
-        // publish settings
-        $(".publish").bind("click", function (e) {
-            var id = $(this).attr('id');
-            e.preventDefault();
-            $.ajax({
-                type: "POST",
-                url: "admin/setting/" + id + "/toggle-publish/",
-                headers: {
-                    'X-CSRF-Token': $('meta[name="_token"]').attr('content')
-                },
-                success: function (response) {
-                    if (response['result'] == 'success') {
-                        var imagePath = (response['changed'] == 1) ? "<?php echo base_url("assets/assets/images/publish.png"); ?>"
-                            : "<?php echo base_url("assets/assets/images/not_publish.png"); ?>";
-                        $("#publish-image-" + id).attr('src', imagePath);
-                    }
-                },
-                error: function () {
-                    alert("error");
-                }
-            })
-        });
     });
 </script>
 
 <section class="content-header">
     <h1>
-        setting
+        Settings
     </h1>
-    <ol class="breadcrumb">
-        <li><a href="#dashboard">Dashboard</a></li>
-        <li class="active">setting</li>
-    </ol>
 </section>
-
 
 <br>
 <div class="container">
@@ -51,12 +22,6 @@
         </div>
         <br> <br> <br>
         <?php 
-
-        // print "<pre>";
-        // print_r($setting);
-        // print "</pre>";
-
-
 
         if(count($setting_items)){ ?>
         <div class="">
@@ -105,9 +70,4 @@
         <?php }else{ ?>
         <div class="alert alert-danger">No results found</div>
         <?php } ?></div>
-    <div class="pull-left">
-        <ul class="pagination">
-            {!! $setting->render() !!}
-        </ul>
-    </div>
 </div>

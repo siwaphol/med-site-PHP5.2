@@ -278,3 +278,14 @@ body {
   }
 }
 /*end side manu*/
+
+div[row="banner"]{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+@media(max-width: 420px){
+  div[row="banner"] img{
+    width: 90%;
+  }
+}

@@ -149,7 +149,7 @@ class Admin extends CI_Controller {
         }
         else
         {
-            if ( ! $this->upload->do_upload('image_path') && !empty($_FILES['image_path']['name']))
+            if ( !empty($_FILES['image_path']['name']) &&! $this->upload->do_upload('image_path'))
             {
                 $this->session->set_userdata('flash_notification.message', $this->upload->display_errors());
 
@@ -163,7 +163,7 @@ class Admin extends CI_Controller {
                     $uploaded = $this->upload->data();
                     $_POST['image_path'] = 'uploads/' . $uploaded['file_name'];
                 }else{
-                    
+                    $_POST['image_path'] = $data['news_item']['image_path'];
                 }
 
                 $this->news_model->update_news($id);
