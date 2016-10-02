@@ -14,6 +14,7 @@ class Admin extends CI_Controller {
         $this->load->model('users_model');
         $this->load->model('staff_education_model');
         $this->load->model('publication_model');
+        $this->load->model('staff_publication_model');
     }
 
     public function index()
@@ -424,7 +425,22 @@ class Admin extends CI_Controller {
                 $data['username'] = $session_data['username'];
             }
             $data['title'] = 'Publication';
+            $data['text'] = "";
             $data['publications'] = $this->publication_model->get_publication();
+
+            $this->load->view('backend/layout', $data);
+            $this->load->view('backend/publication/index', $data);
+            $this->load->view('backend/footer');
+        }
+
+        public function publication_search(){
+            if($this->check_login() == true){
+                $session_data = $this->session->userdata('logged_in');
+                $data['username'] = $session_data['username'];
+            }
+            $data['text'] = $this->input->post('text_search');
+            $data['title'] = 'Publication';
+            $data['publications'] = $this->publication_model->get_publication_search();
 
             $this->load->view('backend/layout', $data);
             $this->load->view('backend/publication/index', $data);
@@ -464,7 +480,46 @@ class Admin extends CI_Controller {
             }
         }
 
-         public function publication_import_xml()
+        public function publication_edit($id)
+        {
+            if($this->check_login() == true){
+                $session_data = $this->session->userdata('logged_in');
+                $data['username'] = $session_data['username'];
+            }
+            // $data['title'] = 'Setting Edit';
+            // $data['publication'] = $this->setting_model->get_setting($id);
+
+            $data['title'] = 'Admin';
+            $data['publication'] =  $this->publication_model->get_publication($id);
+
+            if (empty($data['publication']))
+            {
+                show_404();
+            }
+
+            $this->load->helper('form');
+            $this->load->library('form_validation');
+
+            $this->form_validation->set_rules('title', 'Title', 'required');
+            //$this->form_validation->set_rules('content', 'Content', 'required');
+
+            if ($this->form_validation->run() === FALSE)
+            {
+                $this->load->view('backend/layout', $data);
+                $this->load->view('backend/publication/edit', $data);
+                $this->load->view('backend/footer');
+            }
+            else
+            {
+                $this->publication_model->update_publication($id);
+              
+                $this->session->set_userdata('flash_notification.message', 'Created Successfully');
+
+                redirect('admin/publication');
+            }
+        }
+
+        public function publication_import_xml()
         {
             if (isset($_FILES['doc']) && ($_FILES['doc']['error'] == UPLOAD_ERR_OK)) {
                 $xml = simplexml_load_file($_FILES['doc']['tmp_name']);    
@@ -559,17 +614,67 @@ class Admin extends CI_Controller {
             print "</pre>";
         }
 
-
-        public function publication_edit($id)
+        public function staff_publications()
         {
             if($this->check_login() == true){
                 $session_data = $this->session->userdata('logged_in');
                 $data['username'] = $session_data['username'];
             }
-            $data['title'] = 'Setting Edit';
-            $data['setting_item'] = $this->setting_model->get_setting($id);
+            $data['title'] = 'Staff Publication';
+            $data['publications'] = $this->staff_publication_model->get_staff_publication();
 
-            if (empty($data['setting_item']))
+            $this->load->view('backend/layout', $data);
+            $this->load->view('backend/staff_publication/index', $data);
+            $this->load->view('backend/footer');
+        }
+
+        public function staff_publication_create()
+        {
+            if($this->check_login() == true){
+                $session_data = $this->session->userdata('logged_in');
+                $data['username'] = $session_data['username'];
+            }
+            $data['title'] = 'Admin';
+            $data['publication'] = array();
+
+            $this->load->helper('form');
+            $this->load->library('form_validation');
+
+            $this->form_validation->set_rules('staff_id', 'Staff Id', 'required');
+            $this->form_validation->set_rules('publication_id', 'Publication', 'required');
+            // $this->form_validation->set_rules('name_th', 'Thai Name', 'required');
+            // $this->form_validation->set_rules('name_en', 'English Name', 'required');
+            // $this->form_validation->set_rules('content', 'Content', 'required');
+
+            if ($this->form_validation->run() === FALSE)
+            {
+                $this->load->view('backend/layout', $data);
+                $this->load->view('backend/staff_publication/create', $data);
+                $this->load->view('backend/footer');
+            }
+            else
+            {
+                $this->staff_publication_model->set_staff_publication();
+              
+                $this->session->set_userdata('flash_notification.message', 'Created Successfully');
+
+                redirect('admin/staff_publications');
+            }
+        }
+
+        public function staff_publication_edit($staff_id, $publication_id)
+        {
+            if($this->check_login() == true){
+                $session_data = $this->session->userdata('logged_in');
+                $data['username'] = $session_data['username'];
+            }
+            // $data['title'] = 'Setting Edit';
+            // $data['publication'] = $this->setting_model->get_setting($id);
+
+            $data['title'] = 'Admin';
+            $data['publication'] =  $this->staff_publication_model->get_staff_publication($staff_id, $publication_id);
+
+            if (empty($data['publication']))
             {
                 show_404();
             }
@@ -577,24 +682,27 @@ class Admin extends CI_Controller {
             $this->load->helper('form');
             $this->load->library('form_validation');
 
-            $this->form_validation->set_rules('setting_name', 'Name', 'required');
-            $this->form_validation->set_rules('content', 'Content', 'required');
+            $this->form_validation->set_rules('staff_id', 'Staff Id', 'required');
+            $this->form_validation->set_rules('publication_id', 'Publication', 'required');
+            //$this->form_validation->set_rules('content', 'Content', 'required');
 
             if ($this->form_validation->run() === FALSE)
             {
                 $this->load->view('backend/layout', $data);
-                $this->load->view('backend/setting/edit', $data);
+                $this->load->view('backend/staff_publication/edit', $data);
                 $this->load->view('backend/footer');
             }
             else
             {
-                $this->setting_model->update_setting($id);
+                $this->staff_publication_model->update_staff_publication($staff_id, $publication_id);
               
                 $this->session->set_userdata('flash_notification.message', 'Created Successfully');
 
-                redirect('admin/setting');
+                redirect('admin/staff_publications');
             }
         }
+
+        
     #end publication
     public function staff()
     {

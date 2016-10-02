@@ -94,7 +94,7 @@
         <label class="control-label" for="arthors">Arthors</label>
 
         <div class="controls">
-            <textarea name="arthors" id="arthors" cols="30" rows="10" placeholder="Arthors" class="form-control"></textarea>
+            <textarea name="arthors" id="authors" cols="30" rows="10" placeholder="Arthors" class="form-control"></textarea>
             <?php if(form_error('arthors')){ ?>
                 <span class="help-block"><?php echo form_error('arthors'); ?></span>
             <?php } ?>

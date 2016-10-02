@@ -77,6 +77,7 @@
                     <li><a href="<?php echo site_url("admin/staff/create"); ?>"><i class="fa fa-group"></i> Add Staff</a>
                     </li>
                     <li><a href="<?php echo site_url("admin/educations"); ?>"><i class="fa fa-graduation-cap"></i> Edit Staff Educations</a></li>
+                    <li><a href="<?php echo site_url("admin/staff_publications"); ?>"><i class="fa fa-graduation-cap"></i> Manage Staff Publications</a></li>
                 </ul>
             </li>
             <li class="treeview"><a href="#"> <i class="fa fa-user"></i> <span>Publications</span>

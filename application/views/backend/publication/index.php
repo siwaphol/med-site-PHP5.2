@@ -6,11 +6,11 @@
 
 <section class="content-header">
     <h1>
-        Publication
+        Publications
     </h1>
     <ol class="breadcrumb">
         <li><a href="#dashboard">Dashboard</a></li>
-        <li class="active">Publication</li>
+        <li class="active">Publications</li>
     </ol>
 </section>
 
@@ -24,12 +24,25 @@
             <div class="btn-toolbar"><a href="<?php echo site_url("admin/publication/create"); ?>" class="btn btn-primary">
                     <span class="glyphicon glyphicon-plus"></span>&nbsp;Add Publication </a></div>
         </div>
+        <div class="pull-left">
+            <div class="btn-toolbar">
+                <form action="<?php echo site_url("admin/publication/search"); ?>" method="post">
+                    <input type="text" name="text_search" class="form-control" id="text_search" placeholder="Title Publication" value="<?php echo $text; ?>">
+                    <input type="submit" value="Search" class="btn btn-success">
+                </form>
+            </div>
+        </div>
+         <div class="pull-left">
+            <div class="btn-toolbar"><a href="<?php echo site_url("admin/publication"); ?>" class="btn btn-primary">
+                    <span ></span>&nbsp;All Publication </a></div>
+        </div>
         <br> <br> <br>
         <?php if(count($publications)){ ?>
         <div class="">
             <table class="table table-striped">
                 <thead>
                 <tr>
+                    <th>Publication Id</th>
                     <th>Staff Name</th>
                     <th>Title</th>
                 </tr>
@@ -37,6 +50,10 @@
                 <tbody>
                 <?php foreach ($publications as $v){ ?>
                 <tr>
+                    <td>
+                        <a href="<?php echo site_url("admin/publication"); ?>/<?php echo $v["id"]; ?>"
+                           class="btn btn-link btn-xs"><?php echo $v['id']; ?></a>
+                    </td>
                     <td>
                         <a href="<?php echo site_url("admin/publication"); ?>/<?php echo $v["id"]; ?>"
                            class="btn btn-link btn-xs"><?php echo $v['authors']; ?></a>

@@ -18,6 +18,15 @@ class Publication_model extends CI_Model {
 		return $query->row_array();
 	}
 
+	public function get_publication_search(){
+		$text = $this->input->post('text_search');
+
+		$sql = "select * from publications where title like '%".$text."%'";
+		 			
+        $query = $this->db->query($sql);
+        return $query->result_array();
+	}
+
 	public function set_publication()
 	{
 		$data = array(

@@ -52,13 +52,21 @@ $route['admin/banner/(:num)'] = 'admin/banner_edit/$1';
 
 $route['admin/publication'] = 'admin/publication';
 $route['admin/publication/create'] = 'admin/publication_create';
-$route['admin/publication/import'] = 'admin/publication_import_xml';
 $route['admin/publication/(:num)'] = 'admin/publication_edit/$1';
+$route['admin/publication/import'] = 'admin/publication_import_xml';
+$route['admin/publication/search'] = "admin/publication_search";
+
+$route['admin/staff_publications'] = 'admin/staff_publications';
+$route['admin/staff_publication/create'] = 'admin/staff_publication_create';
+$route['admin/staff_publication/(:num)/(:num)'] = 'admin/staff_publication_edit/$1/$2';
+
 
 $route['admin/educations'] = 'admin/educations';
 $route['admin/staff_educations/(:num)'] = 'admin/staff_educations/$1';
 $route['admin/staff_educations/(:num)/create'] = 'admin/staff_educations_create/$1';
 $route['admin/staff_educations/(:num)/(:num)'] = 'admin/staff_educations_edit/$1/$2';
+
+
 
 $route['admin/(:any)'] = 'admin';
 
