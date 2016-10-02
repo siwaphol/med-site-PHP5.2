@@ -45,7 +45,7 @@
                 <?php $no = 1;
                 foreach ($staff as $v){ ?>
                 <tr>
-                    <td><?php echo $no++; ?></td>
+                    <td><?php echo $v['id']; ?></td>
                     <td>
                         <a href="<?php echo site_url("admin/staff"); ?>/<?php echo $v["id"]; ?>"
                            class="btn btn-link btn-xs"><?php echo $v['first_name_en']; ?></a>

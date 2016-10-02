@@ -10,7 +10,7 @@ class Api extends REST_Controller
         $this->load->model('news_model');
         $this->load->model('profile_model');
     }
-     
+    
     public function news_get()
     {
         $news = $this->news_model->get_latest_4_news();

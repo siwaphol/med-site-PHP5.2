@@ -3,7 +3,7 @@
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
         <!-- Sidebar user panel -->
-        <div class="user-panel">
+<!--         <div class="user-panel">
             <div class="pull-left image">
                 <img src="" class="img-circle" alt="User Image" />
 
@@ -13,7 +13,7 @@
 
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
-        </div>
+        </div> -->
         <!-- search form -->
         <form action="#" method="get" class="sidebar-form">
             <div class="input-group">
@@ -28,8 +28,9 @@
         <ul class="sidebar-menu">
             <li class=""><a href="<?php echo site_url("admin/banner");?>"> <i class="fa fa-dashboard"></i> <span>Banner</span>
                 </a></li>
-            <li class=""><a href="#admin/menu"> <i class="fa fa-bars"></i> <span>Menu</span> </a>
-            </li>
+                
+            <!-- <li class=""><a href="#admin/menu"> <i class="fa fa-bars"></i> <span>Menu</span> </a></li> -->
+
             <li class="treeview"><a href="#"> <i class="fa fa-th"></i> <span>News</span>
                     <i class="fa fa-angle-left pull-right"></i> </a>
                 <ul class="treeview-menu">

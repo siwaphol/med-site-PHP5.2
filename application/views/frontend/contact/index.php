@@ -1,4 +1,4 @@
-<h1><?php print $title; ?></h1>
+<h4><?php print $title; ?></h4>
 <div>
 	<p>
 		<?php print $setting_item['content']; ?>

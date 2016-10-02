@@ -1,10 +1,16 @@
 <section class="center slider">
 
-	  <?php foreach ($banner as $v) { ?>
+  	<?php 
+  		$index = 0;
+	  foreach ($banner as $v) {
+	?>
 	  	<div>
 	      <img style="width: 380px;height: 300px;" src="<?php echo base_url($v['image_path']); ?>">
 	    </div>
-	  <?php } ?>
+  	<?php 
+  		$index++;
+  	} 
+  	?>
 
 <!--     <div>
       <img src="http://placehold.it/350x300?text=1">
