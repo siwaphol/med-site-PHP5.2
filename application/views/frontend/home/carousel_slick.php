@@ -1,5 +1,12 @@
 <section class="center slider">
-    <div>
+
+	  <?php foreach ($banner as $v) { ?>
+	  	<div>
+	      <img style="width: 380px;height: 300px;" src="<?php echo base_url($v['image_path']); ?>">
+	    </div>
+	  <?php } ?>
+
+<!--     <div>
       <img src="http://placehold.it/350x300?text=1">
     </div>
     <div>
@@ -13,5 +20,5 @@
     </div>
     <div>
       <img src="http://placehold.it/350x300?text=5">
-    </div>
+    </div> -->
   </section>
