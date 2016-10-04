@@ -572,14 +572,16 @@ class Admin extends CI_Controller {
                 }
             }
 
-            if(!empty($result_array['PubmedArticle']['PubmedData']['ArticleIdList']['ArticleId'])){
-                if(count($result_array['PubmedArticle']['PubmedData']['ArticleIdList']['ArticleId']) == 3){
-                    $publication['pubmed_link'] =  $result_array['PubmedArticle']['PubmedData']['ArticleIdList']['ArticleId'][2]; 
-                }else if(count($result_array['PubmedArticle']['PubmedData']['ArticleIdList']['ArticleId']) == 2){
-                    $publication['pubmed_link'] =  $result_array['PubmedArticle']['PubmedData']['ArticleIdList']['ArticleId'][1]; 
-                }else{
-                    $publication['pubmed_link'] =  $result_array['PubmedArticle']['PubmedData']['ArticleIdList']['ArticleId']; 
-                }
+            if(!empty($result_array['PubmedArticle']['PMID'])){
+                $l_PMID = $result_array['PubmedArticle']['PMID'];
+                $publication['pubmed_link'] = $l_PMID;
+                // if(count($result_array['PubmedArticle']['PubmedData']['ArticleIdList']['ArticleId']) == 3){
+                //     $publication['pubmed_link'] =  $result_array['PubmedArticle']['PubmedData']['ArticleIdList']['ArticleId'][2]; 
+                // }else if(count($result_array['PubmedArticle']['PubmedData']['ArticleIdList']['ArticleId']) == 2){
+                //     $publication['pubmed_link'] =  $result_array['PubmedArticle']['PubmedData']['ArticleIdList']['ArticleId'][1]; 
+                // }else{
+                //     $publication['pubmed_link'] =  $result_array['PubmedArticle']['PubmedData']['ArticleIdList']['ArticleId']; 
+                // }
             }
 
             if(!empty($result_array['PubmedArticle']['MedlineCitation']['Article']['Journal']['JournalIssue']['PubDate']['Year'])){
