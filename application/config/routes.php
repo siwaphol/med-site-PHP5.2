@@ -66,12 +66,12 @@ $route['admin/staff_educations/(:num)/create'] = 'admin/staff_educations_create/
 $route['admin/staff_educations/(:num)/(:num)'] = 'admin/staff_educations_edit/$1/$2';
 
 
-
 $route['admin/(:any)'] = 'admin';
 
 // Browse profile
 $route['browse'] = 'profile/index';
 $route['api/profile'] = 'api/profile';
+$route['api/publication'] = 'api/publication';
 $route['profile/(:any)'] = 'profile/show/$1';
 
 $route['news/create'] = 'news/create';
