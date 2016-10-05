@@ -81,8 +81,9 @@ class Api extends REST_Controller
         $this->pagination->initialize($config);
 
         $page = (isset($_GET['page'])) ? (int)$_GET['page']-1 : 0;
+        $staffId = (int)$_GET['staff_id'];
         //TODO-nong for test will use $staff_id=2
-        $data["results"] = $this->publication_model->fetch_publication($config["per_page"], $page*$perPage, 2);
+        $data["results"] = $this->publication_model->fetch_publication($config["per_page"], $page*$perPage, $staffId);
         $data["links"] = $this->pagination->create_links();
 
         if($data)

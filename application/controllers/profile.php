@@ -39,7 +39,7 @@ class Profile extends CI_Controller {
         $this->load->view('second_template/header', $data);
         $this->load->view('profile/show', $data);
         $this->load->view('second_template/footer');
-//        $this->load->view('profile/script');
+        $this->load->view('profile/show_script');
         $this->load->view('second_template/footer_end');
     }
 
