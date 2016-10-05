@@ -116,8 +116,6 @@ class Publication_model extends CI_Model {
             foreach ($query->result() as $row) {
                 $data[] = $row;
             }
-            var_dump($data);
-            die();
             return $data;
         }
         return false;
