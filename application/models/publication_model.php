@@ -59,8 +59,13 @@ class Publication_model extends CI_Model {
 		// 	'created_at' => now(),
 		// 	'updated_at' => now(),
 		// );
-
-		return $this->db->insert('publications', $data);
+		$this->db->where('title', $data['title']);
+		$query = $this->db->get('publications');
+		if ( $query->num_rows() <= 0 )
+		{
+			$this->db->flush_cache();
+			return $this->db->insert('publications', $data);
+		}
 	}
 
 

@@ -534,18 +534,45 @@ class Admin extends CI_Controller {
             foreach ($result_array['PubmedArticle'] as $pubmedArticle) {
                 $publication = array();
 
-                $publication['title'] = $pubmedArticle['MedlineCitation']['Article']['ArticleTitle']?:'';
-                $publication['journal'] = $pubmedArticle['MedlineCitation']['Article']['Journal']['Title']?:null;
+                $publication['title'] = isset($pubmedArticle['MedlineCitation']['Article']['ArticleTitle'])?$pubmedArticle['MedlineCitation']['Article']['ArticleTitle']:'';
+                $publication['journal'] = isset($pubmedArticle['MedlineCitation']['Article']['Journal']['Title'])?$pubmedArticle['MedlineCitation']['Article']['Journal']['Title']:null;
 
-                $arthors = $pubmedArticle['MedlineCitation']['Article']['AuthorList']['Author'];
-                $publication['arthors'] = "";  
-                foreach ($arthors as $arthor) {
-                    $publication['arthors'] .= $arthor['Lastname'] . ", " . $arthor['Initials'] . "., ";
+                $authors = $pubmedArticle['MedlineCitation']['Article']['AuthorList']['Author'];
+                $publication['authors'] = "";  
+                foreach ($authors as $author) {
+                    $publication['authors'] .= $author['LastName'] . ", " . $author['Initials'] . "., ";
                 }
 
-                echo $key. " " . $pubmedArticle['MedlineCitation']['PMID'] . "</br>";
+                $publication['abstract'] = isset($pubmedArticle['MedlineCitation']['Article']['Abstract']['AbstractText'])?$pubmedArticle['MedlineCitation']['Article']['Abstract']['AbstractText']:null;
+                $publication['pubmed_link'] = isset($pubmedArticle['MedlineCitation']['PMID'])?$pubmedArticle['MedlineCitation']['PMID']:null;
+
+                $publication['year'] = isset($pubmedArticle['MedlineCitation']['Article']['Journal']['JournalIssue']['PubDate']['Year'])?$pubmedArticle['MedlineCitation']['Article']['Journal']['JournalIssue']['PubDate']['Year']:null;
+                $journalIssue = isset($pubmedArticle['MedlineCitation']['Article']['Journal']['JournalIssue'])?$pubmedArticle['MedlineCitation']['Article']['Journal']['JournalIssue']:null;
+                if ($journalIssue) {
+                    $issue = isset($journalIssue['Issue'])?" (".$journalIssue['Issue'].")":null;
+                    $publication['volume'] = isset($journalIssue['Year'])?$journalIssue['Year'] . $issue:null;
+                }
+
+                $pages = isset($pubmedArticle['MedlineCitation']['Article']['Pagination']['MedlinePgn'])?$pubmedArticle['MedlineCitation']['Article']['Pagination']['MedlinePgn']:null;
+                if (!is_null($pages)) {
+                    $exploded_pages = explode("-", $pages);
+                    // var_dump($exploded_pages);
+                    // die();
+                    if (count($exploded_pages)>=2) {
+                        $substrStart = 0 - strlen($exploded_pages[1]);
+                        $publication['pages'] = $exploded_pages[0] ."-" . (substr($exploded_pages[0], 0 ,$substrStart) . $exploded_pages[1]);
+                    }else{
+                        $publication['pages'] = $exploded_pages[0];
+                    }
+                }
+
+                $publication['created_at'] = now();
+                $publication['updated_at'] = now();
+
+                $this->publication_model->import_publication($publication);
+                // echo $key. " " . $pubmedArticle['MedlineCitation']['PMID'] . "</br>";
             }
-            die();
+            // die();
             // print "<pre>";
             // print_r($result_array);
             // print "</pre>";
@@ -579,17 +606,17 @@ class Admin extends CI_Controller {
             //     }
             // }
 
-            if(!empty($result_array['PubmedArticle']['MedlineCitation']['Article']['Abstract']['AbstractText'])){
-                if(count($result_array['PubmedArticle']['MedlineCitation']['Article']['Abstract']['AbstractText']) > 1){
-                    $publication['abstract'] =  $result_array['PubmedArticle']['MedlineCitation']['Article']['Abstract']['AbstractText'][1]; 
-                }else{
-                    $publication['abstract'] =  $result_array['PubmedArticle']['MedlineCitation']['Article']['Abstract']['AbstractText']; 
-                }
-            }
+            // if(!empty($result_array['PubmedArticle']['MedlineCitation']['Article']['Abstract']['AbstractText'])){
+            //     if(count($result_array['PubmedArticle']['MedlineCitation']['Article']['Abstract']['AbstractText']) > 1){
+            //         $publication['abstract'] =  $result_array['PubmedArticle']['MedlineCitation']['Article']['Abstract']['AbstractText'][1]; 
+            //     }else{
+            //         $publication['abstract'] =  $result_array['PubmedArticle']['MedlineCitation']['Article']['Abstract']['AbstractText']; 
+            //     }
+            // }
 
-            if(!empty($result_array['PubmedArticle']['PMID'])){
-                $l_PMID = $result_array['PubmedArticle']['PMID'];
-                $publication['pubmed_link'] = $l_PMID;
+            // if(!empty($result_array['PubmedArticle']['PMID'])){
+            //     $l_PMID = $result_array['PubmedArticle']['PMID'];
+            //     $publication['pubmed_link'] = $l_PMID;
                 // if(count($result_array['PubmedArticle']['PubmedData']['ArticleIdList']['ArticleId']) == 3){
                 //     $publication['pubmed_link'] =  $result_array['PubmedArticle']['PubmedData']['ArticleIdList']['ArticleId'][2]; 
                 // }else if(count($result_array['PubmedArticle']['PubmedData']['ArticleIdList']['ArticleId']) == 2){
@@ -597,38 +624,35 @@ class Admin extends CI_Controller {
                 // }else{
                 //     $publication['pubmed_link'] =  $result_array['PubmedArticle']['PubmedData']['ArticleIdList']['ArticleId']; 
                 // }
-            }
+            // }
 
-            if(!empty($result_array['PubmedArticle']['MedlineCitation']['Article']['Journal']['JournalIssue']['PubDate']['Year'])){
-                $publication['year'] =  $result_array['PubmedArticle']['MedlineCitation']['Article']['Journal']['JournalIssue']['PubDate']['Year']; 
-            }else{
-                $publication['year'] =  "";
-            }
+            // if(!empty($result_array['PubmedArticle']['MedlineCitation']['Article']['Journal']['JournalIssue']['PubDate']['Year'])){
+            //     $publication['year'] =  $result_array['PubmedArticle']['MedlineCitation']['Article']['Journal']['JournalIssue']['PubDate']['Year']; 
+            // }else{
+            //     $publication['year'] =  "";
+            // }
 
-            if(!empty($result_array['PubmedArticle']['MedlineCitation']['Article']['Journal']['JournalIssue']['Volume'])){
-                $publication['volume'] =  $result_array['PubmedArticle']['MedlineCitation']['Article']['Journal']['JournalIssue']['Volume']; 
-            }else{
-                $publication['volume'] =  "";
-            }
+            // if(!empty($result_array['PubmedArticle']['MedlineCitation']['Article']['Journal']['JournalIssue']['Volume'])){
+            //     $publication['volume'] =  $result_array['PubmedArticle']['MedlineCitation']['Article']['Journal']['JournalIssue']['Volume']; 
+            // }else{
+            //     $publication['volume'] =  "";
+            // }
 
-            if(!empty($result_array['PubmedArticle']['MedlineCitation']['Article']['Pagination']['MedlinePgn'])){
-                $publication['pages'] =  $result_array['PubmedArticle']['MedlineCitation']['Article']['Pagination']['MedlinePgn']; 
-            }else{
-                $publication['pages'] = "";
-            }
+            // if(!empty($result_array['PubmedArticle']['MedlineCitation']['Article']['Pagination']['MedlinePgn'])){
+            //     $publication['pages'] =  $result_array['PubmedArticle']['MedlineCitation']['Article']['Pagination']['MedlinePgn']; 
+            // }else{
+            //     $publication['pages'] = "";
+            // }
 
-            $publication['created_at'] = now();
-            $publication['updated_at'] = now();
-
-
-            $this->publication_model->import_publication($publication);
+            // $publication['created_at'] = now();
+            // $publication['updated_at'] = now();
 
             $this->session->set_userdata('flash_notification.message', 'Created Successfully');
 
             redirect('admin/publication');
-            print "<pre>";
-            print_r($publication);
-            print "</pre>";
+            // print "<pre>";
+            // print_r($publication);
+            // print "</pre>";
         }
 
         public function staff_publications()

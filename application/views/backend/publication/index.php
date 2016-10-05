@@ -51,14 +51,12 @@
                 <?php foreach ($publications as $v){ ?>
                 <tr>
                     <td>
-                        <a href="<?php echo site_url("admin/publication"); ?>/<?php echo $v["id"]; ?>"
-                           class="btn btn-link btn-xs"><?php echo $v['id']; ?></a>
-                    </td>
-                    <td>
-                        <a href="<?php echo site_url("admin/publication"); ?>/<?php echo $v["id"]; ?>"
-                           class="btn btn-link btn-xs"><?php echo $v['authors']; ?></a>
+                        <a href="<?php echo site_url("admin/publication"); ?>/<?php echo $v["id"]; ?>"><?php echo $v['id']; ?></a>
                     </td>
                     <td><?php echo $v['title']; ?></td>
+                    <td>
+                        <a href="<?php echo site_url("admin/publication"); ?>/<?php echo $v["id"]; ?>"><?php echo $v['authors']; ?></a>
+                    </td>
                 </tr>
                 <?php } ?>
                 </tbody>
