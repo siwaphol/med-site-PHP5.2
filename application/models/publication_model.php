@@ -90,7 +90,25 @@ class Publication_model extends CI_Model {
 		$this->db->update('publications', $data);
 	}
 
-    public function fetch_publication($limit, $start) {
+    public function fetch_publication($limit, $start, $staff_id) {
+    	$this->db->select('publication_id');
+    	$this->db->where('staff_id', $staff_id);
+
+    	$query = $this->db->get('staff_publication');
+    	if ($query->num_rows() <= 0) {
+    		return null;	
+    	}
+
+    	$pubArr = array();
+    	foreach ($query->result() as $value) {
+    		$pubArr[] = $value->publication_id;
+    	}
+    	// it did works
+    	// var_dump($pubArr);
+    	// die();
+
+    	$this->db->flush_cache();
+        $this->db->where_in('id', $pubArr);
         $this->db->limit($limit, $start);
         $query = $this->db->get("publications");
 
@@ -98,6 +116,8 @@ class Publication_model extends CI_Model {
             foreach ($query->result() as $row) {
                 $data[] = $row;
             }
+            var_dump($data);
+            die();
             return $data;
         }
         return false;
