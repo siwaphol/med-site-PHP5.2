@@ -7,18 +7,19 @@ $route['api/news'] = 'api/news';
 
 // $route['admin/course/(:any)'] = 'admin/course/$1';
 
+// Migration
+$route['migration'] = 'migrate/index';
+
 // Admin
 $route['admin/check_login'] = 'admin/login_view';
 $route['admin/login'] = 'admin/user_login';
 $route['admin/logout'] = 'admin/logout';
-
 
 $route['admin'] = 'admin';
 $route['admin/news'] = 'admin/news';
 $route['admin/news/create'] = 'admin/news_create';
 $route['admin/news/store'] = 'admin/news_store';
 $route['admin/news/(:num)'] = 'admin/news_edit/$1';
-
 
 $route['admin/staff'] = 'admin/staff';
 $route['admin/staff/create'] = 'admin/staff_create';
