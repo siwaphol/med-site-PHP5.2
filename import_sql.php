@@ -139,7 +139,7 @@ function query($sql)
 
 set_time_limit(0);
 
-$mysqli = new mysqli('localhost', 'root', '', 'test_migrations');
+$mysqli = new mysqli('localhost', 'root', '', 'med-site');
 $mysqli->set_charset("utf8");
 
 header('Content-Type: text/html;charset=utf-8');

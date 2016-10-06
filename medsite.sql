@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 -- 
 -- Host: localhost
--- Generation Time: Oct 06, 2016 at 05:32 PM
+-- Generation Time: Oct 07, 2016 at 02:29 AM
 -- Server version: 5.0.45
 -- PHP Version: 5.2.3
 
@@ -172,6 +172,35 @@ INSERT INTO `curriculums` (`id`, `group_name`, `period`, `content`, `created_at`
 -- --------------------------------------------------------
 
 -- 
+-- Table structure for table `migrations`
+-- 
+
+DROP TABLE IF EXISTS `migrations`;
+CREATE TABLE IF NOT EXISTS `migrations` (
+  `migration` varchar(255) collate utf8_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- 
+-- Dumping data for table `migrations`
+-- 
+
+INSERT INTO `migrations` (`migration`, `batch`) VALUES 
+('2014_10_12_000000_create_users_table', 1),
+('2014_10_12_100000_create_password_resets_table', 1),
+('2016_01_19_215628_create_staffs', 2),
+('2016_01_21_040849_create_staff_educations_table', 2),
+('2016_03_29_040246_create_news_table', 2),
+('2016_05_18_060555_create_courses_table', 2),
+('2016_05_27_170031_create_curriculums_table', 2),
+('2016_06_10_202135_publications', 2),
+('2016_06_11_103438_course_group', 3),
+('2016_06_11_103521_course_group_list', 3),
+('2016_06_12_095327_create_settings_table', 4);
+
+-- --------------------------------------------------------
+
+-- 
 -- Table structure for table `news`
 -- 
 
@@ -200,6 +229,26 @@ INSERT INTO `news` (`id`, `title`, `content`, `image_path`, `start_date`, `end_d
 (5, 'fffff', '<p>this is real fourth content</p>\r\n', 'uploads/Lighthouse.jpg', '2016-06-01', '2016-06-30', '2016-06-12 16:33:24', '2016-06-12 16:33:24'),
 (6, 'dfsdf', '<p>content is here</p>\r\n\r\n<table border="1" cellpadding="1" cellspacing="1" style="width:500px">\r\n	<tbody>\r\n		<tr>\r\n			<td>123</td>\r\n			<td>sdf</td>\r\n		</tr>\r\n		<tr>\r\n			<td>sdf</td>\r\n			<td>123</td>\r\n		</tr>\r\n		<tr>\r\n			<td>sdf</td>\r\n			<td>sdf</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n', '0', '2016-06-01', '2016-06-03', '2016-06-11 15:31:07', '2016-06-11 15:31:07'),
 (7, 'first', '<p>1234</p>\r\n', '0', '2016-06-08', '2016-06-02', '2016-06-11 16:04:21', '2016-06-11 16:04:21');
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `password_resets`
+-- 
+
+DROP TABLE IF EXISTS `password_resets`;
+CREATE TABLE IF NOT EXISTS `password_resets` (
+  `email` varchar(255) collate utf8_unicode_ci NOT NULL,
+  `token` varchar(255) collate utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
+  KEY `password_resets_email_index` (`email`),
+  KEY `password_resets_token_index` (`token`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- 
+-- Dumping data for table `password_resets`
+-- 
+
 
 -- --------------------------------------------------------
 

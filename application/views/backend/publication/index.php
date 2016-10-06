@@ -20,21 +20,23 @@
         <?php echo includeView("flash/message"); ?>
         <br>
 
-        <div class="pull-left">
+        <div class="row">
             <div class="btn-toolbar"><a href="<?php echo site_url("admin/publication/create"); ?>" class="btn btn-primary">
                     <span class="glyphicon glyphicon-plus"></span>&nbsp;Add Publication </a></div>
         </div>
-        <div class="pull-left">
-            <div class="btn-toolbar">
-                <form action="<?php echo site_url("admin/publication/search"); ?>" method="post">
+        <div class="row">
+            <form action="<?php echo site_url("admin/publication/search"); ?>" method="post">
+                <div class="col-md-5">
                     <input type="text" name="text_search" class="form-control" id="text_search" placeholder="Title Publication" value="<?php echo $text; ?>">
+                </div>
+                <div class="col-md-2">
                     <input type="submit" value="Search" class="btn btn-success">
-                </form>
-            </div>
+                </div>
+            </form>
         </div>
-         <div class="pull-left">
+         <div class="row">
             <div class="btn-toolbar"><a href="<?php echo site_url("admin/publication"); ?>" class="btn btn-primary">
-                    <span ></span>&nbsp;All Publication </a></div>
+                    <span ></span>&nbsp;Show All Publications </a></div>
         </div>
         <br> <br> <br>
         <?php if(count($publications)){ ?>

@@ -1,16 +1,10 @@
-<?php 
-// print "<pre>";
-// print_r($course_item);
-?>
-	<div><h1><?php print $title; ?> <?php print $curriculum_item['period']; ?>  </h1></div>
-
-	<br>
-
+<div class="border-and-shadow">
+	<div class="heading parbase section">
+		<hgroup class="section-header standard heading-level-1">
+			<h1 class="black"><?php print $title; ?> <?php print $curriculum_item['period']; ?></h1>
+		</hgroup>
+	</div>
 	<div>
-		
 		<?php  echo $curriculum_item['content']; ?>
 	</div>
-
-
-<?php
-?>
+</div>

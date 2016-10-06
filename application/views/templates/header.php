@@ -5,6 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title><?php echo $title ?></title>
+	 <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,300,600,700,200italic,300italic,400italic,700italic|Fjord+One' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/bootstrap.min.css");?>">
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/animate.min.css");?>">
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/font-awesome.min.css");?>">
@@ -40,8 +41,8 @@
 	        dots: true,
 	        infinite: true,
 	        centerMode: true,
-	        slidesToShow: 3,
-	        centerPadding: '80px',
+	        slidesToShow: 1,
+	        centerPadding: '200px',
 	        responsive: [
 	        	{
 	        		breakpoint: 480,
@@ -49,7 +50,7 @@
 	        			autoplay: false,
 	        			arrows: false,
 	        			centerMode: true,
-	        			centerPadding: '40px',
+	        			centerPadding: '-20px',
 	        			slidesToShow: 1,
 	        			slidesToScroll: 1
 	        		}

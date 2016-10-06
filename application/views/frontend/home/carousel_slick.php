@@ -1,11 +1,11 @@
-<section class="center slider">
+<section class="center slider below-shadow">
 
   	<?php 
   		$index = 0;
 	  foreach ($banner as $v) {
 	?>
 	  	<div>
-	      <img style="width: 380px;height: 300px;" src="<?php echo base_url($v['image_path']); ?>">
+	      <img style="width: 100%;height: 350px;" src="<?php echo base_url($v['image_path']); ?>">
 	    </div>
   	<?php 
   		$index++;
