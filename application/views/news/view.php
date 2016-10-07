@@ -7,3 +7,4 @@ echo $news_item['text'];
 <?php
 echo $news_item['slug'];
 ?>
+

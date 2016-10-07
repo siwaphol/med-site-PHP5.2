@@ -12,7 +12,16 @@ class News_model extends CI_Model {
             $sql = "select * from news WHERE (start_date<=CURDATE() or start_date is NULL)
                     AND (end_date>CURDATE() or end_date is NULL) ORDER BY updated_at DESC LIMIT 4";
             $query = $this->db->query($sql);
-			return $query->result_array();
+
+            $emptyRemain = 4 - $query->num_rows();
+            $result = $query->result_array();
+
+            $this->db->flush_cache();
+            $sql = "select * from news ORDER BY updated_at DESC LIMIT " . $emptyRemain;
+            $query = $this->db->query($sql);
+            $result = $result + $query->result_array();
+
+			return $result;
 		}
 		return null;
 	}
