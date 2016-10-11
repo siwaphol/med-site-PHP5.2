@@ -21,6 +21,7 @@ class Profile_model extends CI_Model {
     }
 
     public function fetch_profiles($limit, $start) {
+        $this->db->order_by("first_name_en","asc");
         $this->db->limit($limit, $start);
         $query = $this->db->get("staffs");
 

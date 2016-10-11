@@ -37,12 +37,12 @@
 	<script>
 		$(document).ready(function(){
 	      $(".center").slick({
-	      	// autoplay: true,
+	      	autoplay: true,
 	        dots: true,
 	        infinite: true,
 	        centerMode: true,
 	        slidesToShow: 1,
-	        centerPadding: '200px',
+	        centerPadding: '380px',
 	        responsive: [
 	        	{
 	        		breakpoint: 480,
