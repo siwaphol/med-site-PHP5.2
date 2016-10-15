@@ -88,13 +88,7 @@
                         <div id="professionalEducationContent" class="content-section">
                             <h3>Educations</h3>
                             <hr/>
-                            <ul class="section-listing">
-                                <?php foreach($userEducations as $aEd){ ?>
-                                <li class="section-list-item">
-                                    <div class="description"><?php echo $aEd['other_details'];?> (<?php echo $aEd['year']; ?>)</div>
-                                </li>
-                                <?php } ?>
-                            </ul>
+                            <p><?php echo $user['education_details'];?></p>
                         </div>
 
                     </div>
@@ -166,7 +160,7 @@
             <div id="teaching" class="card tab-pane ">
                 <div><h2>Teaching</h2>
 
-                    <div class="row-fluid">
+<!--                     <div class="row-fluid">
                         <div class="span8 page-content">
                             <div id="coursesContent" class="content-section">
                                 <div><h3>2015-16 Courses</h3>
@@ -292,7 +286,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 

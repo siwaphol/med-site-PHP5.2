@@ -222,11 +222,23 @@
 
     <!-- Office details -->
     <div class="control-group <?php echo (form_error('office_details')?'has-error':''); ?>">
-        <label class="control-label" for="office_details">Office details</label>
+        <label class="control-label" for="office_details">Office Details</label>
         <div class="controls">
             <textarea name="office_details" id="office_details" cols="30" rows="10" placeholder="Office Details" class="form-control"></textarea>
             <?php if(form_error('office_details')){ ?>
             <span class="help-block"><?php echo form_error('office_details'); ?></span>
+            <?php } ?>
+        </div>
+    </div>
+    <br>
+
+    <!-- Education details -->
+    <div class="control-group <?php echo (form_error('education_details')?'has-error':''); ?>">
+        <label class="control-label" for="education_details">Education Details (พิมพ์ &lt;/br&gt; สำหรับขึ้นบรรทัดใหม่, &lt;b&gt;ข้อความ&lt;/b&gt; สำหรับเน้นข้อความ)</label>
+        <div class="controls">
+            <textarea name="education_details" id="education_details" cols="30" rows="10" placeholder="Education Details" class="form-control"></textarea>
+            <?php if(form_error('education_details')){ ?>
+            <span class="help-block"><?php echo form_error('education_details'); ?></span>
             <?php } ?>
         </div>
     </div>
