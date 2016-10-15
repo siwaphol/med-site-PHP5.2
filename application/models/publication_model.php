@@ -47,24 +47,14 @@ class Publication_model extends CI_Model {
 
 	public function import_publication($data)
 	{
-		// $data = array(
-		// 	'title' => $this->input->post('title'),
-		// 	'journal' => $this->input->post('journal'),
-		// 	'authors' => $this->input->post('authors'),
-		// 	'abstract' => $this->input->post('abstract'),
-		// 	'pubmed_link' => $this->input->post('pubmed_link'),
-		// 	'year' => $this->input->post('year'),
-		// 	'volume' => $this->input->post('volume'),
-		// 	'pages' => $this->input->post('pages'),
-		// 	'created_at' => now(),
-		// 	'updated_at' => now(),
-		// );
 		$this->db->where('title', $data['title']);
 		$query = $this->db->get('publications');
 		if ( $query->num_rows() <= 0 )
 		{
 			$this->db->flush_cache();
 			return $this->db->insert('publications', $data);
+		}else{
+			return $query->result_array();
 		}
 	}
 
