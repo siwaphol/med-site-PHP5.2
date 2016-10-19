@@ -1,5 +1,12 @@
 <section class="center slider below-shadow">
-
+  <!-- <div class="carousel-image"><img id="first-image"></div>
+  <div class="carousel-image"><img id="second-image"></div>
+  <div class="carousel-image"><img id="third-image"></div>
+  <div class="carousel-image"><img id="fourth-image"></div>
+  <div class="carousel-image"><img id="fifth-image"></div>
+  <div class="carousel-image"><img id="sixth-image"></div>
+  <div class="carousel-image"><img id="seventh-image"></div>
+  <div class="carousel-image"><img id="eighth-image"></div> -->
   	<?php 
   		$index = 0;
 	  foreach ($banner as $v) {
@@ -11,20 +18,4 @@
   		$index++;
   	} 
   	?>
-
-<!--     <div>
-      <img src="http://placehold.it/350x300?text=1">
-    </div>
-    <div>
-      <img src="http://placehold.it/350x300?text=2">
-    </div>
-    <div>
-      <img src="http://placehold.it/350x300?text=3">
-    </div>
-    <div>
-      <img src="http://placehold.it/350x300?text=4">
-    </div>
-    <div>
-      <img src="http://placehold.it/350x300?text=5">
-    </div> -->
   </section>
