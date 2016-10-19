@@ -455,6 +455,7 @@ class Admin extends CI_Controller {
             }
             $data['title'] = 'Admin';
             $data['publication'] = array();
+            $data['staff'] = $this->staff_model->get_staff();
 
             $this->load->helper('form');
             $this->load->library('form_validation');
@@ -526,7 +527,7 @@ class Admin extends CI_Controller {
                 $json_string = json_encode($xml);    
                 $result_array = json_decode($json_string, TRUE);        
             }else {
-                redirect('admin/publication');
+                redirect('admin/publication/create');
                 exit('Failed to open test.xml.');
             }
 
@@ -539,10 +540,25 @@ class Admin extends CI_Controller {
                 $authors = $pubmedArticle['MedlineCitation']['Article']['AuthorList']['Author'];
                 $publication['authors'] = "";  
                 foreach ($authors as $author) {
-                    $publication['authors'] .= $author['LastName'] . ", " . $author['Initials'] . "., ";
+                    if(!empty($author['LastName']) && !empty($author['Initials'])){
+                        $publication['authors'] .= $author['LastName'] . ", " . $author['Initials'] . "., ";
+                    }else if(empty($author['LastName']) && !empty($author['Initials'])){
+                        $publication['authors'] .=   $author['Initials'] . "., ";
+                    }else if(!empty($author['LastName']) && empty($author['Initials'])){
+                        $publication['authors'] .=   $author['LastName'] . "., ";
+                    }
+                    
                 }
+                if(!empty($pubmedArticle['MedlineCitation']['Article']['Abstract'])){
 
-                $publication['abstract'] = isset($pubmedArticle['MedlineCitation']['Article']['Abstract']['AbstractText'])?$pubmedArticle['MedlineCitation']['Article']['Abstract']['AbstractText']:null;
+                    if(count($pubmedArticle['MedlineCitation']['Article']['Abstract']['AbstractText']) > 1){
+                        $publication['abstract'] = $pubmedArticle['MedlineCitation']['Article']['Abstract']['AbstractText'][0];
+                    }else{
+                        $publication['abstract'] = isset($pubmedArticle['MedlineCitation']['Article']['Abstract']['AbstractText'])?$pubmedArticle['MedlineCitation']['Article']['Abstract']['AbstractText']:null;
+                    }
+                }
+                
+
                 $publication['pubmed_link'] = isset($pubmedArticle['MedlineCitation']['PMID'])?$pubmedArticle['MedlineCitation']['PMID']:null;
 
                 $publication['year'] = isset($pubmedArticle['MedlineCitation']['Article']['Journal']['JournalIssue']['PubDate']['Year'])?$pubmedArticle['MedlineCitation']['Article']['Journal']['JournalIssue']['PubDate']['Year']:null;
@@ -553,7 +569,7 @@ class Admin extends CI_Controller {
                 }
 
                 $pages = isset($pubmedArticle['MedlineCitation']['Article']['Pagination']['MedlinePgn'])?$pubmedArticle['MedlineCitation']['Article']['Pagination']['MedlinePgn']:null;
-                if (!is_null($pages)) {
+                if (!empty($pages)) {
                     $exploded_pages = explode("-", $pages);
                     // var_dump($exploded_pages);
                     // die();
@@ -568,9 +584,23 @@ class Admin extends CI_Controller {
                 $publication['created_at'] = now();
                 $publication['updated_at'] = now();
 
-                $test = $this->publication_model->import_publication($publication);
+                $responds = $this->publication_model->import_publication($publication);
 
                 // ให้ link กับ user
+                if(!empty($_POST['staff_id'])){
+
+                    // print "<pre>"; 
+                    // print_r($_POST['staff_id']);
+                    // print "</pre>";
+
+                    // print "<pre>"; 
+                    // print_r($responds);
+                    // print "</pre>";
+
+                    $this->staff_publication_model->insert_staff_publication($_POST['staff_id'], $responds[0]['id']);
+
+                }
+                
                 
             }
 

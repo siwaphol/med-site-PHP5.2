@@ -27,6 +27,26 @@ class Staff_publication_model extends CI_Model {
 		
 		return $query->result_array();
 	}
+
+	public function insert_staff_publication($s_id, $p_id){
+		$data = array(
+			'staff_id' => $s_id,
+			'publication_id' =>$p_id,
+		);
+
+		$whereArr = array();
+		$whereArr['staff_id'] = $s_id;
+		$whereArr['publication_id'] = $p_id;
+		$query = $this->db->get_where('staff_publication', $whereArr);
+		if ( $query->num_rows() <= 0 )
+		{
+			$this->db->insert('staff_publication', $data);
+		}
+
+		return $query->result_array();
+
+		
+	}
 	
 
 	public function set_staff_publication()

@@ -52,10 +52,14 @@ class Publication_model extends CI_Model {
 		if ( $query->num_rows() <= 0 )
 		{
 			$this->db->flush_cache();
-			return $this->db->insert('publications', $data);
-		}else{
-			return $query->result_array();
+			$this->db->insert('publications', $data);
+			$this->db->flush_cache();
+			$this->db->where('title', $data['title']);
+			$query = $this->db->get('publications');
 		}
+			
+		return $query->result_array();
+		
 	}
 
     public function record_count() {
