@@ -481,6 +481,21 @@ class Admin extends CI_Controller {
             }
         }
 
+        public function publication_import()
+        {
+            if($this->check_login() == true){
+                $session_data = $this->session->userdata('logged_in');
+                $data['username'] = $session_data['username'];
+            }
+            $data['title'] = 'Admin';
+            $data['publication'] = array();
+            $data['staff'] = $this->staff_model->get_staff();
+
+           $this->load->view('backend/layout', $data);
+            $this->load->view('backend/publication/import', $data);
+            $this->load->view('backend/footer');
+        }
+
         public function publication_edit($id)
         {
             if($this->check_login() == true){

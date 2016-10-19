@@ -24,24 +24,7 @@
 <br>
 <br>
 <div class="container">
-    <?php 
 
-        // print "<pre>"; 
-        // print_r($staff);
-        // print "</pre>";
-
-    ?>
-
-    <form method="post" action="<?php echo site_url("admin/publication/import"); ?>" enctype="multipart/form-data">
-        <input type="file" name="doc"/>
-        <input type="submit" value="Upload File"/>
-        <select name="staff_id">
-
-            <?php foreach($staff as $row) { ?>
-            <option value="<?php echo $row['id']; ?>"><?php echo $row['first_name_en']." ".$row['last_name_en']; ?></option>
-            <?php } ?>
-        </select>
-        </form>
     <form action="<?php echo site_url("admin/publication/create"); ?>" method="post">
     <!-- Title -->
     <div class="control-group <?php echo (form_error('title')?'has-error':''); ?>">

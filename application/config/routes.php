@@ -52,6 +52,7 @@ $route['admin/banner/(:num)'] = 'admin/banner_edit/$1';
 
 $route['admin/publication'] = 'admin/publication';
 $route['admin/publication/create'] = 'admin/publication_create';
+$route['admin/publication/create_import'] = 'admin/publication_import';
 $route['admin/publication/(:num)'] = 'admin/publication_edit/$1';
 $route['admin/publication/import'] = 'admin/publication_import_xml';
 $route['admin/publication/search'] = "admin/publication_search";

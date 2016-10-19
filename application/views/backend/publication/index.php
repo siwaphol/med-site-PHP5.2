@@ -33,7 +33,7 @@
         <div class="row">
             <a href="<?php echo site_url("admin/publication/create"); ?>" class="btn btn-primary">
                 <span class="glyphicon glyphicon-plus"></span>&nbsp;Add Publication </a>
-            <a href="<?php echo site_url("admin/publication/create"); ?>" class="btn btn-primary">
+            <a href="<?php echo site_url("admin/publication/create_import"); ?>" class="btn btn-primary">
                 <span class="glyphicon glyphicon-plus"></span>&nbsp;Import from XML</a>
             <a href="<?php echo site_url("admin/publication"); ?>" class="btn btn-primary"><span ></span>&nbsp;Show All Publications </a>
         </div>
