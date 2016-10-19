@@ -39,6 +39,7 @@ class Staff_model extends CI_Model {
 			'other_details' => $this->input->post('other_details'),
 			'image_path' => $this->input->post('image_path'),
 			'office_details' => $this->input->post('office_details'),
+			'education_details' => $this->input->post('education_details'),
 			'created_at' => now(),
 			'updated_at' => now(),
 		);
@@ -67,6 +68,7 @@ class Staff_model extends CI_Model {
 			'other_details' => $this->input->post('other_details'),
 			'image_path' => $this->input->post('image_path'),
 			'office_details' => $this->input->post('office_details'),
+			'education_details' => $this->input->post('education_details'),
 			'updated_at' => now(),
 		);
 

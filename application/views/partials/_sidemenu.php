@@ -21,6 +21,9 @@
                 Curriculum<span class="arrow"></span>
                 </li>
                 <ul class="sub-menu collapse" id="curriculum">
+                    <li>
+                      <a href="<?php echo site_url("curriculum"); ?>">All Curriculums</a>
+                    </li>
                     <li  data-toggle="collapse" data-target="#curriculum_undergraduate" class="collapsed">
                     Undergraduate<span class="arrow"></span>
                     </li>
@@ -41,17 +44,20 @@
                 Courses<span class="arrow"></span>
                 </li>
                 <ul class="sub-menu collapse" id="courses">
+                    <li>
+                      <a href="<?php echo site_url("course"); ?>">All Courses</a>
+                    </li>
                     <li  data-toggle="collapse" data-target="#courses_undergraduate" class="collapsed">
                     Undergraduate<span class="arrow"></span>
                     </li>
                     <ul class="sub-menu collapse" id="courses_undergraduate">
-                        <li><a href="<?php echo site_url('courses');?>/1">Medicine</a></li>
-                        <li><a href="<?php echo site_url('courses');?>/2">Dentistry</a></li>
-                        <li><a href="<?php echo site_url('courses');?>/3">Pharmacy</a></li>
-                        <li><a href="<?php echo site_url('courses');?>/4">Nurse</a></li>
+                        <li><a href="<?php echo site_url('course');?>/1">Medicine</a></li>
+                        <li><a href="<?php echo site_url('course');?>/2">Dentistry</a></li>
+                        <li><a href="<?php echo site_url('course');?>/3">Pharmacy</a></li>
+                        <li><a href="<?php echo site_url('course');?>/4">Nurse</a></li>
                     </ul>
 
-                    <li><a href="<?php echo site_url('courses');?>/5">Graduate</a></li>
+                    <li><a href="<?php echo site_url('course');?>/5">Graduate</a></li>
                 </ul>
 
                 <li>

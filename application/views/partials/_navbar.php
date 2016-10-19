@@ -23,6 +23,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >Curriculum<span class="caret"></span></a>
                         <ul class="dropdown-menu">
+                            <li><a href="<?php echo site_url("curriculum"); ?>">All Curriculums</a></li>
                             <li class="dropdown-header"><h4>Undergraduate</h4></li>
                                 <li><a href="<?php echo site_url("curriculum");?>/1">Medicine</a></li>
                             <li class="dropdown-header"><h4>Graduate</h4></li>
@@ -34,6 +35,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >Courses<span class="caret"></span></a>
                         <ul class="dropdown-menu">
+                            <li><a href="<?php echo site_url("course"); ?>">All Courses</a></li>
                             <li class="dropdown-header"><h4>Undergraduate</h4></li>
                                 <li><a href="<?php echo site_url("course");?>/1">Medicine</a></li>
                                 <li><a href="<?php echo site_url("course");?>/2">Dentistry</a></li>

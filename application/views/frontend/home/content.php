@@ -1,12 +1,3 @@
-
-<?php 
-      // print "<pre>";
-      // print_r($setting_item);
-      // print "</pre>";
-
-
-
-  ?>
 <div class="row">
   <div class="border-and-shadow">
     <div class="heading parbase section">
