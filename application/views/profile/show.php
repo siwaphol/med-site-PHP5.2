@@ -377,14 +377,14 @@
                 </span>
             </cite>
             <a data-bypass="" data-toggle="collapse"
-                data-target="[data-collapsible=publicationc69]">
+                data-target="[data-collapsible=publicationc{{publication.id}}]">
                 <i class="icon-caret-right"></i><span>More</span>
             </a>
-            <div data-collapsible="publicationc69" class="collapse indented-collapsible-section">
+            <div data-collapsible="publicationc{{publication.id}}" class="collapse indented-collapsible-section">
                 <div class="detail">
                     <h4>Abstract</h4>
                     <p class="abstract">{{publication.abstract}}</p>
-                    <p class="pub-med">
+                    <p class="pub-med" v-if="publication.pubmed_link">
                         <span><i class="icon-external-link"></i>View details for <a
                             href="http://www.ncbi.nlm.nih.gov/pubmed/{{publication.pubmed_link}}"
                             target="_blank">PubMedID {{publication.pubmed_link}}</a>
