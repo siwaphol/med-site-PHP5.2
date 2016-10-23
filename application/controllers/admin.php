@@ -356,12 +356,21 @@ class Admin extends CI_Controller {
             $data['title'] = 'Admin';
             $data['course'] = array();
 
-            var_dump($_POST);
-            die();
-
             $this->load->view('backend/layout', $data);
             $this->load->view('backend/course/create', $data);
             $this->load->view('backend/footer');
+        }
+
+        public function course_delete($id)
+        {
+            if($this->check_login() == true){
+                $session_data = $this->session->userdata('logged_in');
+                $data['username'] = $session_data['username'];
+            }
+            $this->course_model->delete_course($id);
+
+            $this->session->set_userdata('flash_notification.message', 'Deleted Successfully');
+            redirect('admin/course');
         }
     # end course
 
@@ -586,8 +595,6 @@ class Admin extends CI_Controller {
                 $pages = isset($pubmedArticle['MedlineCitation']['Article']['Pagination']['MedlinePgn'])?$pubmedArticle['MedlineCitation']['Article']['Pagination']['MedlinePgn']:null;
                 if (!empty($pages)) {
                     $exploded_pages = explode("-", $pages);
-                    // var_dump($exploded_pages);
-                    // die();
                     if (count($exploded_pages)>=2) {
                         $substrStart = 0 - strlen($exploded_pages[1]);
                         $publication['pages'] = $exploded_pages[0] ."-" . (substr($exploded_pages[0], 0 ,$substrStart) . $exploded_pages[1]);
@@ -912,10 +919,6 @@ class Admin extends CI_Controller {
             }
             $data['title'] = 'Admin';
             $data['course_group_items'] = $this->course_model->get_course_code();
-            // print $group_id;
-            // print $course_id;
-            // exit();
-            
             
             $this->load->helper('form');
             $this->load->library('form_validation');
@@ -947,9 +950,6 @@ class Admin extends CI_Controller {
             }
             $data['title'] = 'Admin';
             $data['course'] = array();
-
-            var_dump($_POST);
-            die();
 
             $this->load->view('backend/layout', $data);
             $this->load->view('backend/course/create', $data);
@@ -1049,9 +1049,6 @@ class Admin extends CI_Controller {
             }
             $data['title'] = 'Admin';
             $data['curriculum'] = array();
-
-            var_dump($_POST);
-            die();
 
             $this->load->view('backend/layout', $data);
             $this->load->view('backend/curriculum/create', $data);

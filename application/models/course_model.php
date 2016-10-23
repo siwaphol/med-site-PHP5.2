@@ -43,6 +43,12 @@ class Course_model extends CI_Model {
 		return $this->db->insert('courses', $data);
 	}
 
+	public function delete_course($id)
+	{
+		$this->db->where('id', $id);
+		$this->db->delete('courses');
+	}
+
 	public function update_course($id)
 	{
 		$data = array(

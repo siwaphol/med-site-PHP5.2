@@ -1,0 +1,26 @@
+{
+  "name": "med",
+  "version": "1.0.0",
+  "description": "Open Source PHP Framework (originally from EllisLab)",
+  "main": "index.js",
+  "dependencies": {
+    "gulp-rename": "^1.2.2",
+    "gulp-load-plugins": "^1.3.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/siwaphol/med-site-PHP5.2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/siwaphol/med-site-PHP5.2/issues"
+  },
+  "homepage": "https://github.com/siwaphol/med-site-PHP5.2#readme"
+}

@@ -50,6 +50,11 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link href="<?php echo base_url("assets/backend/css/skins/_all-skins.min.css");?>" rel="stylesheet" type="text/css"/>
+    <!-- for IE support -->
+    <script src="<?php echo base_url("bower_components/es6-promise/es6-promise.auto.min.js");?>"></script>
+
+    <script src="<?php echo base_url("bower_components/sweetalert2/dist/sweetalert2.min.js");?>"></script>
+    <link rel="stylesheet" href="<?php echo base_url("bower_components/sweetalert2/dist/sweetalert2.min.css");?>">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// --><!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>

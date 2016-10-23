@@ -1,7 +1,16 @@
+
 <script type="text/javascript">
     $(document).ready(function () {
 
         $('#notification').show().delay(4000).fadeOut(700);
+
+        $('.delete-btn').on('click', function() {
+            var r = confirm("ยืนยันการลบ");
+
+            if (r!=true) {
+                return false;
+            }
+        });
     });
 </script>
 
@@ -28,12 +37,6 @@
         </div>
         <br> <br> <br>
         <?php 
-
-        // print "<pre>";
-        // print_r($course);
-        // print "</pre>";
-
-
 
         if(count($course)){ ?>
         <div class="">
@@ -63,21 +66,9 @@
                             <a class="btn btn-danger dropdown-toggle" data-toggle="dropdown" href="#">
                                 Action <span class="caret"></span> </a>
                             <ul class="dropdown-menu">
-                                <li><a href="#admin.course.show.<?php echo $v['id']; ?>">
-                                        <span class="glyphicon glyphicon-eye-open"></span>&nbsp;Show course
-                                    </a></li>
-                                <li><a href="#admin.course.edit.<?php echo $v['id']; ?>">
-                                        <span class="glyphicon glyphicon-edit"></span>&nbsp;Edit course </a>
-                                </li>
-                                <li class="divider"></li>
-                                <li><a href="#admin.course.delete.<?php echo $v['id']; ?>">
+                                <li><a class="delete-btn" href="<?php echo site_url("admin/course/delete"); ?>/<?php echo $v['id']; ?>">
                                         <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;Delete
                                         course </a></li>
-                                <li class="divider"></li>
-                                <li>
-                                    <a target="_blank" href="#dashboard.course.show.from_slug">
-                                        <span class="glyphicon glyphicon-eye-open"></span>&nbsp;View On Site
-                                    </a></li>
                             </ul>
                         </div>
                     </td>

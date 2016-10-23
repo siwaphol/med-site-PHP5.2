@@ -29,6 +29,7 @@ $route['admin/staff/(:num)'] = 'admin/staff_edit/$1';
 $route['admin/course'] = 'admin/course';
 $route['admin/course/create'] = 'admin/course_create';
 $route['admin/course/store'] = 'admin/course_store';
+$route['admin/course/delete/(:num)'] = 'admin/course_delete/$1';
 $route['admin/course/(:num)'] = 'admin/course_edit/$1';
 
 $route['admin/course_group'] = 'admin/course_group';
