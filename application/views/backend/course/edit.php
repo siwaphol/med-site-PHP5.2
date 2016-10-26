@@ -94,7 +94,7 @@
     <script type="text/javascript">
         window.onload = function () {
             CKEDITOR.replace('content', {
-                "filebrowserBrowseUrl": "{!! url('filemanager/show') !!}",
+                "filebrowserBrowseUrl": "<?php echo base_url('assets/filemanager/index.html');?>",
             });
         };
     </script>

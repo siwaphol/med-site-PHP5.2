@@ -10,6 +10,9 @@ $route['api/news'] = 'api/news';
 // Migration
 $route['migration'] = 'migrate/index';
 
+// File Manager
+$route['filemanager/show'] = 'admin/filemanager_show';
+
 // Admin
 $route['admin/check_login'] = 'admin/login_view';
 $route['admin/login'] = 'admin/user_login';

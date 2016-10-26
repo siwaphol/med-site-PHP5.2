@@ -1265,4 +1265,10 @@ class Admin extends CI_Controller {
                 redirect('admin/staff_educations/'.$staff_id);
             }
         }
+
+        // File Manager
+        public function filemanager_show()
+        {
+            $this->load->view('backend/filemanager/index');
+        }
 }
