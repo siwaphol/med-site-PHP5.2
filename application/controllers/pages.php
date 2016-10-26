@@ -47,6 +47,7 @@ class Pages extends CI_Controller {
 	{
 
 		$data['title'] = "กระบวนวิชาทั้งหมด";
+		$data['courses']=$this->course_model->get_course();
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/before_content');
