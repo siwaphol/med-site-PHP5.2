@@ -22,7 +22,7 @@
         "splitterMinWidth": 200,
         "dateFormat": "d M Y H:i",
         "serverRoot": true,
-        "fileRoot": false,
+        "fileRoot": false, //set c:/web/asd
         "baseUrl": false,
         "logger": false,
         "capabilities": ["select", "download", "rename", "delete", "replace"],
