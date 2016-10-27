@@ -21,6 +21,7 @@ class Course_model extends CI_Model {
 	{
 		if ($id === FALSE)
 		{
+			$this->db->order_by("code","asc");
 			$query = $this->db->get('courses');
 			return $query->result_array();
 		}

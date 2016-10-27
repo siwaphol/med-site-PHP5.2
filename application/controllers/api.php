@@ -43,7 +43,9 @@ class Api extends REST_Controller
         $this->pagination->initialize($config);
 
         $page = (isset($_GET['page'])) ? (int)$_GET['page']-1 : 0;
-        $data["results"] = $this->profile_model->fetch_profiles($config["per_page"], $page*$perPage);
+        $search = (isset($_GET['search']) && !empty($_GET['search']))?$_GET['search']:null;
+        $first = (isset($_GET['first']) && !empty($_GET['first']))?$_GET['first']:null;
+        $data["results"] = $this->profile_model->fetch_profiles($config["per_page"], $page*$perPage, $search, $first);
         $data["links"] = $this->pagination->create_links();
 
         if($data)

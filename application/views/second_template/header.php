@@ -33,11 +33,11 @@
                     </a>
                     <div class="nav-sidebar hidden-phone">
                         <div id="searchHeaderContent">
-                            <form class="navbar-search " method="get" action="/profiles/search">
+                            <form class="navbar-search " method="get" action="<?php echo site_url('browse'); ?>">
                                 <input class="search-query" type="text" name="q" placeholder="Search by name or topic..."
                                        autocomplete="off"/>
-                                <button class="icon-search" type="submit" name="search" title="Search"></button>
-                                <div class="btn-group ">
+                                <button class="icon-search" type="submit" title="Search"></button>
+                                <div class="btn-group">
                                 </div>
                             </form>
                         </div>

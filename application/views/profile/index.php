@@ -24,7 +24,7 @@
                     <div class="accordian-body">
                         <ul class="unstyled accordian-inner affiliation">
                             <li class=" ">
-                                <a href="#showStaff">
+                                <a href="<?php echo site_url("/browse"); ?>">
                                     Staff
                                 </a>
                             </li>
@@ -49,7 +49,7 @@
                         <ul class="unstyled accordian-inner lastInitial">
                             <?php foreach (range('A', 'Z') as $char) { ?>
                                 <li class=" ">
-                                    <a href="#browse?name=<?php echo $char;?>">
+                                    <a href="<?php echo site_url("browse"); ?>?c=<?php echo $char;?>">
                                         <?php echo $char;?>
                                     </a>
                                 </li>

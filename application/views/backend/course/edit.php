@@ -60,7 +60,7 @@
     <div class="control-group <?php echo (form_error('name_th')?'has-error':''); ?>">
         <label class="control-label" for="name_th">Thai Name</label>
         <div class="controls">
-            <input type="text" name="name_th" class="form-control" id="name_th" placeholder="ชื่อวิชาภาษาไทย" value="<?php echo $course_item['name_th']; ?>">
+            <input type="text" name="name_th" class="form-control" id="name_th" placeholder="Thai Name" value="<?php echo $course_item['name_th']; ?>">
             <?php if(form_error('name_th')){ ?>
             <span class="help-block"><?php echo form_error('name_th'); ?></span>
             <?php } ?>
@@ -71,7 +71,7 @@
     <div class="control-group <?php echo (form_error('name_en')?'has-error':''); ?>">
         <label class="control-label" for="name_en">English Name</label>
         <div class="controls">
-            <input type="text" name="name_en" class="form-control" id="name_en" placeholder="ชื่อวิชาภาษาอังกฤษ" value="<?php echo $course_item['name_en']; ?>">
+            <input type="text" name="name_en" class="form-control" id="name_en" placeholder="English Name" value="<?php echo $course_item['name_en']; ?>">
             <?php if(form_error('name_en')){ ?>
             <span class="help-block"><?php echo form_error('name_en'); ?></span>
             <?php } ?>

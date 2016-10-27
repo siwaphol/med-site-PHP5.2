@@ -9,6 +9,18 @@
         return http.status != 404;
     }
 
+    function getParameterByName(name, url) {
+        if (!url) {
+          url = window.location.href;
+        }
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+
     var profileCom = Vue.component('profiles', {
         template: '#profile-template',
 
@@ -70,7 +82,7 @@
                     this.pageReCreate();
                 }.bind(this),
                 pageReCreate: function () {
-                    $.getJSON('<?php echo site_url("api/profile"); ?>', {page: this.currentPage, per_page: this.perPage}, function (profiles) {
+                    $.getJSON('<?php echo site_url("api/profile"); ?>', {page: this.currentPage, per_page: this.perPage, search: getParameterByName('q'), first:getParameterByName('c')}, function (profiles) {
                         profiles.data.forEach(function(item, index){
                             item.image_path = '../'+item.image_path;
                             if(!imageExists(item.image_path)){
@@ -99,7 +111,7 @@
             }
         },
         created: function  () {
-            $.getJSON('<?php echo site_url("api/profile"); ?>', {page: this.currentPage, per_page: this.perPage}, function (profiles) {
+            $.getJSON('<?php echo site_url("api/profile"); ?>', {page: this.currentPage, per_page: this.perPage, search: getParameterByName('q'), first:getParameterByName('c')}, function (profiles) {
                 profiles.data.forEach(function(item, index){
                     item.image_path = '../'+item.image_path;
                     if(!imageExists(item.image_path)){
