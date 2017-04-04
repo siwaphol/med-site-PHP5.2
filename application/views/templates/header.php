@@ -27,6 +27,10 @@
 		    font-size: 40px;
 		    color: #131111;
 		}
+
+        .background-color-block {
+            background: linear-gradient(180deg, #58e0e0 45px, #ffffff 20px);
+        }
 	</style>
 
 	<script src="<?php echo base_url("assets/js/jquery.min.js"); ?>"></script>

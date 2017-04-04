@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="border-and-shadow">
+    <div class="border-and-shadow background-color-block">
         <div class="heading parbase section">
             <hgroup class="section-header standard heading-level-1">
                 <h1 class="black"><?php echo $setting_item[0]['name']; ?></h1>
@@ -15,7 +15,7 @@
 
 <!-- news -->
 <div class="row">
-    <div class="border-and-shadow">
+    <div class="border-and-shadow background-color-block">
         <div class="heading parbase section">
             <hgroup class="section-header standard heading-level-1">
                 <h1 class="black">News & Announcement</h1>
@@ -55,7 +55,7 @@
 <div class="row" style="margin-bottom: 20px;"></div>
 
 <div class="row">
-  <div class="border-and-shadow">
+  <div class="border-and-shadow background-color-block">
     <div class="heading parbase section">
       <hgroup class="section-header standard heading-level-1">
         <h1 class="black"><?php echo $setting_item[1]['name']; ?></h1>
@@ -66,7 +66,7 @@
     </div>
   </div>
   <br>
-  <div class="border-and-shadow">
+  <div class="border-and-shadow background-color-block">
     <div class="heading parbase section">
       <hgroup class="section-header standard heading-level-1">
         <h1 class="black"><?php echo $setting_item[2]['name']; ?></h1>
