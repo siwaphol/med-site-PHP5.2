@@ -26,7 +26,8 @@
                 <div class="col-md-6">
                     <center>
                         <a href="<?php echo site_url("news");?>/<?php echo $aNews['id']; ?>">
-                            <img src="<?php echo base_url($aNews['image_path']);?>" width="300" height="258">
+                            <img src="<?php echo base_url($aNews['image_path']);?>" width="300" height="258"
+                                 onerror="this.src='<?php echo base_url("uploads/banner1.jpg");?>'">
                             <br>
                             <h4><?php echo $aNews['title'];?></h4>
                         </a>
