@@ -1,4 +1,4 @@
-<div class="border-and-shadow">
+<div class="border-and-shadow background-color-block">
 	<div class="heading parbase section">
 		<hgroup class="section-header standard heading-level-1">
 			<h1 class="black"><?php print $title; ?></h1>
