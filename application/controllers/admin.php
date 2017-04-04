@@ -850,6 +850,7 @@ class Admin extends CI_Controller {
         }
         else
         {
+
             if (isset($_FILES['image_path']['name']) && !empty($_FILES['image_path']['name'])) {
                 if (! $this->upload->do_upload('image_path'))
                 {
@@ -862,15 +863,15 @@ class Admin extends CI_Controller {
                 else
                 {
                     $uploaded = $this->upload->data();
-                    $_POST['image_path'] = 'uploads/staff/' . $uploaded['file_name'];
+                    $data['new_image_path'] = 'uploads/staff/' . $uploaded['file_name'];
 
-                    $this->staff_model->update_staff($id);
+                    $this->staff_model->update_staff($id, $data['new_image_path']);
                     $this->session->set_userdata('flash_notification.message', 'Update Successfully');
                     redirect('admin/staff');
                 }
             }else{
-                $_POST['image_path'] = $data['staff_item']['image_path'];
-                $this->staff_model->update_staff($id);
+                $data['new_image_path'] = $data['staff_item']['image_path'];
+                $this->staff_model->update_staff($id, $data['new_image_path']);
                 $this->session->set_userdata('flash_notification.message', 'Update Successfully');
                 redirect('admin/staff');
             }
