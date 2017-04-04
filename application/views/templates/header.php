@@ -48,7 +48,35 @@
 	<script type="text/javascript" src="<?php echo base_url("assets/slick/slick.min.js"); ?>"></script>
 
 	<script>
+        function GetWidth(newHeight,orginalWidth,originalHeight)
+        {
+            if(originalHeight == 0)return newHeight;
+            var aspectRatio = orginalWidth / originalHeight;
+            return newHeight * aspectRatio;
+        }
+        function getImgSize(imgSrc, callback) {
+            var newImg = new Image();
+
+            newImg.onload = function () {
+                if (callback != undefined)
+                    callback({width: newImg.width, height: newImg.height})
+            }
+
+            newImg.src = imgSrc;
+        }
+
 		$(document).ready(function(){
+            getImgSize($("#news-image").attr("src"), function (imgSize) {
+                // do what you want with the image's size.
+                var ratio = imgSize.height / $("#news-image").height();
+                var targetHeight = 350;
+                var targetWidth = GetWidth(350,imgSize.width, imgSize.height)
+                console.log('target height: ' + targetHeight
+                    + ", target width: " + targetWidth)
+                $("#news-image").height(targetHeight)
+                $("#news-image").width(targetWidth)
+            });
+
 	      $(".center").slick({
 	      	autoplay: true,
 	        dots: true,
