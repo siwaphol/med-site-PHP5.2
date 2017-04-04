@@ -93,6 +93,17 @@ class Publication_model extends CI_Model {
 		$this->db->update('publications', $data);
 	}
 
+    public function delete_publication($id)
+    {
+        $this->db->where('publication_id', $id);
+        $this->db->delete('staff_publication');
+
+        $this->db->flush_cache();
+
+        $this->db->where('id', $id);
+        $this->db->delete('publications');
+    }
+
     public function fetch_publication($limit, $start, $staff_id) {
     	$this->db->select('publication_id');
     	$this->db->where('staff_id', $staff_id);

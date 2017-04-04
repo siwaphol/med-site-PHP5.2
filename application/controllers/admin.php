@@ -471,6 +471,18 @@ class Admin extends CI_Controller {
             $this->load->view('backend/footer');
         }
 
+        public function publication_delete($id)
+        {
+            if($this->check_login() == true){
+                $session_data = $this->session->userdata('logged_in');
+                $data['username'] = $session_data['username'];
+            }
+            $this->publication_model->delete_publication($id);
+
+            $this->session->set_userdata('flash_notification.message', 'Deleted Successfully');
+            redirect('admin/publication');
+        }
+
         public function publication_create()
         {
             if($this->check_login() == true){

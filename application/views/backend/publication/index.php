@@ -54,6 +54,7 @@
                     <th>Title</th>
                     <th>Authors</th>
                     <th>Year</th>
+                    <th>Delete</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -69,6 +70,11 @@
                         <a href="<?php echo site_url("admin/publication"); ?>/<?php echo $v["id"]; ?>"><?php echo $v['authors']; ?></a>
                     </td>
                     <td><?php echo $v['year']; ?></td>
+                    <td>
+                        <a class="delete-btn" onclick="return confirm('Are you sure you want to delete this item?');" href="<?php echo site_url("admin/publication/delete"); ?>/<?php echo $v['id']; ?>">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;Delete
+                            news </a>
+                    </td>
                 </tr>
                 <?php } ?>
                 </tbody>

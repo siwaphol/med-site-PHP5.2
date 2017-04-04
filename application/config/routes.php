@@ -61,6 +61,7 @@ $route['admin/publication/create_import'] = 'admin/publication_import';
 $route['admin/publication/(:num)'] = 'admin/publication_edit/$1';
 $route['admin/publication/import'] = 'admin/publication_import_xml';
 $route['admin/publication/search'] = "admin/publication_search";
+$route['admin/publication/delete/(:num)'] = 'admin/publication_delete/$1';
 
 $route['admin/staff_publications'] = 'admin/staff_publications';
 $route['admin/staff_publication/create'] = 'admin/staff_publication_create';
