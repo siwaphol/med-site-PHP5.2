@@ -449,6 +449,7 @@ class Admin extends CI_Controller {
             $data['title'] = 'Publication';
             $data['text'] = "";
             $data['publications'] = $this->publication_model->get_publication();
+            $data['staffs'] = $this->staff_model->get_staff();
 
             $this->load->view('backend/layout', $data);
             $this->load->view('backend/publication/index', $data);
@@ -463,6 +464,7 @@ class Admin extends CI_Controller {
             $data['text'] = $this->input->post('text_search');
             $data['title'] = 'Publication';
             $data['publications'] = $this->publication_model->get_publication_search();
+            $data['staffs'] = $this->staff_model->get_staff();
 
             $this->load->view('backend/layout', $data);
             $this->load->view('backend/publication/index', $data);

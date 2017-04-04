@@ -8,7 +8,8 @@ class Publication_model extends CI_Model {
 
 	public function get_publication($id = FALSE)
 	{
-		if ($id === FALSE)
+        $this->db->order_by('year','desc');
+        if ($id === FALSE)
 		{
 			$query = $this->db->get('publications');
 			return $query->result_array();
@@ -20,8 +21,16 @@ class Publication_model extends CI_Model {
 
 	public function get_publication_search(){
 		$text = $this->input->post('text_search');
+		$staff_id = $this->input->post('staff_id');
+        $joinSql = "";
+        $whereSql = "";
+        if ($staff_id){
+            $joinSql = " inner join staff_publication 
+            on staff_publication.publication_id=publications.id ";
+            $whereSql = " and staff_publication.staff_id=" . $staff_id;
+        }
 
-		$sql = "select * from publications where title like '%".$text."%'";
+		$sql = "select publications.* from publications {$joinSql} where title like '%".$text."%' {$whereSql}";
 		 			
         $query = $this->db->query($sql);
         return $query->result_array();

@@ -21,8 +21,15 @@
         <br>
         <div class="row text-right">
             <form action="<?php echo site_url("admin/publication/search"); ?>" method="post">
-                <div class="col-md-5">
+                <div class="col-md-4">
                     <input type="text" name="text_search" class="form-control" id="text_search" placeholder="Title Search..." value="<?php echo $text; ?>">
+                </div>
+                <div class="col-md-2">
+                    <select name="staff_id" >
+                        <?php foreach($staffs as $staff){ ?>
+                            <option value="<?php echo $staff["id"]; ?>"><?php echo $staff["first_name_en"] . " " . $staff["last_name_en"]; ?></option>
+                        <?php } ?>
+                    </select>
                 </div>
                 <div class="col-md-2">
                     <input type="submit" value="Search" class="btn btn-success">
@@ -44,8 +51,9 @@
                 <thead>
                 <tr>
                     <th>Publication Id</th>
-                    <th>Staff Name</th>
                     <th>Title</th>
+                    <th>Authors</th>
+                    <th>Year</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -54,10 +62,13 @@
                     <td>
                         <a href="<?php echo site_url("admin/publication"); ?>/<?php echo $v["id"]; ?>"><?php echo $v['id']; ?></a>
                     </td>
-                    <td><?php echo $v['title']; ?></td>
+                    <td>
+                        <a href="<?php echo site_url("admin/publication"); ?>/<?php echo $v["id"]; ?>"><?php echo $v['title']; ?></a>
+                    </td>
                     <td>
                         <a href="<?php echo site_url("admin/publication"); ?>/<?php echo $v["id"]; ?>"><?php echo $v['authors']; ?></a>
                     </td>
+                    <td><?php echo $v['year']; ?></td>
                 </tr>
                 <?php } ?>
                 </tbody>
