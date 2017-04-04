@@ -1,5 +1,5 @@
 		<br>
-		<div row="content" class="container-fluid">
+		<div row="content" class="">
 			<div class="col-md-2 hidden-xs hidden-sm" id="hoe-left-panel">
 				<?php echo includeView("partials/_sidemenu"); ?>
 			</div>

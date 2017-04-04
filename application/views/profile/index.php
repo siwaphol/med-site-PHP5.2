@@ -72,14 +72,14 @@
     <ul class="unstyled list-items">
         <li v-for="profile in list">
             <div class="mini-profile media">
-                <a href="#">
+                <a href="profile/{{profile.id}}">
                     <img v-if="profile.image_path" v-bind:src="profile.image_path" class="pull-left"/>
                     <img v-else class="pull-left" src="" alt="" data-empty-src="<?php echo base_url("assets/images/profile.png"); ?>" />
                 </a>
                 <div class="media-body">
                     <a href="profile/{{profile.id}}" class="media-heading">
-                        <h4>{{profile.first_name_en}} {{profile.last_name_en}}</h4>
-                        <h5>{{profile.position}}</h5>
+                        <h4>{{profile.first_name_en}} {{profile.last_name_en}} {{profile.education_extra}}</h4>
+                        <h5 class="thai">{{profile.first_name_th}} {{profile.last_name_th}} {{(profile.position?"("+profile.position+")":"")}}</h5>
                     </a>
                     <p class="hidden-phone" data-toggle="collapsePartial" data-lines="4">
                         <strong class="title">{{profile.body}}</strong>

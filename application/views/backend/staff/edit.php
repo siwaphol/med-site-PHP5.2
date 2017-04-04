@@ -246,6 +246,18 @@
     </div>
     <br>
 
+        <!-- Education Extra -->
+        <div class="control-group <?php echo (form_error('education_extra')?'has-error':''); ?>">
+            <label class="control-label" for="title">Education Extra</label>
+            <div class="controls">
+                <input type="text" name="education_extra" class="form-control" id="education_extra" placeholder="Education Extra" value="<?php echo set_value('education_extra')?set_value('education_extra'):$staff_item['education_extra']; ?>">
+                <?php if(form_error('education_extra')){ ?>
+                    <span class="help-block"><?php echo form_error('education_extra'); ?></span>
+                <?php } ?>
+            </div>
+        </div>
+        <br>
+
         <input type="submit" value="Update" class="btn btn-success">
     </form>
 

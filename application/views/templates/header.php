@@ -7,7 +7,7 @@
 	<title><?php echo $title ?></title>
 	 <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,300,600,700,200italic,300italic,400italic,700italic|Fjord+One' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/bootstrap.min.css");?>">
-	<link rel="stylesheet" href="<?php echo base_url("assets/css/animate.min.css");?>">
+<!--	<link rel="stylesheet" href="--><?php //echo base_url("assets/css/animate.min.css");?><!--">-->
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/font-awesome.min.css");?>">
 	<link rel="stylesheet" href="<?php echo base_url("assets/slick/slick.css");?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/slick/slick-theme.css");?>"/>
@@ -31,6 +31,15 @@
         .background-color-block {
             background: linear-gradient(180deg, #58e0e0 45px, #ffffff 20px);
         }
+        .background-color-block-2 {
+            background: linear-gradient(180deg, #58e06d 45px, #ffffff 20px);
+        }
+        .background-color-block-3 {
+            background: linear-gradient(180deg, rgba(142, 68, 173, 0.52) 45px, #ffffff 20px);
+        }
+        .background-color-block-4 {
+            background: linear-gradient(180deg, rgba(173, 68, 68, 0.63) 45px, #ffffff 20px);
+        }
 	</style>
 
 	<script src="<?php echo base_url("assets/js/jquery.min.js"); ?>"></script>
@@ -46,7 +55,7 @@
 	        infinite: true,
 	        centerMode: true,
 	        slidesToShow: 1,
-	        centerPadding: '380px',
+	        centerPadding: '300px',
 	        responsive: [
 	        	{
 	        		breakpoint: 790,
@@ -78,7 +87,7 @@
 <body>
 	<?php echo includeView("partials/_navbar"); ?>
 
-	<div row="main">
+	<div row="main" class="container">
 		<!--CMU LOGO-->
 		<div row="banner" class="below-shadow">
 			<a href="<?php echo site_url("/"); ?>"><img  src="<?php echo base_url("assets/images/main_logo.png"); ?>" class="img-responsive">

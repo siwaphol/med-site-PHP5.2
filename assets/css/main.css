@@ -9277,7 +9277,7 @@ h1, h2, h3, h4, h5 {
 
 h4 {
   color: #0265A0;
-  font-size: 0.875em;
+  font-size: 1em;
   font-weight: bold;
   margin-bottom: 1em;
   text-transform: uppercase; }
@@ -9294,7 +9294,7 @@ hr {
 
 p {
   line-height: 150%;
-  font-size: 0.875em;
+  font-size: 1em;
   margin: 0 0 1em 0; }
 
 ul {
@@ -10148,7 +10148,7 @@ footer#footerContent {
     .home .banner .masthead #searchContent {
       position: relative; }
     .home .banner .masthead .dropdown-toggle {
-      font-size: 0.875em;
+      font-size: 1em;
       font-weight: bold;
       text-transform: uppercase;
       color: rgba(255, 255, 255, 0.85);
@@ -10158,7 +10158,7 @@ footer#footerContent {
       text-align: center; }
   .home .banner .navbar-search {
     float: none;
-    margin-top: 0.875em; }
+    margin-top: 1em; }
     .home .banner .navbar-search .search-query {
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
@@ -10981,7 +10981,7 @@ footer#footerContent {
                 font-size: 2.0625em; } }
             .home .demographics figure .chart ul.chart-values li.small {
               padding-top: 0;
-              font-size: 0.875em; }
+              font-size: 1em; }
               @media only screen and (min-width: 768px) and (max-width: 979px) {
                 .home .demographics figure .chart ul.chart-values li.small {
                   font-size: 1.1875em; } }
@@ -11007,7 +11007,7 @@ footer#footerContent {
           float: left;
           margin: 0;
           padding: 0.66667em 0 0;
-          font-size: 0.875em;
+          font-size: 1em;
           font-weight: 600; }
           @media only screen and (min-width: 768px) {
             .home .demographics figure .chart ul.chart-labels li {
@@ -11279,6 +11279,14 @@ footer#footerContent {
     text-transform: uppercase;
     line-height: 100%;
     margin-bottom: 0.76923em; }
+    .search .card ul div.mini-profile h5.thai,
+    .browse .card ul div.mini-profile h5.thai {
+      font-size: 1.3125em;
+      font-weight: 500;
+      text-transform: uppercase;
+      line-height: 120%;
+      margin-bottom: 0.76923em;
+    }
   .search .card ul div.mini-profile p,
   .browse .card ul div.mini-profile p {
     color: #666;
@@ -11334,7 +11342,7 @@ footer#footerContent {
         padding: 0 1.25em 0.5625em; } }
     .search .container aside .filter-group ul label,
     .browse .container aside .filter-group ul label {
-      font-size: 0.875em;
+      font-size: 1em;
       margin-bottom: 0.35714em;
       line-height: 143%; }
       .search .container aside .filter-group ul label input[type=checkbox],
@@ -11450,7 +11458,7 @@ footer#footerContent {
     .tag-cloud .tag a.weight10 {
       font-size: 0.75em; }
     .tag-cloud .tag a.weight11 {
-      font-size: 0.875em; }
+      font-size: 1em; }
     .tag-cloud .tag a.weight12 {
       font-size: 1em; }
     .tag-cloud .tag a.weight13 {
@@ -11696,7 +11704,7 @@ footer#footerContent {
   list-style-image: none; }
 .profile .card ul.section-listing li {
   margin: 0.1875em 0;
-  font-size: 0.875em;
+  font-size: 1em;
   list-style: none;
   list-style-image: none; }
   .profile .card ul.section-listing li.bulleted {
@@ -11909,7 +11917,7 @@ footer#footerContent {
 .profile .contact-info {
   margin-top: 10px; }
   .profile .contact-info address {
-    font-size: 0.875em;
+    font-size: 1em;
     margin: 0 0 1.42857em 2.28571em;
     line-height: 142%; }
     .profile .contact-info address a {
@@ -12030,7 +12038,7 @@ footer#footerContent {
     margin-bottom: 0.83333em; }
     @media only screen and (min-width: 768px) {
       .banner.profile h2 {
-        font-size: 0.875em; } }
+        font-size: 1em; } }
   .banner.profile h3 {
     font-size: 1em;
     font-weight: 500;
@@ -12059,7 +12067,7 @@ footer#footerContent {
         color: white; }
       @media only screen and (min-width: 768px) {
         .banner.profile li a {
-          font-size: 0.875em; } }
+          font-size: 1em; } }
   .banner.profile .icon-background {
     background-color: #007994; }
 

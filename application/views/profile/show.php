@@ -4,11 +4,11 @@
             <div class="span12">
                 <div class="image-holder">
                     <img src="<?php echo (file_exists($user['image_path']))?'../../'.$user['image_path']:base_url("assets/images/profile.png"); ?>" alt="Nima Aghaee Pour"
-                         data-empty-src="{{asset('images/profile.png')}}"/>
+                         data-empty-src="<?php echo base_url("assets/images/profile.png"); ?>"/>
                 </div>
                 <div class="nameAndTitle">
-                    <h1><?php echo $user['first_name_en']; ?> <?php echo $user['last_name_en']; ?></h1>
-                    <h2><?php echo $user['position'];?><br/></h2>
+                    <h1><?php echo $user['first_name_en']; ?> <?php echo $user['last_name_en'] . " " . $user['education_extra']; ?></h1>
+                    <h2 style="font-size: 1.5em;letter-spacing: 0;"><?php echo $user['first_name_th'] . " " . $user['last_name_th'] . " " .($user['position']?"(".$user['position'].")":""); ?><br/></h2>
                 </div>
                 <ul class="unstyled">
                     <li>
@@ -75,16 +75,6 @@
 
                 <div class="row-fluid">
                     <div class="span8 page-content">
-<!--                         <div id="clinicalFocusContent" class="content-section">
-                            <div><h3>Research Focus</h3>
-                                <hr>
-                                <ul class="section-listing">
-                                    <li><span>Infectious Diseases, Pediatric</span></li>
-                                    <li><span>Pediatric Infectious Disease</span></li>
-                                </ul>
-                            </div>
-                        </div> -->
-
                         <div id="professionalEducationContent" class="content-section">
                             <h3>Educations</h3>
                             <hr/>
@@ -160,133 +150,6 @@
             <div id="teaching" class="card tab-pane ">
                 <div><h2>Teaching</h2>
 
-<!--                     <div class="row-fluid">
-                        <div class="span8 page-content">
-                            <div id="coursesContent" class="content-section">
-                                <div><h3>2015-16 Courses</h3>
-                                    <hr>
-                                    <ul class="section-listing courses">
-                                        <li class="course"><a
-                                                href="http://explorecourses.stanford.edu/search?view=catalog&amp;filter-coursestatus-Active=on&amp;q=INDE 263: Microbiology and Infectious Diseases I&amp;academicYear=20152016"
-                                                target="_blank">Microbiology and Infectious Diseases I</a><br><span>INDE 263 (Win)</span>
-                                        </li>
-                                        <li class="unstyled">
-                                            <a class="independent-studies-label" data-toggle="collapse"
-                                               data-target="[data-collapsible=independent-studies]"><i
-                                                    class="icon-caret-right"></i>Independent Studies (10)</a>
-                                            <div data-collapsible="independent-studies" class="collapse">
-                                                <ul class="section-listing independent-studies">
-                                                    <li class="course"><a
-                                                            href="http://explorecourses.stanford.edu/search?view=catalog&amp;filter-coursestatus-Active=on&amp;q=MI 198: Directed Reading in Microbiology and Immunology&amp;academicYear=20152016"
-                                                            target="_blank">Directed Reading in Microbiology and
-                                                            Immunology</a><br><span>MI 198 (Aut)</span></li>
-                                                    <li class="course"><a
-                                                            href="http://explorecourses.stanford.edu/search?view=catalog&amp;filter-coursestatus-Active=on&amp;q=MI 299: Directed Reading in Microbiology and Immunology&amp;academicYear=20152016"
-                                                            target="_blank">Directed Reading in Microbiology and
-                                                            Immunology</a><br><span>MI 299 (Aut, Win, Spr)</span></li>
-                                                    <li class="course"><a
-                                                            href="http://explorecourses.stanford.edu/search?view=catalog&amp;filter-coursestatus-Active=on&amp;q=PEDS 299: Directed Reading in Pediatrics&amp;academicYear=20152016"
-                                                            target="_blank">Directed Reading in Pediatrics</a><br><span>PEDS 299 (Aut, Win, Spr)</span>
-                                                    </li>
-                                                    <li class="course"><a
-                                                            href="http://explorecourses.stanford.edu/search?view=catalog&amp;filter-coursestatus-Active=on&amp;q=PEDS 280: Early Clinical Experience&amp;academicYear=20152016"
-                                                            target="_blank">Early Clinical Experience</a><br><span>PEDS 280 (Aut, Win, Spr)</span>
-                                                    </li>
-                                                    <li class="course"><a
-                                                            href="http://explorecourses.stanford.edu/search?view=catalog&amp;filter-coursestatus-Active=on&amp;q=MI 399: Graduate Research&amp;academicYear=20152016"
-                                                            target="_blank">Graduate Research</a><br><span>MI 399 (Aut, Win, Spr)</span>
-                                                    </li>
-                                                    <li class="course"><a
-                                                            href="http://explorecourses.stanford.edu/search?view=catalog&amp;filter-coursestatus-Active=on&amp;q=PEDS 399: Graduate Research&amp;academicYear=20152016"
-                                                            target="_blank">Graduate Research</a><br><span>PEDS 399 (Aut, Win, Spr)</span>
-                                                    </li>
-                                                    <li class="course"><a
-                                                            href="http://explorecourses.stanford.edu/search?view=catalog&amp;filter-coursestatus-Active=on&amp;q=MI 370: Medical Scholars Research&amp;academicYear=20152016"
-                                                            target="_blank">Medical Scholars Research</a><br><span>MI 370 (Aut, Win, Spr)</span>
-                                                    </li>
-                                                    <li class="course"><a
-                                                            href="http://explorecourses.stanford.edu/search?view=catalog&amp;filter-coursestatus-Active=on&amp;q=PEDS 370: Medical Scholars Research&amp;academicYear=20152016"
-                                                            target="_blank">Medical Scholars Research</a><br><span>PEDS 370 (Aut, Win, Spr)</span>
-                                                    </li>
-                                                    <li class="course"><a
-                                                            href="http://explorecourses.stanford.edu/search?view=catalog&amp;filter-coursestatus-Active=on&amp;q=PEDS 199: Undergraduate Directed Reading/Research&amp;academicYear=20152016"
-                                                            target="_blank">Undergraduate Directed
-                                                            Reading/Research</a><br><span>PEDS 199 (Aut, Win, Spr)</span>
-                                                    </li>
-                                                    <li class="course"><a
-                                                            href="http://explorecourses.stanford.edu/search?view=catalog&amp;filter-coursestatus-Active=on&amp;q=MI 199: Undergraduate Research&amp;academicYear=20152016"
-                                                            target="_blank">Undergraduate Research</a><br><span>MI 199 (Aut, Win, Spr)</span>
-                                                    </li>
-                                                </ul>
-                                            </div>
-
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div id="stanfordAdviseesContent" class="content-section">
-                                <div><h3>Advisees</h3>
-                                    <hr>
-                                    <ul class="section-listing">
-                                        <li class="advisees-list-item">
-                                            <span style="font-weight:600">Postdoctoral Faculty Sponsor</span>
-                                            <br>
-                                            <span style="display:block" data-toggle="collapsePartial"
-                                                  class="collapse-partial in"><span class="line-clamp"
-                                                                                    style="height: auto;"><a
-                                                        href="https://profiles.stanford.edu/julia-co" target="_blank">Julia Co</a><a
-                                                        class="toggle-button" data-bypass="" style="display: none;"><i
-                                                            class="icon-caret-left"></i></a></span></span>
-
-                                        </li>
-                                        <li class="advisees-list-item">
-                                            <span style="font-weight:600">Doctoral Dissertation Reader (AC)</span>
-                                            <br>
-                                            <span style="display:block" data-toggle="collapsePartial"
-                                                  class="collapse-partial in"><span class="line-clamp"
-                                                                                    style="height: auto;"><a
-                                                        href="https://profiles.stanford.edu/diana-proctor"
-                                                        target="_blank">Diana Proctor</a>, <a
-                                                        href="https://profiles.stanford.edu/suchita-rastogi"
-                                                        target="_blank">Suchita Rastogi</a><a class="toggle-button"
-                                                                                              data-bypass=""
-                                                                                              style="display: none;"><i
-                                                            class="icon-caret-left"></i></a></span></span>
-
-                                        </li>
-                                        <li class="advisees-list-item">
-                                            <span style="font-weight:600">Doctoral Dissertation Advisor (AC)</span>
-                                            <br>
-                                            <span style="display:block" data-toggle="collapsePartial"
-                                                  class="collapse-partial in"><span class="line-clamp"
-                                                                                    style="height: auto;"><a
-                                                        href="https://profiles.stanford.edu/connie-fung"
-                                                        target="_blank">Connie Fung</a>, <a
-                                                        href="https://profiles.stanford.edu/lauren-popov"
-                                                        target="_blank">Lauren Popov</a><a class="toggle-button"
-                                                                                           data-bypass=""
-                                                                                           style="display: none;"><i
-                                                            class="icon-caret-left"></i></a></span></span>
-
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div id="graduateAndFellowshipProgramsContent" class="content-section">
-                                <div><h3>Graduate and Fellowship Programs</h3>
-                                    <hr>
-                                    <ul class="section-listing">
-                                        <li class="section-list-item bulleted">
-                                            <div class="description"><a href="dept.php?DNo=785" target="_blank">Microbiology
-                                                    and Immunology (Phd Program)</a></div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
             </div>
 
