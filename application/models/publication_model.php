@@ -103,6 +103,7 @@ class Publication_model extends CI_Model {
 
     	$this->db->flush_cache();
         $this->db->where_in('id', $pubArr);
+        $this->db->order_by('year', "desc");
         $this->db->limit($limit, $start);
         $query = $this->db->get("publications");
 

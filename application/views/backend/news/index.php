@@ -59,6 +59,7 @@
                     <th>Title</th>
                     <th>Start Date</th>
                     <th>End Date</th>
+                    <th>Delete</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -70,6 +71,11 @@
                     </td>
                     <td><?php echo $v['start_date']; ?></td>
                     <td><?php echo $v['end_date']; ?></td>
+                    <td>
+                        <a class="delete-btn" onclick="return confirm('Are you sure you want to delete this item?');" href="<?php echo site_url("admin/news/delete"); ?>/<?php echo $v['id']; ?>">
+                                        <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;Delete
+                                        news </a>
+                    </td>
                 </tr>
                 <?php } ?>
                 </tbody>

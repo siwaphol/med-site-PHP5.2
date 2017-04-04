@@ -22,6 +22,7 @@ $route['admin'] = 'admin';
 $route['admin/news'] = 'admin/news';
 $route['admin/news/create'] = 'admin/news_create';
 $route['admin/news/store'] = 'admin/news_store';
+$route['admin/news/delete/(:num)'] = 'admin/news_delete/$1';
 $route['admin/news/(:num)'] = 'admin/news_edit/$1';
 
 $route['admin/staff'] = 'admin/staff';

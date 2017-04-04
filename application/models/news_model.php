@@ -53,14 +53,15 @@ class News_model extends CI_Model {
 		return $this->db->insert('news', $data);
 	}
 
-	public function update_news($id)
+	public function update_news($id, $new_image_path = false)
 	{
+	    $imagePath  = $new_image_path?$new_image_path:$this->input->post('image_path');
 		$data = array(
 			'title' => $this->input->post('title'),
 			'content' => $this->input->post('content'),
 			'start_date' => $this->input->post('start_date'),
 			'end_date' => $this->input->post('end_date'),
-			'image_path' => $this->input->post('image_path'),
+			'image_path' => $imagePath,
 			'created_at' => now(),
 			'updated_at' => now(),
 		);
@@ -68,4 +69,10 @@ class News_model extends CI_Model {
 		$this->db->where('id', $id);
 		$this->db->update('news', $data);
 	}
+
+    public function delete_news($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->delete('news');
+    }
 }

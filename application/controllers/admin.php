@@ -149,7 +149,8 @@ class Admin extends CI_Controller {
         }
         else
         {
-            if ( !empty($_FILES['image_path']['name']) &&! $this->upload->do_upload('image_path'))
+            // if file upload has error
+            if ( !empty($_FILES['image_path']['name']) && !$this->upload->do_upload('image_path'))
             {
                 $this->session->set_userdata('flash_notification.message', $this->upload->display_errors());
 
@@ -159,18 +160,30 @@ class Admin extends CI_Controller {
             }
             else
             {
-                if(empty($_FILES['image_path']['name'])){
+                if(!empty($_FILES['image_path']['name'])){
                     $uploaded = $this->upload->data();
-                    $_POST['image_path'] = 'uploads/' . $uploaded['file_name'];
+                    $data['new_image_path'] = 'uploads/' . $uploaded['file_name'];
                 }else{
-                    $_POST['image_path'] = $data['news_item']['image_path'];
+                    $data['new_image_path'] = $data['news_item']['image_path'];
                 }
 
-                $this->news_model->update_news($id);
+                $this->news_model->update_news($id, $data['new_image_path']);
                 $this->session->set_userdata('flash_notification.message', 'Update Successfully');
                 redirect('admin/news');
             }
         }
+    }
+
+    public function news_delete($id)
+    {
+        if($this->check_login() == true){
+            $session_data = $this->session->userdata('logged_in');
+            $data['username'] = $session_data['username'];
+        }
+        $this->news_model->delete_news($id);
+
+        $this->session->set_userdata('flash_notification.message', 'Deleted Successfully');
+        redirect('admin/news');
     }
 
     #user 
