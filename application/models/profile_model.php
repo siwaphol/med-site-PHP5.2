@@ -20,12 +20,13 @@ class Profile_model extends CI_Model {
         return $this->db->count_all("staffs");
     }
 
-    public function fetch_profiles($limit, $start, $name=null, $first=null) {
+    public function fetch_profiles($limit, $start, $name=null, $first=null, $user_type=1) {
         if ($name) {
             $this->db->like("first_name_en", $name);
         }else if ($first) {
             $this->db->like("first_name_en", $first, 'after');
         }
+        $this->db->where('user_type', $user_type);
         $this->db->order_by("first_name_en","asc");
         $this->db->limit($limit, $start);
         $query = $this->db->get("staffs");
