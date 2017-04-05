@@ -9277,9 +9277,9 @@ h1, h2, h3, h4, h5 {
 
 h4 {
   color: #0265A0;
-  font-size: 1em;
+  font-size: 1.2em;
   font-weight: bold;
-  margin-bottom: 1em;
+  margin-bottom: 1.2em;
   text-transform: uppercase; }
 
 h5 {
@@ -9294,8 +9294,8 @@ hr {
 
 p {
   line-height: 150%;
-  font-size: 1em;
-  margin: 0 0 1em 0; }
+  font-size: 1.2em;
+  margin: 0 0 1.2em 0; }
 
 ul {
   list-style: disc;
@@ -9746,8 +9746,8 @@ ul.tree {
         ul.tree li input:checked + ul > li:last-child {
           margin: 0 0 1px; }
       ul.tree li input + ul {
-        margin: -1em 0 0 -44px;
-        height: 1em; }
+        margin: -1.2em 0 0 -44px;
+        height: 1.2em; }
         ul.tree li input + ul:before {
           content: "\F0DA"; }
         ul.tree li input + ul > li {
@@ -9940,7 +9940,7 @@ header {
         border-left: 1px solid #CDCDCD;
         font-weight: 600;
         margin: 0.22222em 0 0 -0.5em;
-        padding: 0 0 0.11111em 0.44444em; }
+        padding: 0 0 0.11111.2em 0.44444em; }
         @media only screen and (min-width: 768px) {
           #headerContent .brand span.cap-network-logo {
             border-left: 1px solid #9C9990;
@@ -10001,7 +10001,7 @@ footer#footerContent {
       text-indent: -62.4375em;
       margin-bottom: 1.25em; }
   footer#footerContent ul {
-    margin-bottom: 1em;
+    margin-bottom: 1.2em;
     overflow: hidden; }
     @media only screen and (min-width: 768px) and (max-width: 979px) {
       footer#footerContent ul {
@@ -10014,10 +10014,10 @@ footer#footerContent {
       footer#footerContent ul li a {
         display: block;
         border: none;
-        font-size: 1em;
+        font-size: 1.2em;
         padding: 5px 0;
         text-align: center;
-        line-height: 1em;
+        line-height: 1.2em;
         color: #585754; }
         @media only screen and (min-width: 768px) {
           footer#footerContent ul li a {
@@ -10066,7 +10066,7 @@ footer#footerContent {
   width: auto;
   text-transform: uppercase;
   font-size: 0.625em;
-  line-height: 1em; }
+  line-height: 1.2em; }
   @media only screen and (min-width: 980px) {
     #footerContent .powered-by-cap {
       display: block;
@@ -10148,7 +10148,7 @@ footer#footerContent {
     .home .banner .masthead #searchContent {
       position: relative; }
     .home .banner .masthead .dropdown-toggle {
-      font-size: 1em;
+      font-size: 1.2em;
       font-weight: bold;
       text-transform: uppercase;
       color: rgba(255, 255, 255, 0.85);
@@ -10158,7 +10158,7 @@ footer#footerContent {
       text-align: center; }
   .home .banner .navbar-search {
     float: none;
-    margin-top: 1em; }
+    margin-top: 1.2em; }
     .home .banner .navbar-search .search-query {
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
@@ -10175,7 +10175,7 @@ footer#footerContent {
       border: 1px solid #999;
       border-radius: 10px;
       box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.3) inset;
-      font-size: 1em;
+      font-size: 1.2em;
       height: 2.125em;
       padding: 0.5em 0.5em 0.3125em; }
       @media only screen and (min-width: 768px) {
@@ -10225,7 +10225,7 @@ footer#footerContent {
     width: 770px; } }
 .home .information h2 {
   color: #8c1515;
-  font-size: 1em;
+  font-size: 1.2em;
   text-transform: uppercase;
   font-weight: bold;
   margin-bottom: 0.625em; }
@@ -10722,7 +10722,7 @@ footer#footerContent {
         div.alpha-chooser {
           width: percent(180px, 242px);
         }
-      }      
+      }
       */ }
   .home .information .alpha-chooser-wrap.bg-icon-user:before {
     bottom: -37px;
@@ -10812,7 +10812,7 @@ footer#footerContent {
       display: block;
       font-size: 0.81818em; }
     .home .information .login a .icon-som-shield {
-      margin-bottom: -0.59091em;
+      margin-bottom: -0.59091.2em;
       margin: 0 0.31818em -0.5em 0; }
 .home .information .departments, .home .information .programs {
   position: relative;
@@ -10905,7 +10905,7 @@ footer#footerContent {
           margin-top: -0.7em;
           content: "\f061";
           font-family: FontAwesome;
-          font-size: 1em;
+          font-size: 1.2em;
           color: #999; }
   .home .information .departments ul.tree, .home .information .programs ul.tree {
     width: 90%;
@@ -10969,7 +10969,7 @@ footer#footerContent {
             box-shadow: 0 0 45px rgba(0, 0, 0, 0.4) inset;
             color: #ccc;
             overflow: hidden;
-            font-size: 1em;
+            font-size: 1.2em;
             font-weight: 600;
             padding: 0.48485em 0;
             margin: 0; }
@@ -10981,7 +10981,7 @@ footer#footerContent {
                 font-size: 2.0625em; } }
             .home .demographics figure .chart ul.chart-values li.small {
               padding-top: 0;
-              font-size: 1em; }
+              font-size: 1.2em; }
               @media only screen and (min-width: 768px) and (max-width: 979px) {
                 .home .demographics figure .chart ul.chart-values li.small {
                   font-size: 1.1875em; } }
@@ -11007,7 +11007,7 @@ footer#footerContent {
           float: left;
           margin: 0;
           padding: 0.66667em 0 0;
-          font-size: 1em;
+          font-size: 1.2em;
           font-weight: 600; }
           @media only screen and (min-width: 768px) {
             .home .demographics figure .chart ul.chart-labels li {
@@ -11323,9 +11323,9 @@ footer#footerContent {
   margin-bottom: 0.125em; }
   .search .container aside .filter-group h2,
   .browse .container aside .filter-group h2 {
-    -webkit-border-radius: 0.28571em 0.28571em 0 0;
-    -moz-border-radius: 0.28571em 0.28571em 0 0;
-    border-radius: 0.28571em 0.28571em 0 0;
+    -webkit-border-radius: 0.28571.2em 0.28571.2em 0 0;
+    -moz-border-radius: 0.28571.2em 0.28571.2em 0 0;
+    border-radius: 0.28571.2em 0.28571.2em 0 0;
     font-size: 1.125em;
     font-weight: 400; }
     .search .container aside .filter-group h2 a,
@@ -11342,7 +11342,7 @@ footer#footerContent {
         padding: 0 1.25em 0.5625em; } }
     .search .container aside .filter-group ul label,
     .browse .container aside .filter-group ul label {
-      font-size: 1em;
+      font-size: 1.2em;
       margin-bottom: 0.35714em;
       line-height: 143%; }
       .search .container aside .filter-group ul label input[type=checkbox],
@@ -11458,9 +11458,9 @@ footer#footerContent {
     .tag-cloud .tag a.weight10 {
       font-size: 0.75em; }
     .tag-cloud .tag a.weight11 {
-      font-size: 1em; }
+      font-size: 1.2em; }
     .tag-cloud .tag a.weight12 {
-      font-size: 1em; }
+      font-size: 1.2em; }
     .tag-cloud .tag a.weight13 {
       font-size: 1.125em; }
     .tag-cloud .tag a.weight14 {
@@ -11641,7 +11641,7 @@ footer#footerContent {
           .profile #tabbedLayoutContainer .navbar .navbar-inner .nav li.active {
             box-shadow: 0 -0.25em 0.125em 0 rgba(0, 0, 0, 0.125);
             font-size: 1.125em;
-            margin: -0.61111em 0 0.61111em;
+            margin: -0.61111.2em 0 0.61111.2em;
             padding-top: 0.77778em; } }
         .profile #tabbedLayoutContainer .navbar .navbar-inner .nav li.active > a, .profile #tabbedLayoutContainer .navbar .navbar-inner .nav li.active > a:focus, .profile #tabbedLayoutContainer .navbar .navbar-inner .nav li.active > a:hover {
           box-shadow: none;
@@ -11667,7 +11667,7 @@ footer#footerContent {
         border: 3px solid white;
         border-radius: 0.375em;
         color: #64605D;
-        font-size: 1em;
+        font-size: 1.2em;
         font-weight: normal;
         line-height: 200%;
         padding-top: 0.5em;
@@ -11691,20 +11691,22 @@ footer#footerContent {
   line-height: 100%;
   margin-bottom: 0.42857em; }
 .profile .card h4 {
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  font-size: 1em;
+}
 .profile .card p {
   margin-left: 1.25em; }
 .profile .card .detail p {
   margin-left: 0; }
 .profile .card .detail ul {
-  margin-bottom: 1em; }
+  margin-bottom: 1.2em; }
 .profile .card ul.section-listing.articles li {
   margin-bottom: 1.25em;
   list-style: none;
   list-style-image: none; }
 .profile .card ul.section-listing li {
   margin: 0.1875em 0;
-  font-size: 1em;
+  font-size: 1.2em;
   list-style: none;
   list-style-image: none; }
   .profile .card ul.section-listing li.bulleted {
@@ -11730,7 +11732,7 @@ footer#footerContent {
     font-size: 0.9375em;
     font-weight: 600;
     text-transform: uppercase;
-    margin-bottom: 1em; }
+    margin-bottom: 1.2em; }
   .profile .card.tab-pane .side-bar #navigatorContent .icon-background {
     display: none; }
   .profile .card.tab-pane .side-bar #navigatorContent .summary .summary {
@@ -11802,12 +11804,12 @@ footer#footerContent {
     .profile .card.tab-pane .side-bar .similar-profiles ul li {
       float: left; }
   .profile .card.tab-pane .side-bar .similar-profiles p {
-    font-size: 1em;
+    font-size: 1.2em;
     line-height: 1.25em;
     word-break: break-all; }
     .profile .card.tab-pane .side-bar .similar-profiles p strong {
       display: block;
-      font-size: 1.1em; }
+      font-size: 1.1.2em; }
   .profile .card.tab-pane .side-bar .similar-profiles .media-img {
     display: inline-block;
     margin: 0 5px 0 0;
@@ -11890,7 +11892,7 @@ footer#footerContent {
     .profile .card.tab-pane .side-bar .similar-profiles li.mini-profile.media .link-publications .publication-count {
       font-size: 12px;
       font-weight: 700;
-      line-height: 1.1em; }
+      line-height: 1.1.2em; }
       .profile .card.tab-pane .side-bar .similar-profiles li.mini-profile.media .link-publications .publication-count span {
         display: block;
         font-size: 30px;
@@ -11917,11 +11919,11 @@ footer#footerContent {
 .profile .contact-info {
   margin-top: 10px; }
   .profile .contact-info address {
-    font-size: 1em;
-    margin: 0 0 1.42857em 2.28571em;
+    font-size: 1.2em;
+    margin: 0 0 1.42857em 2.28571.2em;
     line-height: 142%; }
     .profile .contact-info address a {
-      font-size: 1em !important; }
+      font-size: 1.2em !important; }
   .profile .contact-info ul {
     list-style: none;
     list-style-image: none;
@@ -12038,9 +12040,9 @@ footer#footerContent {
     margin-bottom: 0.83333em; }
     @media only screen and (min-width: 768px) {
       .banner.profile h2 {
-        font-size: 1em; } }
+        font-size: 1.2em; } }
   .banner.profile h3 {
-    font-size: 1em;
+    font-size: 1.2em;
     font-weight: 500;
     line-height: 100%;
     text-shadow: 0 0 0.83333em rgba(0, 0, 0, 0.5);
@@ -12067,7 +12069,7 @@ footer#footerContent {
         color: white; }
       @media only screen and (min-width: 768px) {
         .banner.profile li a {
-          font-size: 1em; } }
+          font-size: 1.2em; } }
   .banner.profile .icon-background {
     background-color: #007994; }
 

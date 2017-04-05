@@ -45,7 +45,8 @@ class Api extends REST_Controller
         $page = (isset($_GET['page'])) ? (int)$_GET['page']-1 : 0;
         $search = (isset($_GET['search']) && !empty($_GET['search']))?$_GET['search']:null;
         $first = (isset($_GET['first']) && !empty($_GET['first']))?$_GET['first']:null;
-        $data["results"] = $this->profile_model->fetch_profiles($config["per_page"], $page*$perPage, $search, $first);
+        $user_type = (isset($_GET['user_type']) && !empty($_GET['user_type']))?$_GET['user_type']:1;
+        $data["results"] = $this->profile_model->fetch_profiles($config["per_page"], $page*$perPage, $search, $first, $user_type);
         $data["links"] = $this->pagination->create_links();
 
         if($data)

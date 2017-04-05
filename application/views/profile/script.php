@@ -33,6 +33,7 @@
                 from: 0,
                 to: 0,
                 total: 0,
+                user_type: 1,
                 prevClick: function (e) {
                     if(this.currentPage <= 1){
                         e.preventDefault();
@@ -82,7 +83,10 @@
                     this.pageReCreate();
                 }.bind(this),
                 pageReCreate: function () {
-                    $.getJSON('<?php echo site_url("api/profile"); ?>', {page: this.currentPage, per_page: this.perPage, search: getParameterByName('q'), first:getParameterByName('c')}, function (profiles) {
+                    $.getJSON('<?php echo site_url("api/profile"); ?>',
+                        {page: this.currentPage, per_page: this.perPage,
+                            user_type: this.user_type,
+                            search: getParameterByName('q'), first:getParameterByName('c')}, function (profiles) {
                         profiles.data.forEach(function(item, index){
                             item.image_path = '../'+item.image_path;
                             if(!imageExists(item.image_path)){
@@ -96,7 +100,13 @@
                         this.to = profiles.to;
                         this.total = profiles.total;
                     }.bind(this));
-                }
+                },
+                changeUserType: function(user_type){
+                    this.currentPage = 1;
+                    this.user_type = user_type;
+
+                    this.pageReCreate();
+                }.bind(this)
             };
         },
         methods: {

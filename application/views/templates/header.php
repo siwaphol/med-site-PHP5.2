@@ -29,7 +29,7 @@
 		}
 
         .background-color-block {
-            background: linear-gradient(180deg, #58e0e0 45px, #ffffff 20px);
+            background: linear-gradient(180deg, rgba(189, 88, 224, 0.67) 45px, #ffffff 20px);
         }
         .background-color-block-2 {
             background: linear-gradient(180deg, #58e06d 45px, #ffffff 20px);
