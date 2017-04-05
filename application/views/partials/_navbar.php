@@ -48,6 +48,7 @@
 
                     <li><a href="<?php echo site_url("research");?>" >Research</a></li>
                     <li><a href="<?php echo site_url("contact");?>" >Contact Us</a></li>
+                    <li><a href="<?php echo site_url("admin");?>" >Admin</a></li>
                 </ul>
             <!-- </ul> -->
           </div><!--/.nav-collapse -->
