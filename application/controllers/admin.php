@@ -5,6 +5,7 @@ class Admin extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
+        $this->load->library('image_lib');
         $this->load->model('news_model');
         $this->load->model('course_model');
         $this->load->model('staff_model');
@@ -745,20 +746,22 @@ class Admin extends CI_Controller {
                 redirect('admin/staff_publications');
             }
         }
-
-        
     #end publication
+
+    //staff
     public function staff()
     {
         if($this->check_login() == true){
             $session_data = $this->session->userdata('logged_in');
             $data['username'] = $session_data['username'];
         }
+
         $data['title'] = 'Staff';
         $data['staff'] = $this->staff_model->get_staff();
 
         $this->load->view('backend/layout', $data);
         $this->load->view('backend/staff/index', $data);
+
         $this->load->view('backend/footer');
     }
 
@@ -771,7 +774,6 @@ class Admin extends CI_Controller {
         $data['title'] = 'Staff';
         $config['upload_path'] = './uploads/staff/';
         $config['allowed_types'] = 'gif|jpg|png';
-        $config['max_size'] = '2048';
         $config['max_width']  = '0';
         $config['max_height']  = '0';
 
@@ -804,10 +806,24 @@ class Admin extends CI_Controller {
             else
             {
                 $uploaded = $this->upload->data();
-                $_POST['image_path'] = 'uploads/staff/' . $uploaded['file_name'];
+                $imagePath = 'uploads/staff/' . $uploaded['file_name'];
 
-                $this->staff_model->set_staff();
+                $imageConfig = array();
+                $imageConfig['image_library'] = 'gd2';
+                $imageConfig['source_image'] = './'.$imagePath;
+                $imageConfig['new_image'] = './uploads/staff/';
+                $imageConfig['maintain_ratio'] = TRUE;
+                $imageConfig['width']    = 240;
+                $imageConfig['height']   = 320;
+
+                $this->image_lib->clear();
+                $this->image_lib->initialize($imageConfig);
+                ini_set('memory_limit', '-1');
+                $this->image_lib->resize();
+
+                $this->staff_model->set_staff($imagePath);
                 $this->session->set_userdata('flash_notification.message', 'Created Successfully');
+
                 redirect('admin/staff');
             }
         }
@@ -829,7 +845,6 @@ class Admin extends CI_Controller {
 
         $config['upload_path'] = './uploads/staff/';
         $config['allowed_types'] = 'gif|jpg|png';
-        $config['max_size'] = '2048';
         $config['max_width']  = '0';
         $config['max_height']  = '0';
         $this->load->helper('form');
@@ -865,19 +880,352 @@ class Admin extends CI_Controller {
                     $uploaded = $this->upload->data();
                     $data['new_image_path'] = 'uploads/staff/' . $uploaded['file_name'];
 
+                    $imageConfig = array();
+                    $imageConfig['image_library'] = 'gd2';
+                    $imageConfig['source_image'] = './'.$data['new_image_path'];
+                    $imageConfig['new_image'] = './uploads/staff/';
+                    $imageConfig['maintain_ratio'] = TRUE;
+                    $imageConfig['width']    = 240;
+                    $imageConfig['height']   = 320;
+
+                    $this->image_lib->clear();
+                    $this->image_lib->initialize($imageConfig);
+                    ini_set('memory_limit', '-1');
+                    $this->image_lib->resize();
+
                     $this->staff_model->update_staff($id, $data['new_image_path']);
                     $this->session->set_userdata('flash_notification.message', 'Update Successfully');
+
                     redirect('admin/staff');
                 }
             }else{
                 $data['new_image_path'] = $data['staff_item']['image_path'];
                 $this->staff_model->update_staff($id, $data['new_image_path']);
                 $this->session->set_userdata('flash_notification.message', 'Update Successfully');
+
                 redirect('admin/staff');
             }
         }
     }
+    //end staff
+    //officer
+    public function officer()
+    {
+        if($this->check_login() == true){
+            $session_data = $this->session->userdata('logged_in');
+            $data['username'] = $session_data['username'];
+        }
 
+        $data['title'] = 'Officer';
+        $data['staff'] = $this->staff_model->get_staff(false, 2);
+
+        $this->load->view('backend/layout', $data);
+        $this->load->view('backend/officer/index', $data);
+        $this->load->view('backend/footer');
+    }
+
+    public function officer_create()
+    {
+        if($this->check_login() == true){
+            $session_data = $this->session->userdata('logged_in');
+            $data['username'] = $session_data['username'];
+        }
+        $data['title'] = 'Officer';
+        $config['upload_path'] = './uploads/officer/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_width']  = '0';
+        $config['max_height']  = '0';
+
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+        if($this->input->post('first_name_en') && $this->input->post('last_name_en')){
+            $config['file_name'] = strtolower($this->input->post('first_name_en')).'_' .strtolower($this->input->post('last_name_en')).'.jpg';
+        }
+        $this->load->library('upload', $config);
+
+        $this->form_validation->set_rules('first_name_en', 'First Name', 'required');
+        $this->form_validation->set_rules('last_name_en', 'Last Name', 'required');
+
+        if ($this->form_validation->run() === FALSE)
+        {
+            $this->load->view('backend/layout', $data);
+            $this->load->view('backend/officer/create', $data);
+            $this->load->view('backend/footer');
+        }
+        else
+        {
+            if ( ! $this->upload->do_upload('image_path'))
+            {
+                $error = array('error' => $this->upload->display_errors());
+
+                $this->load->view('backend/layout', $data);
+                $this->load->view('backend/officer/create', $data);
+                $this->load->view('backend/footer');
+            }
+            else
+            {
+                $uploaded = $this->upload->data();
+                $imagePath = 'uploads/officer/' . $uploaded['file_name'];
+
+                $imageConfig = array();
+                $imageConfig['image_library'] = 'gd2';
+                $imageConfig['source_image'] = './'.$imagePath;
+                $imageConfig['new_image'] = './uploads/officer/';
+                $imageConfig['maintain_ratio'] = TRUE;
+                $imageConfig['width']    = 240;
+                $imageConfig['height']   = 320;
+
+                $this->image_lib->clear();
+                $this->image_lib->initialize($imageConfig);
+                ini_set('memory_limit', '-1');
+                $this->image_lib->resize();
+
+                $this->staff_model->set_staff($imagePath);
+                $this->session->set_userdata('flash_notification.message', 'Created Successfully');
+
+                redirect('admin/officer');
+            }
+        }
+    }
+
+    public function officer_edit($id)
+    {
+        if($this->check_login() == true){
+            $session_data = $this->session->userdata('logged_in');
+            $data['username'] = $session_data['username'];
+        }
+        $data['title'] = 'Officer Edit';
+        $data['staff_item'] = $this->staff_model->get_staff($id);
+
+        if (empty($data['staff_item']))
+        {
+            show_404();
+        }
+
+        $config['upload_path'] = './uploads/officer/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_width']  = '0';
+        $config['max_height']  = '0';
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+        if($this->input->post('first_name_en') && $this->input->post('last_name_en')){
+            $config['file_name'] = strtolower($this->input->post('first_name_en')).'_' .strtolower($this->input->post('last_name_en')).'.jpg';
+        }
+        $this->load->library('upload', $config);
+
+        $this->form_validation->set_rules('first_name_en', 'First Name', 'required');
+        $this->form_validation->set_rules('last_name_en', 'Last Name', 'required');
+
+        if ($this->form_validation->run() === FALSE)
+        {
+            $this->load->view('backend/layout', $data);
+            $this->load->view('backend/officer/edit', $data);
+            $this->load->view('backend/footer');
+        }
+        else
+        {
+
+            if (isset($_FILES['image_path']['name']) && !empty($_FILES['image_path']['name'])) {
+                if (! $this->upload->do_upload('image_path'))
+                {
+                    $error = array('error' => $this->upload->display_errors());
+
+                    $this->load->view('backend/layout', $data);
+                    $this->load->view('backend/officer/edit', $data);
+                    $this->load->view('backend/footer');
+                }
+                else
+                {
+                    $uploaded = $this->upload->data();
+                    $data['new_image_path'] = 'uploads/officer/' . $uploaded['file_name'];
+
+                    $imageConfig = array();
+                    $imageConfig['image_library'] = 'gd2';
+                    $imageConfig['source_image'] = './'.$data['new_image_path'];
+                    $imageConfig['new_image'] = './uploads/officer/';
+                    $imageConfig['maintain_ratio'] = TRUE;
+                    $imageConfig['width']    = 240;
+                    $imageConfig['height']   = 320;
+
+                    $this->image_lib->clear();
+                    $this->image_lib->initialize($imageConfig);
+                    ini_set('memory_limit', '-1');
+                    $this->image_lib->resize();
+
+                    $this->staff_model->update_staff($id, $data['new_image_path']);
+                    $this->session->set_userdata('flash_notification.message', 'Update Successfully');
+
+                    redirect('admin/officer');
+                }
+            }else{
+                $data['new_image_path'] = $data['staff_item']['image_path'];
+                $this->staff_model->update_staff($id, $data['new_image_path']);
+                $this->session->set_userdata('flash_notification.message', 'Update Successfully');
+
+                redirect('admin/officer');
+            }
+        }
+    }
+    //end officer
+    //graduate
+    public function graduate()
+    {
+        if($this->check_login() == true){
+            $session_data = $this->session->userdata('logged_in');
+            $data['username'] = $session_data['username'];
+        }
+
+        $data['title'] = 'Graduate';
+        $data['staff'] = $this->staff_model->get_staff(false, 3);
+
+        $this->load->view('backend/layout', $data);
+        $this->load->view('backend/graduate/index', $data);
+        $this->load->view('backend/footer');
+    }
+
+    public function graduate_create()
+    {
+        if($this->check_login() == true){
+            $session_data = $this->session->userdata('logged_in');
+            $data['username'] = $session_data['username'];
+        }
+        $data['title'] = 'Officer';
+        $config['upload_path'] = './uploads/graduate/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_width']  = '0';
+        $config['max_height']  = '0';
+
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+        if($this->input->post('first_name_en') && $this->input->post('last_name_en')){
+            $config['file_name'] = strtolower($this->input->post('first_name_en')).'_' .strtolower($this->input->post('last_name_en')).'.jpg';
+        }
+        $this->load->library('upload', $config);
+
+        $this->form_validation->set_rules('first_name_en', 'First Name', 'required');
+        $this->form_validation->set_rules('last_name_en', 'Last Name', 'required');
+
+        if ($this->form_validation->run() === FALSE)
+        {
+            $this->load->view('backend/layout', $data);
+            $this->load->view('backend/graduate/create', $data);
+            $this->load->view('backend/footer');
+        }
+        else
+        {
+            if ( ! $this->upload->do_upload('image_path'))
+            {
+                $error = array('error' => $this->upload->display_errors());
+
+                $this->load->view('backend/layout', $data);
+                $this->load->view('backend/graduate/create', $data);
+                $this->load->view('backend/footer');
+            }
+            else
+            {
+                $uploaded = $this->upload->data();
+                $imagePath = 'uploads/graduate/' . $uploaded['file_name'];
+
+                $imageConfig = array();
+                $imageConfig['image_library'] = 'gd2';
+                $imageConfig['source_image'] = './'.$imagePath;
+                $imageConfig['new_image'] = './uploads/graduate/';
+                $imageConfig['maintain_ratio'] = TRUE;
+                $imageConfig['width']    = 240;
+                $imageConfig['height']   = 320;
+
+                $this->image_lib->clear();
+                $this->image_lib->initialize($imageConfig);
+                ini_set('memory_limit', '-1');
+                $this->image_lib->resize();
+
+                $this->staff_model->set_staff($imagePath);
+                $this->session->set_userdata('flash_notification.message', 'Created Successfully');
+
+                redirect('admin/graduate');
+            }
+        }
+    }
+
+    public function graduate_edit($id)
+    {
+        if($this->check_login() == true){
+            $session_data = $this->session->userdata('logged_in');
+            $data['username'] = $session_data['username'];
+        }
+        $data['title'] = 'Graduate Edit';
+        $data['staff_item'] = $this->staff_model->get_staff($id);
+
+        if (empty($data['staff_item']))
+        {
+            show_404();
+        }
+
+        $config['upload_path'] = './uploads/graduate/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_width']  = '0';
+        $config['max_height']  = '0';
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+        if($this->input->post('first_name_en') && $this->input->post('last_name_en')){
+            $config['file_name'] = strtolower($this->input->post('first_name_en')).'_' .strtolower($this->input->post('last_name_en')).'.jpg';
+        }
+        $this->load->library('upload', $config);
+
+        $this->form_validation->set_rules('first_name_en', 'First Name', 'required');
+        $this->form_validation->set_rules('last_name_en', 'Last Name', 'required');
+
+        if ($this->form_validation->run() === FALSE)
+        {
+            $this->load->view('backend/layout', $data);
+            $this->load->view('backend/graduate/edit', $data);
+            $this->load->view('backend/footer');
+        }
+        else
+        {
+
+            if (isset($_FILES['image_path']['name']) && !empty($_FILES['image_path']['name'])) {
+                if (! $this->upload->do_upload('image_path'))
+                {
+                    $error = array('error' => $this->upload->display_errors());
+
+                    $this->load->view('backend/layout', $data);
+                    $this->load->view('backend/graduate/edit', $data);
+                    $this->load->view('backend/footer');
+                }
+                else
+                {
+                    $uploaded = $this->upload->data();
+                    $data['new_image_path'] = 'uploads/graduate/' . $uploaded['file_name'];
+
+                    $imageConfig = array();
+                    $imageConfig['image_library'] = 'gd2';
+                    $imageConfig['source_image'] = './'.$data['new_image_path'];
+                    $imageConfig['new_image'] = './uploads/graduate/';
+                    $imageConfig['maintain_ratio'] = TRUE;
+                    $imageConfig['width']    = 240;
+                    $imageConfig['height']   = 320;
+
+                    $this->image_lib->clear();
+                    $this->image_lib->initialize($imageConfig);
+                    ini_set('memory_limit', '-1');
+                    $this->image_lib->resize();
+
+                    $this->staff_model->update_staff($id, $data['new_image_path']);
+                    $this->session->set_userdata('flash_notification.message', 'Update Successfully');
+
+                    redirect('admin/graduate');
+                }
+            }else{
+                $data['new_image_path'] = $data['staff_item']['image_path'];
+                $this->staff_model->update_staff($id, $data['new_image_path']);
+                $this->session->set_userdata('flash_notification.message', 'Update Successfully');
+
+                redirect('admin/graduate');
+            }
+        }
+    }
+    //end graduate
     #course group 
         public function course_group()
         {

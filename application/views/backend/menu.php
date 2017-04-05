@@ -79,6 +79,16 @@
                     </li>
                     <li><a href="<?php echo site_url("admin/educations"); ?>"><i class="fa fa-graduation-cap"></i> Edit Staff Educations</a></li>
                     <li><a href="<?php echo site_url("admin/staff_publications"); ?>"><i class="fa fa-graduation-cap"></i> Manage Staff Publications</a></li>
+                    <hr>
+                    <li><a href="<?php echo site_url("admin/officer"); ?>"><i class="fa fa-user"></i> All Officer</a>
+                    </li>
+                    <li><a href="<?php echo site_url("admin/officer/create"); ?>"><i class="fa fa-group"></i> Add Officer</a>
+                    </li>
+                    <hr>
+                    <li><a href="<?php echo site_url("admin/graduate"); ?>"><i class="fa fa-user"></i> All Graduate</a>
+                    </li>
+                    <li><a href="<?php echo site_url("admin/graduate/create"); ?>"><i class="fa fa-group"></i> Add Graduate</a>
+                    </li>
                 </ul>
             </li>
             <li class="treeview"><a href="#"> <i class="fa fa-user"></i> <span>Publications</span>

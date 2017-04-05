@@ -15,17 +15,17 @@
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
-    <h1> Staff <small> | Add Staff</small> </h1>
+    <h1> Officer <small> | Add Officer</small> </h1>
     <ol class="breadcrumb">
-        <li><a href="<?php echo site_url("admin/staff"); ?>"><i class="fa fa-bookmark"></i> Staff</a></li>
-        <li class="active">Add Staff</li>
+        <li><a href="<?php echo site_url("admin/officer"); ?>"><i class="fa fa-bookmark"></i> Officer</a></li>
+        <li class="active">Add Officer</li>
     </ol>
 </section>
 <br>
 <br>
 <div class="container">
 
-    <form action="<?php echo site_url("admin/staff/create"); ?>" method="post" enctype="multipart/form-data">
+    <form action="<?php echo site_url("admin/officer/create"); ?>" method="post" enctype="multipart/form-data">
     <!-- Gender -->
     <div class="control-group <?php echo (form_error('gender')?'has-error':''); ?>">
         <label class="control-label" for="gender">Gender</label>
@@ -146,18 +146,6 @@
     </div>
     <br>
 
-    <!-- Research of Interest -->
-    <div class="control-group <?php echo (form_error('research_of_interest')?'has-error':''); ?>">
-        <label class="control-label" for="research_of_interest">Research of Interest</label>
-        <div class="controls">
-            <textarea name="research_of_interest" id="research_of_interest" cols="30" rows="10" placeholder="Research of Interest" class="form-control"></textarea>
-            <?php if(form_error('research_of_interest')){ ?>
-            <span class="help-block"><?php echo form_error('research_of_interest'); ?></span>
-            <?php } ?>
-        </div>
-    </div>
-    <br>
-
     <!-- Phone -->
     <div class="control-group <?php echo (form_error('phone')?'has-error':''); ?>">
         <label class="control-label" for="phone">Phone Number</label>
@@ -208,7 +196,7 @@
     
    <!-- Image -->
     <div class="fileinput fileinput-new control-group <?php echo (form_error('image_path')?'has-error':''); ?>" data-provides="fileinput">
-        <label class="control-label" for="image_path">Staff Image</label>
+        <label class="control-label" for="image_path">Officer Image</label>
         <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 50px;"></div>
         <div> <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>
                 <input type="file" name="image_path" class="form-control" id="image" placeholder="Image">
@@ -256,7 +244,7 @@
         </div>
         <br>
 
-        <input type="hidden" name="user_type" value="1">
+        <input type="hidden" name="user_type" value="2">
 
         <input type="submit" value="Create" class="btn btn-success">
     </form>

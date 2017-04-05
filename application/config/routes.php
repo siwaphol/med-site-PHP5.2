@@ -30,6 +30,16 @@ $route['admin/staff/create'] = 'admin/staff_create';
 $route['admin/staff/store'] = 'admin/staff_store';
 $route['admin/staff/(:num)'] = 'admin/staff_edit/$1';
 
+$route['admin/officer'] = 'admin/officer';
+$route['admin/officer/create'] = 'admin/officer_create';
+$route['admin/officer/store'] = 'admin/officer_store';
+$route['admin/officer/(:num)'] = 'admin/officer_edit/$1';
+
+$route['admin/graduate'] = 'admin/graduate';
+$route['admin/graduate/create'] = 'admin/graduate_create';
+$route['admin/graduate/store'] = 'admin/graduate_store';
+$route['admin/graduate/(:num)'] = 'admin/graduate_edit/$1';
+
 $route['admin/course'] = 'admin/course';
 $route['admin/course/create'] = 'admin/course_create';
 $route['admin/course/store'] = 'admin/course_store';

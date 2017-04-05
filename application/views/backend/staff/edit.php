@@ -258,6 +258,8 @@
         </div>
         <br>
 
+        <input type="hidden" name="user_type" value="1">
+
         <input type="submit" value="Update" class="btn btn-success">
     </form>
 

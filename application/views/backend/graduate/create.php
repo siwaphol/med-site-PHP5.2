@@ -15,18 +15,19 @@
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
-    <h1> Staff <small> | Add Staff</small> </h1>
+    <h1> Graduate <small> | Add Graduate</small> </h1>
     <ol class="breadcrumb">
-        <li><a href="<?php echo site_url("admin/staff"); ?>"><i class="fa fa-bookmark"></i> Staff</a></li>
-        <li class="active">Add Staff</li>
+        <li><a href="<?php echo site_url("admin/graduate"); ?>"><i class="fa fa-bookmark"></i> Graduate</a></li>
+        <li class="active">Add Graduate</li>
     </ol>
 </section>
 <br>
 <br>
 <div class="container">
 
-    <form action="<?php echo site_url("admin/staff/create"); ?>" method="post" enctype="multipart/form-data">
-    <!-- Gender -->
+    <form action="<?php echo site_url("admin/graduate/create"); ?>" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="position" value="">
+        <!-- Gender -->
     <div class="control-group <?php echo (form_error('gender')?'has-error':''); ?>">
         <label class="control-label" for="gender">Gender</label>
         <div class="controls">
@@ -134,18 +135,6 @@
     </div>
     <br>
 
-    <!-- Position -->
-    <div class="control-group <?php echo (form_error('position')?'has-error':''); ?>">
-        <label class="control-label" for="position">Position</label>
-        <div class="controls">
-            <input type="text" name="position" class="form-control" id="position" placeholder="Position" value="<?php echo set_value('position'); ?>">
-            <?php if(form_error('position')){ ?>
-            <span class="help-block"><?php echo form_error('position'); ?></span>
-            <?php } ?>
-        </div>
-    </div>
-    <br>
-
     <!-- Research of Interest -->
     <div class="control-group <?php echo (form_error('research_of_interest')?'has-error':''); ?>">
         <label class="control-label" for="research_of_interest">Research of Interest</label>
@@ -208,7 +197,7 @@
     
    <!-- Image -->
     <div class="fileinput fileinput-new control-group <?php echo (form_error('image_path')?'has-error':''); ?>" data-provides="fileinput">
-        <label class="control-label" for="image_path">Staff Image</label>
+        <label class="control-label" for="image_path">Graduate Image</label>
         <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 50px;"></div>
         <div> <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>
                 <input type="file" name="image_path" class="form-control" id="image" placeholder="Image">
@@ -256,7 +245,7 @@
         </div>
         <br>
 
-        <input type="hidden" name="user_type" value="1">
+        <input type="hidden" name="user_type" value="3">
 
         <input type="submit" value="Create" class="btn btn-success">
     </form>
