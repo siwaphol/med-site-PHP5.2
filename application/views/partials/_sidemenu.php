@@ -13,8 +13,8 @@
                 </li>
                 <ul class="sub-menu collapse" id="faculty_Staff">
                     <li><a href="<?php echo site_url('browse');?>">Staff</a></li>
+                    <li><a href="<?php echo site_url('browse');?>">Officer</a></li>
                     <li><a href="<?php echo site_url('browse');?>">Graduate Student</a></li>
-                    <li><a href="<?php echo site_url('browse');?>">Visiting Scholar & Postdocs</a></li>
                 </ul>
 
                 <li  data-toggle="collapse" data-target="#curriculum" class="collapsed">

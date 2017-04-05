@@ -16,8 +16,8 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >Faculty & Staff<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="<?php echo site_url("browse");?>">Staff</a></li>
+                            <li><a href="<?php echo site_url("browse");?>">Officer</a></li>
                             <li><a href="<?php echo site_url("browse");?>">Graduate Student</a></li>
-                            <li><a href="<?php echo site_url("browse");?>">Visiting Scholar & Postdocs</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
